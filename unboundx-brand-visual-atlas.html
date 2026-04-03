@@ -1,0 +1,2373 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>unboundX · Brand Visual Atlas</title>
+    <meta
+      name="description"
+      content="基于 unboundX「多维空间突破」概念与现有暖灰锈红色调打造的完整品牌视觉展陈页，包含 logo、配色、字体、图形语言、动效与应用示范。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2310141B'/%3E%3Cpath d='M18 18L46 46M46 18L18 46' stroke='%23DB5C3D' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Michroma&family=Noto+Sans+SC:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: oklch(0.965 0.008 250);
+        --paper-deep: oklch(0.93 0.012 250);
+        --panel: rgba(255, 255, 255, 0.7);
+        --panel-strong: rgba(255, 255, 255, 0.88);
+        --ink: oklch(0.21 0.018 257);
+        --ink-soft: oklch(0.29 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34);
+        --accent-deep: oklch(0.49 0.15 31);
+        --accent-soft: oklch(0.84 0.06 34);
+        --sand: oklch(0.9 0.028 71);
+        --line: rgba(16, 20, 27, 0.12);
+        --line-strong: rgba(16, 20, 27, 0.2);
+        --white-line: rgba(255, 255, 255, 0.12);
+        --shadow: 0 28px 80px rgba(14, 18, 25, 0.12);
+        --shadow-soft: 0 20px 48px rgba(18, 25, 32, 0.08);
+        --radius-xl: 36px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --max-width: 1440px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 10% 12%, rgba(219, 92, 61, 0.1), transparent 24%),
+          radial-gradient(circle at 88% 8%, rgba(170, 183, 196, 0.18), transparent 22%),
+          linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.32) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.32) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(circle at center, black 44%, transparent 100%);
+        pointer-events: none;
+        opacity: 0.42;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      svg {
+        display: block;
+      }
+
+      .latin {
+        font-family: "Michroma", "Manrope", sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .ui {
+        font-family: "Manrope", sans-serif;
+      }
+
+      .shell {
+        width: min(var(--max-width), calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 20px 0 88px;
+        position: relative;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 18px;
+        z-index: 50;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 16px;
+        margin-bottom: 30px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 16px 40px rgba(16, 20, 27, 0.08);
+      }
+
+      .brand-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .brand-badge .icon-shell {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.54)),
+          radial-gradient(circle at 78% 22%, rgba(219, 92, 61, 0.2), transparent 42%);
+        border: 1px solid rgba(16, 20, 27, 0.1);
+      }
+
+      .brand-badge strong,
+      .nav-links a,
+      .eyebrow,
+      .section-kicker,
+      .meta-chip,
+      .spec-label {
+        font-family: "Manrope", sans-serif;
+      }
+
+      .brand-badge strong {
+        display: block;
+        font-size: 0.96rem;
+        line-height: 1.1;
+      }
+
+      .brand-badge span {
+        display: block;
+        font-size: 0.76rem;
+        color: var(--muted);
+        line-height: 1.2;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .nav-links a {
+        padding: 10px 14px;
+        border-radius: 999px;
+        font-size: 0.86rem;
+        color: var(--ink-soft);
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease;
+      }
+
+      .nav-links a:hover {
+        transform: translateY(-1px);
+        background: rgba(219, 92, 61, 0.12);
+        color: var(--ink);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(320px, 0.9fr) minmax(420px, 1.1fr);
+        gap: clamp(20px, 4vw, 46px);
+        align-items: stretch;
+      }
+
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+        padding: clamp(14px, 2vw, 22px) 0;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.76rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+      }
+
+      .eyebrow::before,
+      .section-kicker::before {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: color-mix(in oklab, var(--accent), white 28%);
+      }
+
+      .hero-title {
+        margin: 18px 0 0;
+        font-family: "Noto Sans SC", sans-serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+      }
+
+      .hero-title .latin {
+        display: inline-block;
+        font-size: 0.42em;
+        letter-spacing: 0.16em;
+        color: var(--accent);
+      }
+
+      .hero-text {
+        margin: 0;
+        max-width: 40rem;
+        font-size: clamp(1rem, 1.5vw, 1.14rem);
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+
+      .chip-row,
+      .stat-row,
+      .swatch-grid,
+      .graphic-grid,
+      .application-grid,
+      .deliverable-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .chip-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .meta-chip {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .meta-chip strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-deep);
+      }
+
+      .meta-chip span {
+        display: block;
+        font-size: 0.94rem;
+        color: var(--ink-soft);
+        line-height: 1.55;
+      }
+
+      .hero-note {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 18px;
+        align-items: center;
+      }
+
+      .hero-note .note-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .hero-note .note-item::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 6px rgba(219, 92, 61, 0.1);
+      }
+
+      .hero-stage,
+      .logo-stage,
+      .construction-board,
+      .motion-stage,
+      .application-card,
+      .voice-card,
+      .deliverable-card,
+      .type-stage,
+      .graphic-card,
+      .swatch-card,
+      .blueprint-card,
+      .spec-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+      }
+
+      .hero-stage {
+        min-height: 760px;
+        padding: clamp(24px, 3vw, 34px);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 18px;
+        color: rgba(248, 250, 253, 0.96);
+        background:
+          radial-gradient(circle at 74% 18%, rgba(219, 92, 61, 0.22), transparent 18%),
+          radial-gradient(circle at 22% 76%, rgba(170, 183, 196, 0.16), transparent 26%),
+          linear-gradient(160deg, #0d1118 0%, #131926 44%, #171f2e 100%);
+        box-shadow: 0 36px 80px rgba(10, 14, 20, 0.22);
+        isolation: isolate;
+      }
+
+      .hero-stage::before,
+      .logo-stage::before,
+      .motion-stage::before,
+      .application-card.dark::before {
+        content: "";
+        position: absolute;
+        inset: -8%;
+        background:
+          linear-gradient(140deg, transparent 0 44%, rgba(255, 255, 255, 0.08) 44% 44.5%, transparent 44.5% 100%),
+          linear-gradient(164deg, transparent 0 60%, rgba(255, 255, 255, 0.05) 60% 60.8%, transparent 60.8% 100%),
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 72px 72px, 72px 72px;
+        transform: rotate(-7deg) scale(1.06);
+        opacity: 0.52;
+        z-index: -2;
+      }
+
+      .hero-stage::after,
+      .logo-stage::after {
+        content: "";
+        position: absolute;
+        width: 50%;
+        height: 48%;
+        right: -6%;
+        bottom: 8%;
+        border-radius: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), transparent 58%);
+        transform: skewX(-18deg) rotate(-8deg);
+        z-index: -1;
+      }
+
+      .stage-meta {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .stage-meta .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .stage-meta .tag::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      .stage-index {
+        font-family: "Michroma", sans-serif;
+        font-size: 0.86rem;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.54);
+      }
+
+      .hero-visual {
+        position: relative;
+        display: grid;
+        place-items: center;
+        padding: 18px;
+      }
+
+      .hero-mark {
+        width: min(100%, 580px);
+        color: var(--accent);
+        filter: drop-shadow(0 24px 44px rgba(219, 92, 61, 0.14));
+        animation: drift 7s ease-in-out infinite;
+      }
+
+      .stage-orbit {
+        position: absolute;
+        inset: 13% 12%;
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        border-radius: 32px;
+        transform: rotate(-7deg);
+      }
+
+      .stage-orbit::before,
+      .stage-orbit::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.04);
+      }
+
+      .stage-orbit::before {
+        top: 14%;
+        right: 12%;
+        animation: orbit 10s linear infinite;
+      }
+
+      .stage-orbit::after {
+        left: 12%;
+        bottom: 12%;
+        background: rgba(219, 92, 61, 0.9);
+        animation: orbit 12s linear infinite reverse;
+      }
+
+      .floating-card {
+        position: absolute;
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 18px 36px rgba(10, 15, 20, 0.18);
+      }
+
+      .floating-card strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.54);
+      }
+
+      .floating-card span {
+        font-family: "Manrope", sans-serif;
+        font-size: 0.94rem;
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .floating-card.card-a {
+        top: 18%;
+        left: 2%;
+        width: min(220px, 42%);
+      }
+
+      .floating-card.card-b {
+        right: 0;
+        bottom: 18%;
+        width: min(240px, 46%);
+      }
+
+      .floating-card.card-c {
+        left: 16%;
+        bottom: 4%;
+        width: min(200px, 42%);
+      }
+
+      .hero-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .wordmark {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .wordmark .name {
+        font-size: clamp(1.9rem, 5vw, 4rem);
+        line-height: 0.92;
+      }
+
+      .wordmark .name span,
+      .accent {
+        color: var(--accent);
+      }
+
+      .wordmark .sub {
+        font-size: 0.78rem;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .hero-quote {
+        max-width: 24rem;
+        font-size: 0.96rem;
+        line-height: 1.75;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .section {
+        margin-top: 36px;
+        padding: clamp(24px, 3vw, 36px);
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        border-radius: calc(var(--radius-xl) + 8px);
+        background: rgba(255, 255, 255, 0.42);
+        box-shadow: var(--shadow-soft);
+        backdrop-filter: blur(14px);
+      }
+
+      .section.dark {
+        border-color: rgba(255, 255, 255, 0.08);
+        background:
+          radial-gradient(circle at 82% 14%, rgba(219, 92, 61, 0.14), transparent 18%),
+          linear-gradient(165deg, #10151d 0%, #151d29 100%);
+        color: rgba(248, 250, 253, 0.95);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.72fr) minmax(320px, 1.28fr);
+        gap: 22px;
+        align-items: end;
+        margin-bottom: 26px;
+      }
+
+      .section-title {
+        margin: 14px 0 0;
+        font-size: clamp(2rem, 4vw, 3.6rem);
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+
+      .section-title .latin {
+        display: block;
+        margin-top: 10px;
+        font-size: 0.24em;
+        letter-spacing: 0.2em;
+        color: var(--accent);
+      }
+
+      .section-text {
+        max-width: 42rem;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.86;
+        color: inherit;
+        opacity: 0.88;
+      }
+
+      .blueprint-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 18px;
+      }
+
+      .blueprint-card {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .blueprint-card.soft-dark {
+        background:
+          radial-gradient(circle at 86% 14%, rgba(219, 92, 61, 0.12), transparent 20%),
+          linear-gradient(155deg, rgba(17, 24, 34, 0.96), rgba(19, 28, 42, 0.92));
+        border-color: rgba(255, 255, 255, 0.08);
+        color: rgba(248, 250, 253, 0.94);
+      }
+
+      .blueprint-card h3,
+      .logo-meta h3,
+      .spec-card h3,
+      .type-note h3,
+      .voice-card h3 {
+        margin: 0 0 14px;
+        font-size: 1.3rem;
+        line-height: 1.15;
+      }
+
+      .blueprint-card p,
+      .type-note p,
+      .voice-card p {
+        margin: 0;
+        font-size: 0.98rem;
+        line-height: 1.75;
+        color: inherit;
+        opacity: 0.84;
+      }
+
+      .big-statement {
+        margin: 18px 0 0;
+        font-size: clamp(1.9rem, 4vw, 3.4rem);
+        line-height: 1.04;
+        letter-spacing: -0.06em;
+      }
+
+      .keyword-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .keyword-pill {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .keyword-pill strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      .keyword-pill span {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .signal-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .signal-item {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 16px;
+        align-items: start;
+        padding-top: 12px;
+        border-top: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .signal-item:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .signal-item strong {
+        font-family: "Manrope", sans-serif;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-deep);
+      }
+
+      .signal-item span {
+        font-size: 0.95rem;
+        line-height: 1.72;
+        color: var(--ink-soft);
+      }
+
+      .logo-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .logo-stage {
+        min-height: 640px;
+        padding: 28px;
+        color: rgba(248, 250, 253, 0.95);
+        background:
+          radial-gradient(circle at 76% 18%, rgba(219, 92, 61, 0.2), transparent 18%),
+          radial-gradient(circle at 20% 76%, rgba(170, 183, 196, 0.14), transparent 26%),
+          linear-gradient(160deg, #0f131a 0%, #121924 100%);
+        box-shadow: 0 28px 70px rgba(10, 14, 20, 0.18);
+      }
+
+      .logo-stage-main {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 22px;
+      }
+
+      .lockup-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .lockup {
+        padding: 18px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .lockup.dark-on-light {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(245, 247, 250, 0.88));
+        color: var(--ink);
+      }
+
+      .lockup.accented {
+        background:
+          linear-gradient(165deg, color-mix(in oklab, var(--accent), black 8%), color-mix(in oklab, var(--accent), black 26%)),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent);
+        color: #fff3ee;
+      }
+
+      .spec-label {
+        display: block;
+        margin-bottom: 14px;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        opacity: 0.66;
+      }
+
+      .mark-wrap {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+
+      .mark-wrap.vertical {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .mark-hero {
+        width: min(100%, 420px);
+        margin-inline: auto;
+        color: var(--accent);
+      }
+
+      .mark-small {
+        width: 84px;
+        flex: 0 0 auto;
+        color: var(--accent);
+      }
+
+      .mark-mini {
+        width: 54px;
+        color: currentColor;
+      }
+
+      .lockup .wordmark .name {
+        font-size: clamp(1.35rem, 2vw, 2rem);
+      }
+
+      .logo-meta {
+        display: grid;
+        gap: 18px;
+      }
+
+      .spec-card {
+        padding: 22px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        background: rgba(255, 255, 255, 0.68);
+      }
+
+      .spec-card ul {
+        padding-left: 18px;
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.9;
+      }
+
+      .construction-board {
+        margin-top: 18px;
+        padding: 24px;
+        min-height: 320px;
+        border: 1px solid rgba(16, 20, 27, 0.1);
+        background:
+          linear-gradient(rgba(16, 20, 27, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 20, 27, 0.06) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 248, 251, 0.84));
+        background-size: 28px 28px, 28px 28px, 100% 100%;
+      }
+
+      .construction-board .board-shell {
+        position: relative;
+        min-height: 270px;
+      }
+
+      .construction-board .board-shell::before {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border-radius: 28px;
+        border: 1px dashed rgba(16, 20, 27, 0.16);
+      }
+
+      .construction-mark {
+        position: absolute;
+        inset: 20px;
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+      }
+
+      .construction-rules {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .construction-rules span {
+        position: absolute;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.74rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+      }
+
+      .construction-rules .top {
+        top: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .construction-rules .left {
+        left: -8px;
+        top: 50%;
+        transform: translateY(-50%) rotate(-90deg);
+      }
+
+      .construction-rules .bottom {
+        bottom: 6px;
+        right: 18px;
+      }
+
+      .swatch-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .swatch-card {
+        min-height: 280px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .swatch-card.primary {
+        background: linear-gradient(180deg, color-mix(in oklab, var(--accent), white 16%), color-mix(in oklab, var(--accent), black 8%));
+        color: #fff4ef;
+      }
+
+      .swatch-card.ink {
+        background: linear-gradient(180deg, #111722, #171f2d);
+        color: rgba(248, 250, 253, 0.95);
+      }
+
+      .swatch-card.paper {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(243, 245, 248, 0.92));
+      }
+
+      .swatch-card.mist {
+        background: linear-gradient(180deg, color-mix(in oklab, var(--mist), white 16%), color-mix(in oklab, var(--mist), black 8%));
+      }
+
+      .swatch-top strong {
+        display: block;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 10px;
+        opacity: 0.72;
+      }
+
+      .swatch-top h3 {
+        margin: 0;
+        font-size: 1.6rem;
+        line-height: 1.02;
+      }
+
+      .swatch-meta {
+        display: grid;
+        gap: 8px;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.88rem;
+      }
+
+      .usage-bar {
+        display: grid;
+        grid-template-columns: 42fr 30fr 16fr 12fr;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .usage-bar span {
+        display: grid;
+        place-items: center;
+        min-height: 56px;
+        border-radius: 18px;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .usage-ink {
+        background: var(--ink);
+        color: rgba(248, 250, 253, 0.95);
+      }
+
+      .usage-paper {
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        border: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .usage-mist {
+        background: color-mix(in oklab, var(--mist), white 10%);
+        color: var(--ink);
+      }
+
+      .usage-accent {
+        background: var(--accent);
+        color: #fff4ee;
+      }
+
+      .type-grid {
+        display: grid;
+        grid-template-columns: 0.94fr 1.06fr;
+        gap: 18px;
+      }
+
+      .type-stage {
+        padding: 24px;
+        background:
+          radial-gradient(circle at 82% 14%, rgba(219, 92, 61, 0.18), transparent 18%),
+          linear-gradient(165deg, rgba(17, 24, 34, 0.98), rgba(19, 28, 42, 0.94));
+        color: rgba(248, 250, 253, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .type-stage .specimen {
+        margin-top: 18px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .display-line {
+        font-family: "Michroma", sans-serif;
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 1.08;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .body-line {
+        font-size: 1rem;
+        line-height: 1.95;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .type-note {
+        display: grid;
+        gap: 18px;
+      }
+
+      .type-note .spec-card {
+        height: 100%;
+      }
+
+      .type-scale {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .type-step {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 14px;
+        align-items: baseline;
+        padding-top: 12px;
+        border-top: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .type-step:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .type-step span {
+        font-family: "Manrope", sans-serif;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-deep);
+      }
+
+      .type-step strong {
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .graphic-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .graphic-card {
+        min-height: 260px;
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .graphic-card .graphic-demo {
+        height: 148px;
+        margin-bottom: 18px;
+        border-radius: 24px;
+        position: relative;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .graphic-card h3,
+      .swatch-card h3 {
+        margin: 0;
+      }
+
+      .graphic-card p {
+        margin: 10px 0 0;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .demo-frame::before,
+      .demo-frame::after,
+      .demo-breach::before,
+      .demo-breach::after,
+      .demo-nodes::before,
+      .demo-slash::before,
+      .demo-field::before {
+        content: "";
+        position: absolute;
+      }
+
+      .demo-frame::before {
+        inset: 22px 26px 30px 18px;
+        border: 2px solid rgba(255, 255, 255, 0.24);
+        transform: skewX(-14deg);
+      }
+
+      .demo-frame::after {
+        inset: 40px 40px 44px 36px;
+        border: 2px solid rgba(219, 92, 61, 0.66);
+        transform: skewX(-14deg);
+      }
+
+      .demo-breach::before {
+        inset: auto 30px 30px 30px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, transparent, rgba(219, 92, 61, 0.3), rgba(219, 92, 61, 0.94), transparent);
+        transform: rotate(-28deg);
+      }
+
+      .demo-breach::after {
+        inset: auto 44px 56px 44px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.62);
+        transform: rotate(28deg);
+      }
+
+      .demo-nodes::before {
+        inset: 0;
+        background:
+          radial-gradient(circle at 20% 24%, rgba(255, 255, 255, 0.88) 0 5px, transparent 6px),
+          radial-gradient(circle at 78% 24%, rgba(219, 92, 61, 0.94) 0 6px, transparent 7px),
+          radial-gradient(circle at 24% 78%, rgba(219, 92, 61, 0.72) 0 5px, transparent 6px),
+          radial-gradient(circle at 82% 74%, rgba(255, 255, 255, 0.82) 0 5px, transparent 6px);
+      }
+
+      .demo-slash::before {
+        inset: -20% 38% -20% auto;
+        width: 34%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0));
+        transform: skewX(-18deg);
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .demo-field::before {
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 22px 22px;
+        mask-image: radial-gradient(circle at center, black 46%, transparent 100%);
+      }
+
+      .motion-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+      }
+
+      .motion-stage {
+        min-height: 360px;
+        padding: 24px;
+        color: rgba(248, 250, 253, 0.96);
+        background:
+          radial-gradient(circle at 76% 24%, rgba(219, 92, 61, 0.2), transparent 18%),
+          linear-gradient(165deg, #10151d 0%, #151d29 100%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .motion-lanes {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .lane {
+        position: relative;
+        height: 72px;
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .lane::before {
+        content: "";
+        position: absolute;
+        inset: 22px auto 22px -20%;
+        width: 38%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, rgba(219, 92, 61, 0.1), rgba(219, 92, 61, 0.88), rgba(255, 255, 255, 0.06));
+        animation: scan 5s ease-in-out infinite;
+      }
+
+      .lane.secondary::before {
+        width: 28%;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.02));
+        animation-duration: 6.2s;
+      }
+
+      .lane.tertiary::before {
+        width: 22%;
+        background: linear-gradient(90deg, rgba(170, 183, 196, 0.1), rgba(170, 183, 196, 0.82), rgba(255, 255, 255, 0.04));
+        animation-duration: 7.4s;
+      }
+
+      .motion-copy,
+      .voice-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .motion-copy .spec-card p,
+      .spec-card p,
+      .spec-card li {
+        font-size: 0.96rem;
+        line-height: 1.78;
+        color: var(--ink-soft);
+      }
+
+      .ui-primitives {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .ui-chip,
+      .ui-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border-radius: 999px;
+        padding: 11px 16px;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.92rem;
+        border: 1px solid rgba(16, 20, 27, 0.1);
+      }
+
+      .ui-chip {
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .ui-button.primary {
+        background: var(--ink);
+        color: rgba(248, 250, 253, 0.96);
+      }
+
+      .ui-button.secondary {
+        background: color-mix(in oklab, var(--accent), white 82%);
+        color: var(--accent-deep);
+      }
+
+      .application-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .application-card {
+        min-height: 380px;
+        padding: 20px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        background: rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .application-card.dark {
+        color: rgba(248, 250, 253, 0.95);
+        background:
+          radial-gradient(circle at 82% 14%, rgba(219, 92, 61, 0.2), transparent 16%),
+          linear-gradient(165deg, #111722 0%, #161d28 100%);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+
+      .application-card .app-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Manrope", sans-serif;
+        font-size: 0.74rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: inherit;
+        opacity: 0.64;
+      }
+
+      .application-card .app-kicker::before {
+        content: "";
+        width: 28px;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.44;
+      }
+
+      .application-card h3 {
+        margin: 14px 0 8px;
+        font-size: 1.35rem;
+      }
+
+      .application-card p {
+        margin: 0;
+        font-size: 0.94rem;
+        line-height: 1.72;
+        opacity: 0.84;
+      }
+
+      .mock-browser,
+      .mock-poster,
+      .mock-social,
+      .mock-app,
+      .mock-deck,
+      .mock-wall {
+        margin-top: 20px;
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .mock-browser {
+        min-height: 210px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(243, 245, 248, 0.9));
+        border: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .browser-bar {
+        height: 34px;
+        background: rgba(16, 20, 27, 0.06);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 14px;
+      }
+
+      .browser-bar span {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(16, 20, 27, 0.24);
+      }
+
+      .browser-canvas {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 0.8fr;
+        gap: 16px;
+      }
+
+      .browser-copy strong {
+        display: block;
+        font-family: "Michroma", sans-serif;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .browser-copy p {
+        margin-top: 10px;
+        color: var(--ink-soft);
+        opacity: 1;
+      }
+
+      .browser-visual {
+        min-height: 140px;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 76% 24%, rgba(219, 92, 61, 0.22), transparent 18%),
+          linear-gradient(165deg, #111722 0%, #161d28 100%);
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+      }
+
+      .mock-poster,
+      .mock-deck,
+      .mock-social,
+      .mock-app,
+      .mock-wall {
+        min-height: 220px;
+      }
+
+      .mock-poster {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 248, 251, 0.84));
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        padding: 18px;
+      }
+
+      .poster-panel {
+        height: 100%;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at 80% 14%, rgba(219, 92, 61, 0.18), transparent 18%),
+          linear-gradient(165deg, rgba(17, 24, 34, 0.98), rgba(19, 28, 42, 0.94));
+        padding: 18px;
+        color: rgba(248, 250, 253, 0.95);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .mock-social {
+        background:
+          radial-gradient(circle at 78% 14%, rgba(219, 92, 61, 0.24), transparent 18%),
+          linear-gradient(165deg, rgba(17, 24, 34, 0.98), rgba(19, 28, 42, 0.94));
+        padding: 20px;
+        color: rgba(248, 250, 253, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .mock-app {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(243, 245, 248, 0.9));
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+
+      .phone-shell {
+        width: 172px;
+        aspect-ratio: 10 / 18.7;
+        border-radius: 32px;
+        padding: 12px;
+        background: linear-gradient(180deg, #0d1118, #171f2e);
+        box-shadow: 0 18px 44px rgba(16, 20, 27, 0.16);
+      }
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        border-radius: 22px;
+        background:
+          radial-gradient(circle at 74% 18%, rgba(219, 92, 61, 0.2), transparent 18%),
+          linear-gradient(165deg, #111722 0%, #161d28 100%);
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+      }
+
+      .mock-deck {
+        background:
+          radial-gradient(circle at 82% 14%, rgba(219, 92, 61, 0.18), transparent 18%),
+          linear-gradient(165deg, rgba(17, 24, 34, 0.98), rgba(19, 28, 42, 0.94));
+        color: rgba(248, 250, 253, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 22px;
+      }
+
+      .mock-wall {
+        background:
+          linear-gradient(rgba(16, 20, 27, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 20, 27, 0.06) 1px, transparent 1px),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(243, 245, 248, 0.92));
+        background-size: 24px 24px, 24px 24px, 100% 100%;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        padding: 18px;
+      }
+
+      .wall-frame {
+        width: 100%;
+        height: 180px;
+        border-radius: 20px;
+        background: linear-gradient(165deg, rgba(17, 24, 34, 0.98), rgba(19, 28, 42, 0.94));
+        display: grid;
+        place-items: center;
+        color: var(--accent);
+      }
+
+      .voice-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .voice-card {
+        padding: 22px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .deliverable-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        margin-top: 20px;
+      }
+
+      .deliverable-card {
+        padding: 18px;
+        min-height: 180px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .deliverable-card strong {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 0.82rem;
+        font-family: "Manrope", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--accent-deep);
+      }
+
+      .deliverable-card span {
+        display: block;
+        font-size: 1.08rem;
+        line-height: 1.6;
+        color: var(--ink);
+      }
+
+      .footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px 22px;
+        margin-top: 24px;
+        padding: 18px 6px 0;
+        border-top: 1px solid rgba(16, 20, 27, 0.08);
+      }
+
+      .footer .latin {
+        font-size: 0.82rem;
+      }
+
+      .footer p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0.2deg);
+        }
+        50% {
+          transform: translateY(-12px) rotate(-0.4deg);
+        }
+      }
+
+      @keyframes orbit {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-8px, 6px);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+
+      @keyframes scan {
+        0% {
+          transform: translateX(0);
+          opacity: 0.18;
+        }
+        20% {
+          opacity: 0.95;
+        }
+        60% {
+          opacity: 0.82;
+        }
+        100% {
+          transform: translateX(380%);
+          opacity: 0.14;
+        }
+      }
+
+      @media (max-width: 1180px) {
+        .hero,
+        .blueprint-grid,
+        .logo-grid,
+        .type-grid,
+        .motion-grid,
+        .section-head,
+        .application-grid,
+        .voice-grid,
+        .deliverable-grid,
+        .graphic-grid,
+        .swatch-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .chip-row {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-stage,
+        .logo-stage {
+          min-height: 640px;
+        }
+
+        .floating-card.card-a,
+        .floating-card.card-b,
+        .floating-card.card-c {
+          position: static;
+          width: auto;
+        }
+
+        .hero-visual {
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .shell {
+          width: min(var(--max-width), calc(100vw - 20px));
+          padding-top: 10px;
+        }
+
+        .topbar {
+          position: static;
+          border-radius: 28px;
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .nav-links {
+          justify-content: start;
+        }
+
+        .hero-stage,
+        .logo-stage {
+          min-height: auto;
+        }
+
+        .hero-title {
+          font-size: clamp(2.6rem, 14vw, 4.4rem);
+        }
+
+        .hero-footer,
+        .mark-wrap {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .lockup-grid,
+        .keyword-grid,
+        .browser-canvas {
+          grid-template-columns: 1fr;
+        }
+
+        .signal-item,
+        .type-step {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .usage-bar {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .phone-shell {
+          width: 156px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" width="0" height="0" style="position: absolute">
+      <symbol id="dimensional-mark" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M68 54L260 70L236 262L44 246Z" stroke-width="3" opacity="0.16" />
+          <path d="M92 82L238 94L220 238L74 226Z" stroke-width="4" opacity="0.28" />
+          <path d="M116 108L214 118L202 214L104 204Z" stroke-width="5" opacity="0.48" />
+          <path d="M120 110L56 42" stroke-width="4" opacity="0.42" />
+          <path d="M214 118L280 54" stroke-width="4" opacity="0.42" />
+          <path d="M104 204L40 272" stroke-width="4" opacity="0.42" />
+          <path d="M202 214L270 280" stroke-width="4" opacity="0.42" />
+          <path d="M124 114L198 206" stroke-width="15" />
+          <path d="M204 120L112 204" stroke-width="15" />
+          <circle cx="56" cy="42" r="6" fill="currentColor" stroke="none" opacity="0.72" />
+          <circle cx="280" cy="54" r="6" fill="currentColor" stroke="none" opacity="0.56" />
+          <circle cx="40" cy="272" r="6" fill="currentColor" stroke="none" opacity="0.56" />
+          <circle cx="270" cy="280" r="6" fill="currentColor" stroke="none" opacity="0.72" />
+          <circle cx="92" cy="82" r="4" fill="currentColor" stroke="none" opacity="0.38" />
+          <circle cx="238" cy="94" r="4" fill="currentColor" stroke="none" opacity="0.38" />
+          <circle cx="74" cy="226" r="4" fill="currentColor" stroke="none" opacity="0.38" />
+          <circle cx="220" cy="238" r="4" fill="currentColor" stroke="none" opacity="0.38" />
+        </g>
+      </symbol>
+    </svg>
+
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand-badge" href="#top" aria-label="返回顶部">
+          <span class="icon-shell">
+            <svg viewBox="0 0 320 320" width="24" height="24" aria-hidden="true">
+              <use href="#dimensional-mark"></use>
+            </svg>
+          </span>
+          <span>
+            <strong class="latin">unboundX</strong>
+            <span>Brand visual atlas · 维度突破系统</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="页面导航">
+          <a href="#concept">概念</a>
+          <a href="#logo">Logo</a>
+          <a href="#palette">色彩</a>
+          <a href="#type">字体</a>
+          <a href="#graphics">图形</a>
+          <a href="#applications">应用</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero" id="top">
+          <div class="hero-copy">
+            <div>
+              <span class="eyebrow">Brand system proposal · 2026 visual direction</span>
+              <h1 class="hero-title">
+                维度突破，
+                <br />
+                让 <span class="accent">X</span> 成为
+                <br />
+                穿越边界的入口
+                <span class="latin">dimension breach</span>
+              </h1>
+            </div>
+
+            <p class="hero-text">
+              这版全新页面延续你喜欢的第一稿「多维空间突破」精神，但不再沿用冷蓝科技感，而是把
+              index.html 里的暖锈红、冷雾灰、纸白底与深墨色，重组为一种更成熟的品牌现场：像一套兼具未来感与出版感的视觉系统。
+            </p>
+
+            <div class="chip-row">
+              <div class="meta-chip">
+                <strong>核心隐喻</strong>
+                <span>多层维度框架被一枚 X 穿透，代表突破、跃迁与重构规则。</span>
+              </div>
+              <div class="meta-chip">
+                <strong>气质方向</strong>
+                <span>空间理性 × 温热信号 × 高级工业感，不做泛泛的赛博科技模板。</span>
+              </div>
+              <div class="meta-chip">
+                <strong>适用场景</strong>
+                <span>官网、发布页、社媒卡片、提案封面、App 启动页与线下物料。</span>
+              </div>
+            </div>
+
+            <div class="hero-note">
+              <span class="note-item">Logo / Lockup / Grid</span>
+              <span class="note-item">Palette / Typography / Motion</span>
+              <span class="note-item">Poster / Deck / Web / Social</span>
+            </div>
+          </div>
+
+          <div class="hero-stage">
+            <div class="stage-meta">
+              <span class="tag">Master visual scene</span>
+              <span class="stage-index">Atlas · 01</span>
+            </div>
+
+            <div class="hero-visual">
+              <div class="stage-orbit" aria-hidden="true"></div>
+
+              <div class="floating-card card-a">
+                <strong>Visual DNA</strong>
+                <span>嵌套维度框、突破斜线、节点坐标与大留白构成主识别语言。</span>
+              </div>
+
+              <svg class="hero-mark" viewBox="0 0 320 320" aria-label="unboundX 主视觉符号">
+                <use href="#dimensional-mark"></use>
+              </svg>
+
+              <div class="floating-card card-b">
+                <strong>Palette shift</strong>
+                <span>从蓝光科技改为锈红信号色，让品牌更有温度，也更有记忆点。</span>
+              </div>
+
+              <div class="floating-card card-c">
+                <strong>Usage tone</strong>
+                <span>适合产品发布、前沿研究、设计驱动型科技品牌与概念型官网。</span>
+              </div>
+            </div>
+
+            <div class="hero-footer">
+              <div class="wordmark">
+                <div class="name latin">UNBOUND<span>X</span></div>
+                <div class="sub">free dimension / identity system</div>
+              </div>
+
+              <p class="hero-quote">
+                “不是在边界里强调自由，而是直接把边界变成被穿透的结构。” 这就是这套视觉的核心判断。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="concept">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Concept blueprint</span>
+              <h2 class="section-title">
+                从“多维空间突破”进化为完整品牌叙事
+                <span class="latin">concept / narrative / system</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              原始 logo 概念已经足够好：多层空间与中心 X 的关系很清晰。我在这版里做的不是简单美化，而是把它扩展成一套可落地的品牌语言，让 logo、颜色、版式、动效和应用场景都说同一种话。
+            </p>
+          </div>
+
+          <div class="blueprint-grid">
+            <article class="blueprint-card soft-dark">
+              <h3>品牌主句</h3>
+              <p>让跨维度的突破，看起来像一种被精确设计过的行为。</p>
+              <div class="big-statement">
+                在秩序中制造裂口，
+                <br />
+                在裂口里建立新秩序。
+              </div>
+
+              <div class="keyword-grid">
+                <div class="keyword-pill">
+                  <strong>01 / Space</strong>
+                  <span>空间不是背景，而是被构造、被切开的主体。</span>
+                </div>
+                <div class="keyword-pill">
+                  <strong>02 / Break</strong>
+                  <span>X 是一个事件，不只是一个字母。</span>
+                </div>
+                <div class="keyword-pill">
+                  <strong>03 / Warmth</strong>
+                  <span>用暖锈红替代冷霓虹，品牌更克制也更高级。</span>
+                </div>
+                <div class="keyword-pill">
+                  <strong>04 / Precision</strong>
+                  <span>所有图形都建立在工程式对齐与留白逻辑之上。</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="blueprint-card">
+              <h3>视觉判断标准</h3>
+              <div class="signal-list">
+                <div class="signal-item">
+                  <strong>识别性</strong>
+                  <span>第一眼记住“穿透维度的 X”，而不是普通科技感抽象图形。</span>
+                </div>
+                <div class="signal-item">
+                  <strong>延展性</strong>
+                  <span>Logo 逻辑能自然延展到网页分割线、海报构图、社媒边框与按钮细节。</span>
+                </div>
+                <div class="signal-item">
+                  <strong>可编辑性</strong>
+                  <span>品牌团队后续做提案页、发布页和活动 KV 时，能直接复用这套视觉语法。</span>
+                </div>
+                <div class="signal-item">
+                  <strong>质感</strong>
+                  <span>偏工业出版物，而非发光玻璃拟态；偏结构美学，而非炫技装饰。</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section dark" id="logo">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Logo system</span>
+              <h2 class="section-title">
+                Logo 系统与标准化锁定方式
+                <span class="latin">mastermark / lockup / clearspace</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              标志不是孤立地摆放，而是以主标、字标、竖式组合、App 图标和结构稿共同组成一套可用系统。这里保留“嵌套空间 + 突破 X”的核心，但把节奏、比例和应用关系做得更统一。
+            </p>
+          </div>
+
+          <div class="logo-grid">
+            <article class="logo-stage">
+              <div class="logo-stage-main">
+                <div class="stage-meta">
+                  <span class="tag">Primary lockup</span>
+                  <span class="stage-index">System · A</span>
+                </div>
+
+                <div class="mark-wrap vertical">
+                  <svg class="mark-hero" viewBox="0 0 320 320" aria-label="主标志">
+                    <use href="#dimensional-mark"></use>
+                  </svg>
+                  <div class="wordmark">
+                    <div class="name latin">UNBOUND<span>X</span></div>
+                    <div class="sub">Dimensional breakthrough system</div>
+                  </div>
+                </div>
+
+                <div class="lockup-grid">
+                  <div class="lockup dark-on-light">
+                    <span class="spec-label">Horizontal signature</span>
+                    <div class="mark-wrap">
+                      <svg class="mark-small" viewBox="0 0 320 320" aria-hidden="true">
+                        <use href="#dimensional-mark"></use>
+                      </svg>
+                      <div class="wordmark">
+                        <div class="name latin">UNBOUND<span>X</span></div>
+                        <div class="sub" style="color: var(--muted)">Brand wordmark / primary</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="lockup accented">
+                    <span class="spec-label">App icon / social avatar</span>
+                    <div class="mark-wrap">
+                      <svg class="mark-small" viewBox="0 0 320 320" aria-hidden="true">
+                        <use href="#dimensional-mark"></use>
+                      </svg>
+                      <div class="wordmark">
+                        <div class="name latin">X</div>
+                        <div class="sub">Signal glyph</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <div class="logo-meta">
+              <article class="spec-card">
+                <h3>组合规范</h3>
+                <ul>
+                  <li>主标志优先采用“符号 + UNBOUNDX 字标”的横向组合，用于官网 Hero、提案封面、页首和签名区。</li>
+                  <li>仅符号版本用于 favicon、头像、App 图标、按钮徽记和小尺寸场景。</li>
+                  <li>竖式组合用于海报、启动页和方形社交卡，以保证符号的纵向张力。</li>
+                </ul>
+              </article>
+
+              <article class="spec-card">
+                <h3>使用说明</h3>
+                <ul>
+                  <li>安全区建议至少取外层框厚度的 1.5 倍，避免符号被画面边缘挤压。</li>
+                  <li>小尺寸时保留内外三层框与 X 主笔画，弱化外围延伸线，确保识别度。</li>
+                  <li>深底用锈红符号，浅底用深墨字标；不要改成荧光蓝或高饱和彩虹渐变。</li>
+                </ul>
+              </article>
+
+              <div class="construction-board">
+                <div class="board-shell">
+                  <div class="construction-mark">
+                    <svg width="240" height="240" viewBox="0 0 320 320" aria-label="标志结构稿">
+                      <use href="#dimensional-mark"></use>
+                    </svg>
+                  </div>
+                  <div class="construction-rules" aria-hidden="true">
+                    <span class="top">Clearspace</span>
+                    <span class="left">Grid locked</span>
+                    <span class="bottom">Skew angle 14°</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="palette">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Color system</span>
+              <h2 class="section-title">
+                色彩不是装饰，而是品牌温度的校准器
+                <span class="latin">paper / ink / mist / rust</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              我延续 index.html 里的主色调：纸白底、深墨黑、雾灰中性色、锈红强调色。区别在于这版把它们进一步品牌化，明确了角色分工与占比，让整个系统更像“视觉资产”，而不是“好看的页面配色”。
+            </p>
+          </div>
+
+          <div class="swatch-grid">
+            <article class="swatch-card paper">
+              <div class="swatch-top">
+                <strong>Base field</strong>
+                <h3>Paper Field</h3>
+              </div>
+              <div class="swatch-meta">
+                <span>HEX · #F3F5F8</span>
+                <span>OKLCH · 0.965 / 0.008 / 250</span>
+                <span>用于大面积背景、留白区、提案纸感界面</span>
+              </div>
+            </article>
+
+            <article class="swatch-card ink">
+              <div class="swatch-top">
+                <strong>Primary contrast</strong>
+                <h3>Iron Ink</h3>
+              </div>
+              <div class="swatch-meta">
+                <span>HEX · #10141B</span>
+                <span>OKLCH · 0.21 / 0.018 / 257</span>
+                <span>用于主标题、深色舞台、按钮与结构边框</span>
+              </div>
+            </article>
+
+            <article class="swatch-card mist">
+              <div class="swatch-top">
+                <strong>Secondary neutral</strong>
+                <h3>Mist Grid</h3>
+              </div>
+              <div class="swatch-meta">
+                <span>HEX · #AAB7C4</span>
+                <span>OKLCH · 0.79 / 0.03 / 250</span>
+                <span>用于辅助线、网格、浅层信息与次级块面</span>
+              </div>
+            </article>
+
+            <article class="swatch-card primary">
+              <div class="swatch-top">
+                <strong>Signal accent</strong>
+                <h3>Breakthrough Rust</h3>
+              </div>
+              <div class="swatch-meta">
+                <span>HEX · #DB5C3D</span>
+                <span>OKLCH · 0.64 / 0.18 / 34</span>
+                <span>用于 X、关键动作、强调文本与情绪触发点</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="usage-bar" aria-label="推荐品牌配色占比">
+            <span class="usage-ink">42% Ink</span>
+            <span class="usage-paper">30% Paper</span>
+            <span class="usage-mist">16% Mist</span>
+            <span class="usage-accent">12% Accent</span>
+          </div>
+        </section>
+
+        <section class="section" id="type">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Typography</span>
+              <h2 class="section-title">
+                字体系统要同时承担科技感、秩序感和可读性
+                <span class="latin">display / chinese text / interface</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              字体我建议分成三层：英文展示体负责品牌识别，中文正文负责叙事与阅读，界面文字负责信息组织。这样既能保留品牌个性，也不会牺牲实际网页与提案的可用性。
+            </p>
+          </div>
+
+          <div class="type-grid">
+            <article class="type-stage">
+              <span class="spec-label">Type specimen</span>
+              <div class="display-line">UNBOUNDX / DIMENSION BREACH</div>
+              <div class="specimen body-line">
+                维度突破不是喧闹的未来感，而是一种经过精确排布之后的穿透力。中文层建议保持清晰、克制、呼吸感足够，负责承载概念说明、品牌故事和功能文字；英文层则负责制造品牌张力和识别切口。
+              </div>
+              <div class="specimen body-line">
+                Aa Bb Cc 01 23 45 · 自由维度 · 突破边界 · 构造秩序
+              </div>
+            </article>
+
+            <div class="type-note">
+              <article class="spec-card">
+                <h3>推荐字体搭配</h3>
+                <p>
+                  <strong class="ui">展示体：</strong> Michroma，用于英文品牌名、章节标签、短句式标题；
+                  <strong class="ui">正文：</strong> Noto Sans SC，用于中文说明、网页正文、品牌手册；
+                  <strong class="ui">界面层：</strong> Manrope，用于数字、按钮、导航、辅助标签和参数信息。
+                </p>
+              </article>
+
+              <article class="spec-card">
+                <h3>排版原则</h3>
+                <div class="type-scale">
+                  <div class="type-step">
+                    <span>Hero</span>
+                    <strong>大标题字距收紧，形成压迫感和突破感。</strong>
+                  </div>
+                  <div class="type-step">
+                    <span>Section</span>
+                    <strong>章节标题建议左对齐，避免全部居中导致“模板感”。</strong>
+                  </div>
+                  <div class="type-step">
+                    <span>Body</span>
+                    <strong>正文行高保持 1.75–1.95，体现冷静叙述与高级留白。</strong>
+                  </div>
+                  <div class="type-step">
+                    <span>Label</span>
+                    <strong>辅助信息统一大写小字号，用于建立系统感。</strong>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section dark" id="graphics">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Graphic language</span>
+              <h2 class="section-title">
+                品牌图形语言：不是“元素堆砌”，而是同一个语法不断变体
+                <span class="latin">frame / breach / nodes / slash / field</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              如果 logo 是品牌的核心符号，那图形语言就是品牌的日常口音。网站分隔、大图背景、海报边框、社媒模板、演示文稿封面，都可以从下面这五个部件里提取，不会失真，也不会跑偏。
+            </p>
+          </div>
+
+          <div class="graphic-grid">
+            <article class="graphic-card">
+              <div class="graphic-demo demo-frame"></div>
+              <h3>维度框架</h3>
+              <p>用带轻微斜切角度的嵌套边框构成空间层级，是整套系统的骨架。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo demo-breach"></div>
+              <h3>突破斜线</h3>
+              <p>来自 X 的穿透动作，用于分隔标题、指向按钮、切开版面结构。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo demo-nodes"></div>
+              <h3>节点坐标</h3>
+              <p>小圆点像空间锚点，用来强调关键点、路径终点与系统定位感。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo demo-slash"></div>
+              <h3>斜切块面</h3>
+              <p>适合做网站右侧大图、封面留白切口和提案页过渡形状。</p>
+            </article>
+          </div>
+
+          <div class="graphic-grid" style="margin-top: 16px">
+            <article class="graphic-card">
+              <div class="graphic-demo demo-field"></div>
+              <h3>场域网格</h3>
+              <p>轻网格与雾灰辅助线负责建立工程感和秩序感，不喧宾夺主。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo" style="display:grid;place-items:center;color:var(--accent);">
+                <svg class="mark-mini" viewBox="0 0 320 320" aria-hidden="true">
+                  <use href="#dimensional-mark"></use>
+                </svg>
+              </div>
+              <h3>图标核心</h3>
+              <p>所有图标都建议延续尖角、细线、节点、穿透感，而非圆润卡通风。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo" style="display:grid;place-items:center;">
+                <div class="ui-chip" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.1);color:rgba(248,250,253,0.92)">Signal / Active</div>
+              </div>
+              <h3>标签风格</h3>
+              <p>标签、角标、分类器统一用圆角胶囊，但配合细边框和克制透明度。</p>
+            </article>
+
+            <article class="graphic-card">
+              <div class="graphic-demo" style="padding:16px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));">
+                <div style="height:100%;border-radius:18px;border:1px solid rgba(255,255,255,0.08);padding:18px;display:flex;flex-direction:column;justify-content:space-between;">
+                  <span class="spec-label" style="color:rgba(255,255,255,0.5)">Content frame</span>
+                  <strong class="latin" style="font-size:1rem;color:rgba(248,250,253,0.94)">Break the expected grid</strong>
+                </div>
+              </div>
+              <h3>内容容器</h3>
+              <p>容器可以用，但不要满屏同尺寸卡片；要通过留白和不对称建立节奏。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Motion & interface</span>
+              <h2 class="section-title">
+                动效和界面细节负责“让系统活起来”
+                <span class="latin">drift / scan / settle / ui</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              视觉系统不应该只在静态稿里成立。这里给出品牌动效和基础界面部件建议：进入动画偏“滑入与停稳”，不要弹跳；强调动作偏“扫描与穿透”，不要泛用发光和噪点。
+            </p>
+          </div>
+
+          <div class="motion-grid">
+            <article class="motion-stage">
+              <span class="spec-label">Motion strips</span>
+              <div class="motion-lanes">
+                <div class="lane"></div>
+                <div class="lane secondary"></div>
+                <div class="lane tertiary"></div>
+              </div>
+            </article>
+
+            <div class="motion-copy">
+              <article class="spec-card">
+                <h3>推荐动效语气</h3>
+                <p>
+                  进入时从边界滑入并减速停稳；强调时用一条斜向扫描光带穿过内容；切换状态时优先做 opacity + transform，不做弹簧果冻感。品牌的动作应该像“精确地突破”，而不是“欢快地跳动”。
+                </p>
+              </article>
+
+              <article class="spec-card">
+                <h3>UI 组件语法</h3>
+                <p>按钮、标签、输入框建议使用细边框、强对比文本和克制圆角；亮色按钮只给关键动作，避免所有按钮都抢镜。</p>
+                <div class="ui-primitives">
+                  <span class="ui-chip">Grid locked</span>
+                  <span class="ui-chip">Signal enabled</span>
+                  <span class="ui-button primary">Launch system</span>
+                  <span class="ui-button secondary">View guidelines</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="applications">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Applications</span>
+              <h2 class="section-title">
+                常见品牌触点的展出与呈现方式
+                <span class="latin">website / deck / social / app / space</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              下面这些不是随便摆几个 mockup，而是把前面的 logo、配色、字体、图形语言和版式节奏落到实际触点里。这样你后面做官网、提案、社媒封面或线下物料时，都能直接照着往下延展。
+            </p>
+          </div>
+
+          <div class="application-grid">
+            <article class="application-card">
+              <span class="app-kicker">Website hero</span>
+              <h3>官网首屏</h3>
+              <p>浅底上用深墨标题和锈红强调，右侧以维度符号建立品牌记忆，适合作为官网首页或活动落地页首屏。</p>
+              <div class="mock-browser">
+                <div class="browser-bar"><span></span><span></span><span></span></div>
+                <div class="browser-canvas">
+                  <div class="browser-copy">
+                    <strong>MAKE THE BOUNDARY PERMEABLE</strong>
+                    <p>在秩序中切出入口，让品牌的突破感一秒可见。</p>
+                  </div>
+                  <div class="browser-visual">
+                    <svg width="92" height="92" viewBox="0 0 320 320" aria-hidden="true">
+                      <use href="#dimensional-mark"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="application-card dark">
+              <span class="app-kicker">Pitch / keynote</span>
+              <h3>提案封面</h3>
+              <p>深底大字、斜切分区和单一主符号非常适合做公司介绍、产品方案或发布会 Keynote 的封面页。</p>
+              <div class="mock-deck">
+                <div class="spec-label" style="color:rgba(255,255,255,0.52)">Deck cover / 16:9</div>
+                <div class="latin" style="font-size:1.4rem;line-height:1.6;margin-bottom:18px;">UNBOUNDX / FUTURE IN STRUCTURE</div>
+                <svg width="118" height="118" viewBox="0 0 320 320" style="color:var(--accent)">
+                  <use href="#dimensional-mark"></use>
+                </svg>
+              </div>
+            </article>
+
+            <article class="application-card">
+              <span class="app-kicker">Poster / campaign</span>
+              <h3>竖版海报</h3>
+              <p>适合发布活动、招聘海报、展览 KV 和线下张贴。竖版里“突破感”比横版更强，容易出高级感。</p>
+              <div class="mock-poster">
+                <div class="poster-panel">
+                  <div class="spec-label" style="color:rgba(255,255,255,0.48)">A1 poster</div>
+                  <div class="latin" style="font-size:1.15rem;line-height:1.5;">BREAK THROUGH / BUILD NEW FIELDS</div>
+                  <svg width="84" height="84" viewBox="0 0 320 320" style="color:var(--accent)">
+                    <use href="#dimensional-mark"></use>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+            <article class="application-card dark">
+              <span class="app-kicker">Social post</span>
+              <h3>社媒封面卡</h3>
+              <p>方形社媒图建议保留一个主句、一个符号和足够留白，不要塞满功能点，才能像真正的品牌传播物。</p>
+              <div class="mock-social">
+                <div class="spec-label" style="color:rgba(255,255,255,0.5)">1080 × 1080</div>
+                <div class="latin" style="font-size:1.1rem;line-height:1.7;">X IS NOT A LETTER.<br />IT IS A BREACH.</div>
+                <div style="margin-top:24px;display:flex;justify-content:flex-end;">
+                  <svg width="92" height="92" viewBox="0 0 320 320" style="color:var(--accent)">
+                    <use href="#dimensional-mark"></use>
+                  </svg>
+                </div>
+              </div>
+            </article>
+
+            <article class="application-card">
+              <span class="app-kicker">App splash</span>
+              <h3>App 启动页 / 图标</h3>
+              <p>移动端更适合只用符号，保持强识别。图标外框和内部多层空间能让小尺寸依然有记忆点。</p>
+              <div class="mock-app">
+                <div class="phone-shell">
+                  <div class="phone-screen">
+                    <svg width="86" height="86" viewBox="0 0 320 320" aria-hidden="true">
+                      <use href="#dimensional-mark"></use>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="application-card">
+              <span class="app-kicker">Spatial branding</span>
+              <h3>空间导视 / 展墙</h3>
+              <p>在线下空间里，这套系统可以直接转化为大墙面符号、切割导视和带网格的展板版式。</p>
+              <div class="mock-wall">
+                <div class="wall-frame">
+                  <svg width="120" height="120" viewBox="0 0 320 320" aria-hidden="true">
+                    <use href="#dimensional-mark"></use>
+                  </svg>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <span class="section-kicker">Voice & delivery</span>
+              <h2 class="section-title">
+                文字语气和品牌交付物也需要统一
+                <span class="latin">voice / assets / rollout</span>
+              </h2>
+            </div>
+            <p class="section-text">
+              真正好用的品牌视觉，不只在于“画得好看”，还在于团队拿到之后能不能持续产出一致的内容。所以我顺手把品牌文案语气和常见交付物也一起梳理进来了。
+            </p>
+          </div>
+
+          <div class="voice-grid">
+            <article class="voice-card">
+              <h3>标题语气</h3>
+              <p>短、准、有判断。更像提出一个新坐标，而不是喊口号。建议多用“突破、重构、入口、边界、场域、维度”这种高概念词。</p>
+            </article>
+            <article class="voice-card">
+              <h3>正文语气</h3>
+              <p>解释性强但不过度技术化。像在和设计敏感、判断成熟的用户交流，而不是面向大众做噱头式科技宣传。</p>
+            </article>
+            <article class="voice-card">
+              <h3>按钮与行动句</h3>
+              <p>建议用更明确的行为语言，如“查看系统”“开启发布页”“进入案例”，少用泛化的“了解更多”。</p>
+            </article>
+          </div>
+
+          <div class="deliverable-grid">
+            <article class="deliverable-card">
+              <strong>Logo kit</strong>
+              <span>主标、横版、竖版、单图标、favicon、深浅底导出规范。</span>
+            </article>
+            <article class="deliverable-card">
+              <strong>Color tokens</strong>
+              <span>网页变量、印刷 CMYK 对照、辅助色与使用比例建议。</span>
+            </article>
+            <article class="deliverable-card">
+              <strong>Type rules</strong>
+              <span>标题层级、中文正文、英文标签、按钮与参数排版方式。</span>
+            </article>
+            <article class="deliverable-card">
+              <strong>Templates</strong>
+              <span>官网 Hero、社媒方卡、提案封面、海报版式和启动页模板。</span>
+            </article>
+          </div>
+
+          <footer class="footer">
+            <div class="latin">UNBOUNDX / BRAND VISUAL ATLAS</div>
+            <p>方向关键词：多维空间、穿透式突破、暖锈信号、工程秩序、出版级留白。</p>
+          </footer>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

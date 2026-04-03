@@ -1,0 +1,1249 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>unboundX · 10 SVG Logo Candidates</title>
+    <meta
+      name="description"
+      content="基于 unboundX 品牌视觉图谱延展的 10 个 SVG Logo 候选，强调自由、突破、不受限与维度感。"
+    />
+    <style>
+      :root {
+        --paper: #f3f5f8;
+        --paper-deep: #e9edf1;
+        --panel: rgba(255, 255, 255, 0.78);
+        --panel-strong: rgba(255, 255, 255, 0.9);
+        --ink: #10141b;
+        --ink-soft: #3d4652;
+        --muted: #6c7785;
+        --mist: #aab7c4;
+        --accent: #db5c3d;
+        --accent-soft: #f1c2b5;
+        --accent-ghost: rgba(219, 92, 61, 0.12);
+        --line: rgba(16, 20, 27, 0.1);
+        --line-strong: rgba(16, 20, 27, 0.18);
+        --shadow: 0 24px 80px rgba(16, 20, 27, 0.1);
+        --shadow-soft: 0 18px 48px rgba(16, 20, 27, 0.08);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+        --max-width: 1460px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family:
+          Inter,
+          Manrope,
+          "SF Pro Display",
+          "SF Pro Text",
+          "Noto Sans SC",
+          "PingFang SC",
+          "Hiragino Sans GB",
+          sans-serif;
+        background:
+          radial-gradient(circle at 10% 8%, rgba(219, 92, 61, 0.14), transparent 24%),
+          radial-gradient(circle at 86% 10%, rgba(170, 183, 196, 0.18), transparent 22%),
+          linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.26) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.26) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(circle at center, black 42%, transparent 100%);
+        pointer-events: none;
+        opacity: 0.52;
+      }
+
+      svg {
+        display: block;
+      }
+
+      .latin {
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .page {
+        position: relative;
+        width: min(var(--max-width), calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 24px 0 80px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+        gap: 20px;
+        margin-bottom: 22px;
+      }
+
+      .panel {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        border-radius: var(--radius-xl);
+        background: linear-gradient(180deg, var(--panel-strong), var(--panel));
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(18px);
+      }
+
+      .hero-copy {
+        padding: clamp(28px, 3.5vw, 44px);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.78rem;
+        color: var(--muted);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 44px;
+        height: 1px;
+        background: color-mix(in srgb, var(--accent) 62%, white 38%);
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+      }
+
+      h1 span {
+        color: var(--accent);
+      }
+
+      .lead {
+        max-width: 44rem;
+        margin: 0;
+        font-size: clamp(1rem, 1.25vw, 1.12rem);
+        line-height: 1.85;
+        color: var(--ink-soft);
+      }
+
+      .keyword-row,
+      .note-grid,
+      .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .keyword-row {
+        margin-top: 26px;
+      }
+
+      .pill,
+      .tag,
+      .flag {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        background: rgba(255, 255, 255, 0.62);
+        color: var(--ink-soft);
+        font-size: 0.84rem;
+        white-space: nowrap;
+      }
+
+      .pill.strong,
+      .flag.recommended {
+        border-color: rgba(219, 92, 61, 0.18);
+        background: rgba(219, 92, 61, 0.1);
+        color: var(--accent);
+      }
+
+      .hero-side {
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .hero-mark {
+        position: relative;
+        min-height: 100%;
+        padding: 28px;
+        background:
+          radial-gradient(circle at 72% 24%, rgba(219, 92, 61, 0.18), transparent 34%),
+          linear-gradient(160deg, rgba(12, 16, 24, 0.98), rgba(30, 33, 43, 0.94));
+        color: var(--accent-soft);
+      }
+
+      .hero-mark::before {
+        content: "";
+        position: absolute;
+        inset: 20px;
+        border-radius: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transform: skewX(-10deg);
+      }
+
+      .hero-mark svg {
+        position: relative;
+        z-index: 1;
+        width: min(100%, 320px);
+        margin: 28px auto 0;
+        filter: drop-shadow(0 20px 60px rgba(219, 92, 61, 0.2));
+      }
+
+      .hero-caption {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-caption h2 {
+        margin: 0;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-caption p {
+        margin: 10px 0 0;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .note-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin: 0 0 24px;
+      }
+
+      .note-card {
+        padding: 18px 18px 16px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .note-card strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 0.96rem;
+      }
+
+      .note-card p {
+        margin: 0;
+        line-height: 1.72;
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+      }
+
+      .wall {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 18px;
+      }
+
+      .logo-card {
+        position: relative;
+        overflow: hidden;
+        padding: 18px;
+        border-radius: 28px;
+        border: 1px solid rgba(16, 20, 27, 0.08);
+        background: rgba(255, 255, 255, 0.72);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .logo-card.recommended {
+        border-color: rgba(219, 92, 61, 0.22);
+      }
+
+      .card-head,
+      .lockup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .card-head {
+        margin-bottom: 16px;
+      }
+
+      .card-index {
+        font-size: 0.82rem;
+        color: var(--muted);
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+
+      .card-flags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .flag {
+        min-height: 28px;
+        padding: 0 12px;
+        font-size: 0.76rem;
+      }
+
+      .stage {
+        position: relative;
+        min-height: 280px;
+        display: grid;
+        place-items: center;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+
+      .stage::after {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border-radius: 20px;
+        pointer-events: none;
+      }
+
+      .tone-light .stage {
+        background:
+          radial-gradient(circle at 72% 18%, rgba(219, 92, 61, 0.12), transparent 26%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(243, 245, 248, 0.82));
+      }
+
+      .tone-light .stage::before {
+        background:
+          linear-gradient(rgba(16, 20, 27, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 20, 27, 0.03) 1px, transparent 1px);
+        background-size: 28px 28px;
+      }
+
+      .tone-light .stage::after {
+        border: 1px solid rgba(16, 20, 27, 0.06);
+        transform: skewX(-9deg);
+      }
+
+      .tone-light .logo-preview,
+      .tone-light .mini-mark {
+        color: var(--accent);
+      }
+
+      .tone-dark .stage {
+        background:
+          radial-gradient(circle at 72% 22%, rgba(219, 92, 61, 0.16), transparent 24%),
+          linear-gradient(155deg, rgba(12, 16, 24, 1), rgba(29, 33, 44, 0.96));
+      }
+
+      .tone-dark .stage::before {
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+      }
+
+      .tone-dark .stage::after {
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        transform: skewX(-11deg);
+      }
+
+      .tone-dark .logo-preview,
+      .tone-dark .mini-mark {
+        color: var(--accent-soft);
+      }
+
+      .tone-warm .stage {
+        background:
+          radial-gradient(circle at 20% 14%, rgba(219, 92, 61, 0.1), transparent 28%),
+          linear-gradient(160deg, rgba(255, 247, 244, 0.96), rgba(248, 240, 235, 0.88));
+      }
+
+      .tone-warm .stage::before {
+        background:
+          linear-gradient(rgba(16, 20, 27, 0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(16, 20, 27, 0.025) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      .tone-warm .stage::after {
+        border: 1px solid rgba(16, 20, 27, 0.05);
+        transform: skewX(-7deg);
+      }
+
+      .tone-warm .logo-preview,
+      .tone-warm .mini-mark {
+        color: #c55135;
+      }
+
+      .logo-preview {
+        position: relative;
+        z-index: 1;
+        width: min(74%, 240px);
+        aspect-ratio: 1;
+        filter: drop-shadow(0 18px 44px rgba(219, 92, 61, 0.16));
+      }
+
+      .scale-row {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 10px;
+      }
+
+      .scale-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 28px;
+        padding: 0 10px;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+      }
+
+      .tone-light .scale-badge,
+      .tone-warm .scale-badge {
+        background: rgba(255, 255, 255, 0.82);
+        color: var(--muted);
+        border: 1px solid rgba(16, 20, 27, 0.07);
+      }
+
+      .tone-dark .scale-badge {
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.76);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .scale-sizes {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+      }
+
+      .scale-sizes svg:nth-child(1) {
+        width: 18px;
+        height: 18px;
+      }
+
+      .scale-sizes svg:nth-child(2) {
+        width: 28px;
+        height: 28px;
+      }
+
+      .scale-sizes svg:nth-child(3) {
+        width: 40px;
+        height: 40px;
+      }
+
+      .lockup {
+        justify-content: flex-start;
+        margin-top: 16px;
+      }
+
+      .mini-mark {
+        width: 46px;
+        height: 46px;
+        flex: none;
+      }
+
+      .scale-sizes .mini-mark:nth-child(1) {
+        width: 18px;
+        height: 18px;
+      }
+
+      .scale-sizes .mini-mark:nth-child(2) {
+        width: 28px;
+        height: 28px;
+      }
+
+      .scale-sizes .mini-mark:nth-child(3) {
+        width: 40px;
+        height: 40px;
+      }
+
+      .wordmark strong,
+      .footer-wordmark {
+        display: block;
+        font-weight: 800;
+        font-size: 1.04rem;
+        line-height: 1.1;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .wordmark strong span,
+      .footer-wordmark span {
+        color: var(--accent);
+      }
+
+      .wordmark small {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .card-body h3 {
+        margin: 16px 0 8px;
+        font-size: 1.12rem;
+        letter-spacing: -0.02em;
+      }
+
+      .card-body p {
+        margin: 0;
+        min-height: 4.8em;
+        color: var(--ink-soft);
+        line-height: 1.76;
+        font-size: 0.94rem;
+      }
+
+      .card-tags {
+        margin-top: 16px;
+      }
+
+      .tag {
+        min-height: 30px;
+        padding: 0 12px;
+        font-size: 0.78rem;
+      }
+
+      .footer-panel {
+        margin-top: 24px;
+        padding: 22px 24px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .footer-panel p {
+        margin: 10px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.78;
+      }
+
+      .footer-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      @media (max-width: 1080px) {
+        .hero,
+        .note-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-mark svg {
+          width: min(100%, 260px);
+        }
+
+        .footer-list {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(var(--max-width), calc(100vw - 20px));
+          padding-top: 10px;
+        }
+
+        h1 {
+          font-size: 2.6rem;
+        }
+
+        .hero-copy,
+        .hero-mark,
+        .logo-card {
+          padding: 18px;
+        }
+
+        .stage {
+          min-height: 236px;
+        }
+
+        .card-body p {
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" width="0" height="0" style="position: absolute">
+      <symbol id="logo-01" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M70 60L252 74L230 252L48 238Z" stroke-width="4" opacity="0.18" />
+          <path d="M95 88L233 98L218 228L80 218Z" stroke-width="5" opacity="0.3" />
+          <path d="M118 112L210 120L198 208L106 200Z" stroke-width="6" opacity="0.48" />
+          <path d="M118 112L58 42" stroke-width="4" opacity="0.34" />
+          <path d="M210 120L276 56" stroke-width="4" opacity="0.48" />
+          <path d="M106 200L42 270" stroke-width="4" opacity="0.28" />
+          <path d="M198 208L266 278" stroke-width="4" opacity="0.32" />
+          <path d="M126 118L194 202" stroke-width="16" />
+          <path d="M204 126L114 204" stroke-width="16" />
+          <circle cx="58" cy="42" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+          <circle cx="276" cy="56" r="6" fill="currentColor" stroke="none" opacity="0.72" />
+          <circle cx="42" cy="270" r="6" fill="currentColor" stroke="none" opacity="0.46" />
+          <circle cx="266" cy="278" r="6" fill="currentColor" stroke="none" opacity="0.52" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-02" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M160 38L274 110L160 282L46 210Z" stroke-width="4" opacity="0.18" />
+          <path d="M160 70L236 118L160 242L84 194Z" stroke-width="6" opacity="0.34" />
+          <path d="M160 102L206 132L160 206L114 176Z" stroke-width="6" opacity="0.54" />
+          <path d="M160 102L244 48" stroke-width="4" opacity="0.36" />
+          <path d="M160 206L278 238" stroke-width="4" opacity="0.32" />
+          <path d="M132 126L188 198" stroke-width="15" />
+          <path d="M188 126L132 198" stroke-width="15" />
+          <circle cx="244" cy="48" r="6" fill="currentColor" stroke="none" opacity="0.62" />
+          <circle cx="278" cy="238" r="6" fill="currentColor" stroke="none" opacity="0.54" />
+          <circle cx="46" cy="210" r="4" fill="currentColor" stroke="none" opacity="0.36" />
+          <circle cx="274" cy="110" r="4" fill="currentColor" stroke="none" opacity="0.36" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-03" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M62 92L192 66L262 112L132 138Z" stroke-width="5" opacity="0.2" />
+          <path d="M76 138L206 112L248 142L118 168Z" stroke-width="5" opacity="0.34" />
+          <path d="M92 182L222 156L238 170L108 196Z" stroke-width="5" opacity="0.5" />
+          <path d="M118 112L206 204" stroke-width="16" />
+          <path d="M208 112L112 206" stroke-width="16" />
+          <path d="M192 66L246 36" stroke-width="4" opacity="0.34" />
+          <path d="M108 196L54 252" stroke-width="4" opacity="0.3" />
+          <circle cx="246" cy="36" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+          <circle cx="54" cy="252" r="6" fill="currentColor" stroke="none" opacity="0.52" />
+          <circle cx="262" cy="112" r="4" fill="currentColor" stroke="none" opacity="0.34" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-04" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M74 78L242 90L224 236" stroke-width="6" opacity="0.22" />
+          <path d="M74 78L58 228L224 236" stroke-width="6" opacity="0.22" />
+          <path d="M108 110L208 118L198 206L98 198Z" stroke-width="6" opacity="0.46" />
+          <path d="M122 116L200 206" stroke-width="14" />
+          <path d="M202 118L88 216" stroke-width="18" />
+          <path d="M202 118L274 48" stroke-width="4" opacity="0.34" />
+          <path d="M54 230L88 216L80 250Z" fill="currentColor" stroke="none" opacity="0.78" />
+          <circle cx="274" cy="48" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-05" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M160 50L242 98L160 146L78 98Z" stroke-width="5" opacity="0.22" />
+          <path d="M78 98L78 190L160 238L160 146Z" stroke-width="5" opacity="0.36" />
+          <path d="M160 146L160 238L242 190L242 98Z" stroke-width="5" opacity="0.36" />
+          <path d="M120 116L202 204" stroke-width="15" />
+          <path d="M202 116L118 204" stroke-width="15" />
+          <path d="M160 50L160 14" stroke-width="4" opacity="0.34" />
+          <circle cx="160" cy="14" r="5" fill="currentColor" stroke="none" opacity="0.62" />
+          <circle cx="78" cy="98" r="4" fill="currentColor" stroke="none" opacity="0.34" />
+          <circle cx="242" cy="98" r="4" fill="currentColor" stroke="none" opacity="0.34" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-06" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse
+            cx="160"
+            cy="160"
+            rx="112"
+            ry="76"
+            transform="rotate(-18 160 160)"
+            stroke-width="4"
+            opacity="0.18"
+          />
+          <ellipse
+            cx="160"
+            cy="160"
+            rx="84"
+            ry="58"
+            transform="rotate(-18 160 160)"
+            stroke-width="5"
+            opacity="0.34"
+          />
+          <ellipse
+            cx="160"
+            cy="160"
+            rx="56"
+            ry="40"
+            transform="rotate(-18 160 160)"
+            stroke-width="5"
+            opacity="0.5"
+          />
+          <path d="M116 116L204 204" stroke-width="15" />
+          <path d="M206 118L116 202" stroke-width="15" />
+          <path d="M236 104L286 52" stroke-width="4" opacity="0.36" />
+          <path d="M88 222L38 270" stroke-width="4" opacity="0.28" />
+          <circle cx="286" cy="52" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+          <circle cx="38" cy="270" r="6" fill="currentColor" stroke="none" opacity="0.48" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-07" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M74 70L246 86L226 248L54 232Z" stroke-width="4" opacity="0.18" />
+          <path d="M106 96L214 104L202 208L94 200Z" stroke-width="5" opacity="0.3" />
+          <path d="M124 110L118 204" stroke-width="3" opacity="0.2" />
+          <path d="M162 114L154 208" stroke-width="3" opacity="0.2" />
+          <path d="M198 118L190 212" stroke-width="3" opacity="0.2" />
+          <path d="M98 130L206 138" stroke-width="3" opacity="0.2" />
+          <path d="M94 166L202 174" stroke-width="3" opacity="0.2" />
+          <path d="M90 200L198 208" stroke-width="3" opacity="0.2" />
+          <path d="M124 116L198 204" stroke-width="16" />
+          <path d="M204 122L112 204" stroke-width="16" />
+          <path d="M204 122L278 60" stroke-width="4" opacity="0.34" />
+          <circle cx="278" cy="60" r="6" fill="currentColor" stroke="none" opacity="0.62" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-08" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M88 60L224 72L208 246" stroke-width="6" opacity="0.22" />
+          <path d="M88 60L64 236L200 248" stroke-width="6" opacity="0.22" />
+          <path d="M118 100L214 108L202 212" stroke-width="6" opacity="0.4" />
+          <path d="M118 100L104 202L200 212" stroke-width="6" opacity="0.4" />
+          <path d="M138 124L196 198" stroke-width="15" />
+          <path d="M198 124L132 198" stroke-width="15" />
+          <path d="M224 72L274 120L258 258" stroke-width="4" opacity="0.3" />
+          <path d="M200 248L258 258" stroke-width="4" opacity="0.3" />
+          <circle cx="274" cy="120" r="6" fill="currentColor" stroke="none" opacity="0.64" />
+          <circle cx="258" cy="258" r="5" fill="currentColor" stroke="none" opacity="0.46" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-09" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M58 116L258 84" stroke-width="3" opacity="0.18" />
+          <path d="M50 160L250 128" stroke-width="3" opacity="0.24" />
+          <path d="M42 204L242 172" stroke-width="3" opacity="0.18" />
+          <path d="M92 62L124 250" stroke-width="3" opacity="0.18" />
+          <path d="M156 50L188 238" stroke-width="3" opacity="0.28" />
+          <path d="M220 38L252 226" stroke-width="3" opacity="0.18" />
+          <path d="M112 108L202 204" stroke-width="16" />
+          <path d="M204 116L110 206" stroke-width="16" />
+          <path d="M204 116L284 44" stroke-width="4" opacity="0.34" />
+          <circle cx="284" cy="44" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+          <circle cx="42" cy="204" r="5" fill="currentColor" stroke="none" opacity="0.42" />
+          <circle cx="92" cy="62" r="5" fill="currentColor" stroke="none" opacity="0.42" />
+        </g>
+      </symbol>
+
+      <symbol id="logo-10" viewBox="0 0 320 320">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M94 82L160 46L226 82L160 118Z" stroke-width="5" opacity="0.22" />
+          <path d="M94 82L94 176L160 214L160 118Z" stroke-width="5" opacity="0.34" />
+          <path d="M226 82L226 176L160 214L160 118Z" stroke-width="5" opacity="0.34" />
+          <path d="M66 198L160 214L254 198" stroke-width="5" opacity="0.22" />
+          <path d="M118 112L200 206" stroke-width="16" />
+          <path d="M204 112L116 206" stroke-width="16" />
+          <path d="M226 82L278 44" stroke-width="4" opacity="0.34" />
+          <path d="M94 176L42 268" stroke-width="4" opacity="0.28" />
+          <circle cx="278" cy="44" r="6" fill="currentColor" stroke="none" opacity="0.68" />
+          <circle cx="42" cy="268" r="6" fill="currentColor" stroke="none" opacity="0.48" />
+        </g>
+      </symbol>
+    </svg>
+
+    <main class="page">
+      <section class="hero">
+        <article class="panel hero-copy">
+          <div class="eyebrow latin">UnboundX / Logo Exploration</div>
+          <h1>
+            自由地穿透边界，
+            <span>让 X 成为维度事件</span>
+          </h1>
+          <p class="lead">
+            这 10 个候选都延续了你参考页里的暖灰 + 锈红 + 工程秩序，但刻意把“边界”从封闭框体，推进成“可被冲破、错位、展开、跃迁”的结构。整体方向不是普通科技感，而是更自由、带维度概念、又保留高级构造感。
+          </p>
+          <div class="keyword-row">
+            <span class="pill strong">自由 / Unbound</span>
+            <span class="pill">维度 / Dimensional</span>
+            <span class="pill">突破 / Breach</span>
+            <span class="pill">秩序中越界</span>
+            <span class="pill">Warm industrial</span>
+          </div>
+        </article>
+
+        <aside class="panel hero-side">
+          <div class="hero-mark">
+            <div class="hero-caption">
+              <div class="eyebrow latin" style="color: rgba(255,255,255,0.56)">Lead direction</div>
+              <h2>Folded Space / 折叠空间</h2>
+              <p>如果要把“维度”做得更明确，这个方向最像空间被展开后，X 从中直接打穿出来。</p>
+            </div>
+            <svg viewBox="0 0 320 320" role="img" aria-label="Folded Space 候选">
+              <use href="#logo-05"></use>
+            </svg>
+          </div>
+        </aside>
+      </section>
+
+      <section class="note-grid">
+        <article class="note-card">
+          <strong>延续参考页的品牌资产</strong>
+          <p>保留了暖灰纸感、锈红信号色、斜切网格和工程式留白，不会和原来的视觉图谱脱节。</p>
+        </article>
+        <article class="note-card">
+          <strong>把“自由”做成结构，而非口号</strong>
+          <p>每个方向都让框架、轨道、场线或门框产生越界动作，让“不受限”直接体现在图形机制里。</p>
+        </article>
+        <article class="note-card">
+          <strong>优先保留可缩放识别度</strong>
+          <p>全部是纯 SVG 符号逻辑，尽量用单色完成识别，适合继续细化成主标、app icon、favicon 和印刷版本。</p>
+        </article>
+      </section>
+
+      <section class="wall">
+        <article class="logo-card tone-light recommended">
+          <div class="card-head">
+            <div class="card-index">Candidate 01</div>
+            <div class="card-flags">
+              <span class="flag recommended">优先推进</span>
+              <span class="flag">延续型</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Breach Frame 标志">
+              <use href="#logo-01"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Scales well</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-01"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-01"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-01"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-01"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Breach Frame / 框体突破</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>最接近现有主标，但更“冲出去”</h3>
+            <p>保留多层维度框和节点坐标，只把一条主轴进一步越出结构边缘，适合当最稳妥的品牌主方向。</p>
+            <div class="card-tags">
+              <span class="tag">空间框架</span>
+              <span class="tag">突破识别</span>
+              <span class="tag">主标安全</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-dark">
+          <div class="card-head">
+            <div class="card-index">Candidate 02</div>
+            <div class="card-flags">
+              <span class="flag">进化型</span>
+              <span class="flag">轴场感</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Open Axis 标志">
+              <use href="#logo-02"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Axis system</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-02"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-02"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-02"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-02"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Open Axis / 开放轴线</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>像一个重新校准的坐标场</h3>
+            <p>把原有的方框语言改成更开放的菱形轴场，维度关系更抽象，也更像一个“新坐标系”的建立。</p>
+            <div class="card-tags">
+              <span class="tag">维度轴线</span>
+              <span class="tag">秩序感强</span>
+              <span class="tag">理性科技</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-warm">
+          <div class="card-head">
+            <div class="card-index">Candidate 03</div>
+            <div class="card-flags">
+              <span class="flag">进化型</span>
+              <span class="flag">动态穿越</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Portal Shift 标志">
+              <use href="#logo-03"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Portal feel</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-03"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-03"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-03"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-03"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Portal Shift / 维门错位</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>像多个空间门正在错位重叠</h3>
+            <p>这个方向更强调跃迁感，不是一个静态徽记，而像是在不同维度间切换位置，张力很强。</p>
+            <div class="card-tags">
+              <span class="tag">维门</span>
+              <span class="tag">跃迁</span>
+              <span class="tag">先锋感</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-dark">
+          <div class="card-head">
+            <div class="card-index">Candidate 04</div>
+            <div class="card-flags">
+              <span class="flag">实验型</span>
+              <span class="flag">速度感</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Free Vector 标志">
+              <use href="#logo-04"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Fast vector</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-04"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-04"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-04"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-04"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Free Vector / 自由矢量</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>X 更像一枚被发射出去的方向矢量</h3>
+            <p>视觉上更快、更尖锐，适合偏产品、偏先锋的场景。如果希望品牌更像“行动装置”，这是强选项。</p>
+            <div class="card-tags">
+              <span class="tag">行动感</span>
+              <span class="tag">加速度</span>
+              <span class="tag">实验表达</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-light recommended">
+          <div class="card-head">
+            <div class="card-index">Candidate 05</div>
+            <div class="card-flags">
+              <span class="flag recommended">优先推进</span>
+              <span class="flag">维度最强</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Folded Space 标志">
+              <use href="#logo-05"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Dimensional</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-05"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-05"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-05"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-05"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Folded Space / 折叠空间</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>把空间本身“展开”给你看</h3>
+            <p>这是最能直接传达“维度”概念的方向：像一个立体空间被折开，而 X 作为事件发生在中心，概念完整且高级。</p>
+            <div class="card-tags">
+              <span class="tag">空间折叠</span>
+              <span class="tag">高级感</span>
+              <span class="tag">品牌主张清晰</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-warm recommended">
+          <div class="card-head">
+            <div class="card-index">Candidate 06</div>
+            <div class="card-flags">
+              <span class="flag recommended">优先推进</span>
+              <span class="flag">最自由</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Orbit Escape 标志">
+              <use href="#logo-06"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Unbound orbit</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-06"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-06"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-06"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-06"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Orbit Escape / 轨道脱域</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>边界不再是框，而是引力轨道</h3>
+            <p>如果你要“更自由、更不受限”，这个方向很贴题。X 像从轨道里脱离出去，开放感最强，也最不传统。</p>
+            <div class="card-tags">
+              <span class="tag">自由度高</span>
+              <span class="tag">轨道感</span>
+              <span class="tag">适合新品牌</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-light">
+          <div class="card-head">
+            <div class="card-index">Candidate 07</div>
+            <div class="card-flags">
+              <span class="flag">延续型</span>
+              <span class="flag">系统化</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Lattice Break 标志">
+              <use href="#logo-07"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Grid locked</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-07"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-07"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-07"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-07"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Lattice Break / 晶格越界</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>像一张被切开的维度晶格</h3>
+            <p>更偏系统、工程、平台化的品牌气质。适合当产品品牌、技术平台或方法论品牌的识别核心。</p>
+            <div class="card-tags">
+              <span class="tag">工程秩序</span>
+              <span class="tag">平台感</span>
+              <span class="tag">系统延展强</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-dark">
+          <div class="card-head">
+            <div class="card-index">Candidate 08</div>
+            <div class="card-flags">
+              <span class="flag">进化型</span>
+              <span class="flag">入口感</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Phase Gate 标志">
+              <use href="#logo-08"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Gate icon</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-08"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-08"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-08"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-08"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Phase Gate / 相位之门</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>像一道被打开的维度入口</h3>
+            <p>这个方向兼顾了结构与“进入感”，很适合想表达入口、通道、跃迁、解锁新场域这类品牌语义。</p>
+            <div class="card-tags">
+              <span class="tag">入口隐喻</span>
+              <span class="tag">相位切换</span>
+              <span class="tag">空间门</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-warm">
+          <div class="card-head">
+            <div class="card-index">Candidate 09</div>
+            <div class="card-flags">
+              <span class="flag">进化型</span>
+              <span class="flag">场域概念</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Crossfield X 标志">
+              <use href="#logo-09"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Field lines</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-09"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-09"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-09"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-09"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Crossfield X / 跨场域 X</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>X 不只是字母，而是场线中心</h3>
+            <p>更像一个“事件发生器”或“新坐标原点”。适合那些希望品牌更具思想性、研究感、世界观感的方向。</p>
+            <div class="card-tags">
+              <span class="tag">场域感</span>
+              <span class="tag">世界观</span>
+              <span class="tag">观念品牌</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="logo-card tone-light">
+          <div class="card-head">
+            <div class="card-index">Candidate 10</div>
+            <div class="card-flags">
+              <span class="flag">实验型</span>
+              <span class="flag">未来概念</span>
+            </div>
+          </div>
+          <div class="stage">
+            <svg class="logo-preview" viewBox="0 0 320 320" role="img" aria-label="Prism Unbound 标志">
+              <use href="#logo-10"></use>
+            </svg>
+            <div class="scale-row">
+              <span class="scale-badge latin">Prism logic</span>
+              <div class="scale-sizes">
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-10"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-10"></use></svg>
+                <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-10"></use></svg>
+              </div>
+            </div>
+          </div>
+          <div class="lockup">
+            <svg class="mini-mark" viewBox="0 0 320 320" aria-hidden="true"><use href="#logo-10"></use></svg>
+            <div class="wordmark">
+              <strong class="latin">unbound<span>X</span></strong>
+              <small>Prism Unbound / 棱镜解界</small>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>把维度拆成棱镜面片去表达</h3>
+            <p>概念味最浓，适合偏前沿、偏艺术、偏未来叙事的品牌。如果你希望更“非传统 logo”，它会很有记忆点。</p>
+            <div class="card-tags">
+              <span class="tag">棱镜结构</span>
+              <span class="tag">未来叙事</span>
+              <span class="tag">高概念</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel footer-panel">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-wordmark latin">unbound<span>X</span> / next move</div>
+            <p>
+              如果按“你想要更自由、突破、不受限，同时又必须带维度概念”来收敛，我建议先继续细化
+              <strong>05 / 折叠空间</strong>、<strong>06 / 轨道脱域</strong>、<strong>01 / 框体突破</strong>：
+              一个最强维度感、一个最强自由感、一个最稳的品牌继承性，三者正好构成下一轮筛选的核心。
+            </p>
+          </div>
+          <div class="footer-list">
+            <span class="pill strong">HTML 自包含</span>
+            <span class="pill">10 × SVG Symbol</span>
+            <span class="pill">可继续做 monochrome</span>
+            <span class="pill">可继续做 favicon</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

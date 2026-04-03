@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 10款全新 Logo 探索方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: oklch(0.965 0.008 250);
+        --ink: oklch(0.12 0.018 257); 
+        --ink-soft: oklch(0.18 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34);      /* Lava Orange #db5c3d */
+        --accent-light: oklch(0.74 0.18 34); 
+        --accent-glow: oklch(0.64 0.18 34 / 0.15);
+        
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+        
+        --max-width: 1440px;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--ink);
+        color: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: ""; position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 50;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto; padding: 0 5vw 120px;
+        position: relative; z-index: 1;
+      }
+
+      header { padding: 100px 0 80px; text-align: center; }
+
+      .title {
+        font-family: var(--font-en);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800; letter-spacing: -0.02em;
+        text-transform: uppercase; margin-bottom: 24px;
+      }
+      .title span { color: var(--accent); }
+
+      .subtitle {
+        font-size: 1.125rem; color: var(--mist);
+        letter-spacing: 0.05em; max-width: 700px;
+        margin: 0 auto; line-height: 1.8;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .logo-card {
+        background: var(--ink-soft);
+        border: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+        border-radius: 24px; overflow: hidden;
+        display: flex; flex-direction: column;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      }
+
+      .logo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px var(--accent);
+      }
+
+      .logo-stage {
+        height: 360px;
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+        border-bottom: 1px solid color-mix(in oklch, var(--paper) 5%, transparent);
+      }
+
+      .logo-svg {
+        width: 180px; height: 180px;
+        filter: drop-shadow(0 12px 24px rgba(219, 92, 61, 0.2));
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .logo-card:hover .logo-svg { transform: scale(1.1); }
+
+      .logo-info { padding: 40px; flex: 1; display: flex; flex-direction: column; }
+
+      .logo-header {
+        display: flex; justify-content: space-between;
+        align-items: baseline; margin-bottom: 20px;
+      }
+
+      .logo-number {
+        font-family: var(--font-en); font-size: 0.875rem;
+        font-weight: 700; color: var(--accent); letter-spacing: 0.1em;
+      }
+
+      .logo-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+
+      .logo-desc { font-size: 1rem; color: var(--mist); line-height: 1.7; flex: 1; }
+
+      .wordmark-lockup {
+        display: flex; align-items: center; gap: 16px;
+        margin-top: 32px; padding-top: 24px;
+        border-top: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+      }
+
+      .wordmark-lockup svg { width: 32px; height: 32px; }
+
+      .wordmark-text {
+        font-family: var(--font-en); font-weight: 800;
+        font-size: 1.25rem; letter-spacing: -0.02em;
+      }
+      .wordmark-text span { color: var(--accent); }
+
+      /* Animations */
+      @keyframes spin { 100% { transform: rotate(360deg); } }
+      @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1); } }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      
+      .spin-slow { animation: spin 20s linear infinite; }
+      .pulse-slow { animation: pulse 4s ease-in-out infinite; }
+      .float-slow { animation: float 6s ease-in-out infinite; }
+
+      @media (max-width: 1024px) {
+        .gallery { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">UNBOUND<span>X</span></div>
+        <div class="subtitle">10 款深度视觉探索。结合先前的线框/空间理念与全新的高级 SaaS 质感美学。涵盖了从极简几何、空间折叠、光影负空间到流动引擎等不同维度的创意表达。</div>
+      </header>
+
+      <div class="gallery">
+        
+        <!-- Concept 01: 极简破局 (Minimal Break) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 20 20 L 100 20 L 100 100 L 20 100 Z" fill="none" stroke="var(--paper)" stroke-width="4" stroke-dasharray="80 160" stroke-dashoffset="40" />
+              <path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" class="float-slow" />
+              <circle cx="90" cy="30" r="4" fill="#fff" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Minimal Break / 极简破局</h2>
+              <div class="logo-number">01</div>
+            </div>
+            <p class="logo-desc">传承自原方案的“极简突破”概念。使用不完整的方形边框代表现有的限制与规则，粗壮且悬浮的 X 强力冲破边界。极简且直接，非常适合作为现代软件工具的图标。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 02: 莫比乌斯流 (Mobius Flow) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad02" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff7d5e" />
+                  <stop offset="50%" stop-color="var(--accent)" />
+                  <stop offset="100%" stop-color="#8a2e18" />
+                </linearGradient>
+              </defs>
+              <path d="M 30 30 C 70 10, 110 50, 90 90 C 50 110, 10 70, 30 30" fill="none" stroke="url(#grad02)" stroke-width="12" stroke-linecap="round" />
+              <path d="M 90 30 C 50 10, 10 50, 30 90 C 70 110, 110 70, 90 30" fill="none" stroke="var(--accent-light)" stroke-width="12" stroke-linecap="round" opacity="0.8" style="mix-blend-mode: screen;" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Mobius Flow / 莫比乌斯流</h2>
+              <div class="logo-number">02</div>
+            </div>
+            <p class="logo-desc">结合了原方案“流动自由”的理念。利用两条相交的莫比乌斯环状曲线构成 X 的形态。代表着无尽的循环、思维的流动以及不受物理形态限制的自由维度。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 30 30 C 70 10, 110 50, 90 90 C 50 110, 10 70, 30 30" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" /><path d="M 90 30 C 50 10, 10 50, 30 90 C 70 110, 110 70, 90 30" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" opacity="0.6" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 03: 矩阵魔方 (Matrix Cube) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg float-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(60, 60)">
+                <!-- Top face -->
+                <path d="M 0 -40 L 35 -20 L 0 0 L -35 -20 Z" fill="var(--accent-light)" />
+                <!-- Left face -->
+                <path d="M -35 -20 L 0 0 L 0 40 L -35 20 Z" fill="var(--accent)" />
+                <!-- Right face -->
+                <path d="M 0 0 L 35 -20 L 35 20 L 0 40 Z" fill="#8a2e18" />
+                <!-- X Cutout -->
+                <path d="M 0 -15 L 15 5 L 0 25 L -15 5 Z" fill="var(--ink-soft)" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Matrix Cube / 矩阵魔方</h2>
+              <div class="logo-number">03</div>
+            </div>
+            <p class="logo-desc">传承自“立体维度”的概念。一个具有等距视角的三维立方体，中心通过负空间镂空出十字/X 形。它既是一个空间容器，又被 X 打破了核心，极具架构美学。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g transform="translate(60, 60)"><path d="M 0 -40 L 35 -20 L 0 0 L -35 -20 Z" fill="var(--accent-light)" /><path d="M -35 -20 L 0 0 L 0 40 L -35 20 Z" fill="var(--accent)" /><path d="M 0 0 L 35 -20 L 35 20 L 0 40 Z" fill="#8a2e18" /><path d="M 0 -15 L 15 5 L 0 25 L -15 5 Z" fill="var(--ink-soft)" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 04: 维度弦论 (String Theory) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" fill="none" stroke-linecap="round">
+                <path d="M 20 20 Q 60 80 100 20" stroke-width="2" opacity="0.3" />
+                <path d="M 25 30 Q 60 80 95 30" stroke-width="4" opacity="0.6" />
+                <path d="M 30 40 Q 60 80 90 40" stroke-width="6" opacity="0.8" />
+                <path d="M 35 50 Q 60 80 85 50" stroke-width="8" />
+                
+                <path d="M 20 100 Q 60 40 100 100" stroke-width="2" opacity="0.3" />
+                <path d="M 25 90 Q 60 40 95 90" stroke-width="4" opacity="0.6" />
+                <path d="M 30 80 Q 60 40 90 80" stroke-width="6" opacity="0.8" />
+                <path d="M 35 70 Q 60 40 85 70" stroke-width="8" />
+              </g>
+              <circle cx="60" cy="60" r="4" fill="#fff" class="pulse-slow" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">String Theory / 维度弦论</h2>
+              <div class="logo-number">04</div>
+            </div>
+            <p class="logo-desc">借鉴了“维度交织”的概念。使用参数化生成的抛物线网格交织形成 X。它暗示了宇宙底层的弦理论与多维度的交织叠加，充满极客精神与数据科学的精密度。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 20 20 L 100 100 M 100 20 L 20 100" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 05: 奇点视界 (Event Horizon) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg pulse-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="grad05" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="var(--accent)" stop-opacity="1" />
+                  <stop offset="100%" stop-color="var(--accent)" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <circle cx="60" cy="60" r="40" fill="url(#grad05)" />
+              <path d="M 35 35 L 85 85 M 85 35 L 35 85" stroke="var(--ink-soft)" stroke-width="12" stroke-linecap="round" />
+              <circle cx="60" cy="60" r="8" fill="#fff" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Event Horizon / 奇点视界</h2>
+              <div class="logo-number">05</div>
+            </div>
+            <p class="logo-desc">一颗发光的熔岩恒星，被锋利的 X 形裂缝切开，透出内部耀眼的白光。代表打破宇宙的边界（视界），释放出无穷的能量。设计感极其现代、激进。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="var(--accent)" /><path d="M 35 35 L 85 85 M 85 35 L 35 85" stroke="var(--ink-soft)" stroke-width="16" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 06: 无限延展 (Infinite Expand) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 60 60 L 20 20 L 50 20" stroke-width="8" fill="none" />
+                <path d="M 60 60 L 100 20 L 100 50" stroke-width="8" fill="none" />
+                <path d="M 60 60 L 100 100 L 70 100" stroke-width="8" fill="none" />
+                <path d="M 60 60 L 20 100 L 20 70" stroke-width="8" fill="none" />
+                <circle cx="60" cy="60" r="6" fill="#fff" stroke="none" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Infinite Expand / 无限延展</h2>
+              <div class="logo-number">06</div>
+            </div>
+            <p class="logo-desc">传承自“无限扩展”方案。由四个向外指引的箭头共同构成一个中心凝聚的 X。它既是一个坐标系的起源，也是向四个象限不断开拓的指引，寓意着多维度的扩张。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round"><path d="M 60 60 L 20 20 L 50 20" stroke-width="12" fill="none" /><path d="M 60 60 L 100 100 L 70 100" stroke-width="12" fill="none" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 07: 棱镜折射 (Prism Refract) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="60,10 110,60 60,110 10,60" fill="none" stroke="var(--accent)" stroke-width="4" opacity="0.4" />
+              <polygon points="60,25 95,60 60,95 25,60" fill="none" stroke="var(--accent)" stroke-width="8" opacity="0.7" />
+              <polygon points="60,40 80,60 60,80 40,60" fill="var(--accent)" />
+              <path d="M 10 10 L 110 110 M 110 10 L 10 110" stroke="#fff" stroke-width="4" opacity="0.9" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Prism Refract / 棱镜折射</h2>
+              <div class="logo-number">07</div>
+            </div>
+            <p class="logo-desc">多层嵌套的菱形代表不同的维度空间，一道凌厉的白色 X 光束贯穿所有层级。象征着一击即破的穿透力，光芒折射出空间的层次感。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><polygon points="60,20 100,60 60,100 20,60" fill="var(--accent)" /><path d="M 20 20 L 100 100 M 100 20 L 20 100" stroke="#fff" stroke-width="8" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 08: 像素重构 (Pixel Rebuild) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g fill="var(--accent)">
+                <rect x="20" y="20" width="16" height="16" rx="4" />
+                <rect x="40" y="40" width="16" height="16" rx="4" opacity="0.8" />
+                <rect x="60" y="60" width="16" height="16" rx="4" fill="#fff" />
+                <rect x="80" y="80" width="16" height="16" rx="4" opacity="0.8" />
+                <rect x="100" y="100" width="16" height="16" rx="4" />
+                
+                <rect x="100" y="20" width="16" height="16" rx="4" />
+                <rect x="80" y="40" width="16" height="16" rx="4" opacity="0.8" />
+                <rect x="40" y="80" width="16" height="16" rx="4" opacity="0.8" />
+                <rect x="20" y="100" width="16" height="16" rx="4" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Pixel Rebuild / 像素重构</h2>
+              <div class="logo-number">08</div>
+            </div>
+            <p class="logo-desc">用数字时代最基础的单元（像素点/体素）重构出一个离散的 X。它具有极强的科技、AI 与代码感。中心点的高亮暗示着数据的核心处理枢纽。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><rect x="20" y="20" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="76" y="20" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="48" y="48" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="20" y="76" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="76" y="76" width="24" height="24" fill="var(--accent)" rx="6" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 09: 光圈跃迁 (Aperture Jump) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad09" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-light)" />
+                  <stop offset="100%" stop-color="#8a2e18" />
+                </linearGradient>
+              </defs>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="url(#grad09)" stroke-width="12" stroke-dasharray="40 30" stroke-linecap="round" />
+              <path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="#fff" stroke-width="8" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Aperture Jump / 光圈跃迁</h2>
+              <div class="logo-number">09</div>
+            </div>
+            <p class="logo-desc">断裂的能量光圈环绕着中心的 X。光圈代表维度的边界，断裂感代表跃迁与突破。整体形态非常平衡，适用于任何高精尖硬件或软件品牌。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="var(--accent)" stroke-width="16" stroke-dasharray="40 22" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="#fff" stroke-width="10" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 10: 几何剪影 (Geo Silhouette) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 60 10 L 110 60 L 60 110 Z" fill="var(--accent)" />
+              <path d="M 60 10 L 10 60 L 60 110 Z" fill="var(--accent-light)" opacity="0.6" />
+              <!-- X cutout -->
+              <path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="var(--ink-soft)" stroke-width="12" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Geo Silhouette / 几何剪影</h2>
+              <div class="logo-number">10</div>
+            </div>
+            <p class="logo-desc">两个背对背的三角形（形成一个菱形/正八面体轮廓），被强力的 X 切割开。这是最符合现代扁平化与微立体结合趋势的设计，稳重且不失锐气。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 60 10 L 110 60 L 60 110 Z" fill="var(--accent)" /><path d="M 60 10 L 10 60 L 60 110 Z" fill="var(--accent)" opacity="0.5" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="var(--ink-soft)" stroke-width="16" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

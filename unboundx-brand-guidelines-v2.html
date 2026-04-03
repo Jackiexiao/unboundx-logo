@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 品牌视觉规范 (多维空间突破版)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Color Palette from index.html */
+        --paper: oklch(0.965 0.008 250);
+        --paper-deep: oklch(0.93 0.012 250);
+        --ink: oklch(0.21 0.018 257);
+        --ink-soft: oklch(0.29 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34);      /* #db5c3d */
+        --accent-soft: oklch(0.84 0.06 34); /* #f2c4b7 */
+        --accent-glow: oklch(0.64 0.18 34 / 0.15);
+        
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+        
+        --radius-lg: 32px;
+        --radius-md: 20px;
+        --radius-sm: 12px;
+        
+        --shadow-subtle: 0 8px 24px rgba(16, 20, 27, 0.06);
+        --shadow-hover: 0 16px 40px rgba(16, 20, 27, 0.1);
+        
+        --max-width: 1440px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--paper);
+        color: var(--ink);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay for texture */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 50;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 5vw;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Layout */
+      header {
+        padding: 60px 0;
+        border-bottom: 1px solid color-mix(in oklch, var(--ink) 10%, transparent);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .brand-title {
+        font-family: var(--font-en);
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      
+      .brand-title span {
+        color: var(--accent);
+      }
+
+      .brand-subtitle {
+        font-size: 1rem;
+        color: var(--muted);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        margin-top: 12px;
+      }
+
+      .meta-info {
+        text-align: right;
+        font-family: var(--font-en);
+        font-size: 0.85rem;
+        color: var(--muted);
+        letter-spacing: 0.05em;
+      }
+
+      section {
+        padding: 120px 0;
+        position: relative;
+      }
+
+      section:not(:last-child) {
+        border-bottom: 1px solid color-mix(in oklch, var(--ink) 10%, transparent);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .section-num {
+        font-family: var(--font-en);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+
+      .section-title {
+        font-family: var(--font-en);
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 300;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .section-desc {
+        font-size: 1.125rem;
+        color: var(--ink-soft);
+        max-width: 600px;
+        margin-top: 24px;
+        line-height: 1.8;
+      }
+
+      /* Logo Display Stage */
+      .logo-stage {
+        background: var(--ink);
+        border-radius: var(--radius-lg);
+        padding: clamp(40px, 8vw, 120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 700px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-hover);
+      }
+
+      .logo-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+      }
+
+      .hero-logo-svg {
+        position: relative;
+        z-index: 2;
+        width: clamp(280px, 40vw, 400px);
+        height: clamp(280px, 40vw, 400px);
+      }
+
+      /* Logo Animations */
+      .layer-1 { animation: pulseLayer 4s ease-in-out infinite; }
+      .layer-2 { animation: pulseLayer 4s ease-in-out 1s infinite; }
+      .layer-3 { animation: pulseLayer 4s ease-in-out 2s infinite; }
+      .center-x { animation: floatX 6s ease-in-out infinite; transform-origin: 60px 60px; }
+      
+      .hover-trigger:hover .layer-1 { transform: scale(1.05); stroke-width: 4px; stroke: var(--accent); opacity: 0.8; transition: all 0.4s ease; }
+      .hover-trigger:hover .layer-2 { transform: scale(1.1); stroke-width: 3px; stroke: var(--accent); opacity: 0.6; transition: all 0.4s ease 0.1s; }
+      .hover-trigger:hover .layer-3 { transform: scale(1.15); stroke-width: 2px; stroke: var(--accent); opacity: 0.4; transition: all 0.4s ease 0.2s; }
+      .hover-trigger:hover .center-x { transform: scale(1.1) rotate(90deg); fill: #fff; transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+      
+      .hover-trigger * { transition: all 0.4s ease; transform-origin: center; }
+
+      @keyframes pulseLayer {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.5; }
+      }
+      @keyframes floatX {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+
+      /* Grid Layouts */
+      .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+      .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+
+      /* Cards */
+      .showcase-card {
+        background: #fff;
+        border-radius: var(--radius-md);
+        padding: 40px;
+        box-shadow: var(--shadow-subtle);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .showcase-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .card-dark {
+        background: var(--ink);
+        color: var(--paper);
+      }
+      
+      .card-accent {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .card-label {
+        font-family: var(--font-en);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 32px;
+        opacity: 0.6;
+      }
+
+      .logo-lockup {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .wordmark {
+        font-family: var(--font-en);
+        font-weight: 800;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        letter-spacing: -0.02em;
+      }
+      .wordmark span { color: var(--accent); }
+      .card-accent .wordmark span { color: var(--ink); }
+
+      /* Color System */
+      .color-swatch {
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow-subtle);
+      }
+
+      .color-fill {
+        height: 200px;
+        width: 100%;
+      }
+
+      .color-info {
+        padding: 24px;
+      }
+
+      .color-name {
+        font-family: var(--font-en);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .color-codes {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-en);
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+      
+      .color-codes div {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* Typography */
+      .type-showcase {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .type-row {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
+        align-items: center;
+        padding-bottom: 40px;
+        border-bottom: 1px solid color-mix(in oklch, var(--ink) 10%, transparent);
+      }
+
+      .type-name {
+        font-size: 3rem;
+        line-height: 1;
+      }
+
+      .font-en { font-family: var(--font-en); }
+      .font-cn { font-family: var(--font-cn); }
+
+      .type-weights {
+        display: flex;
+        gap: 24px;
+        font-size: 1.5rem;
+      }
+
+      .type-specimen {
+        font-size: clamp(2rem, 4vw, 4rem);
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      /* Applications */
+      .app-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .app-item {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow-subtle);
+      }
+
+      .app-image-placeholder {
+        background: var(--paper-deep);
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      
+      .business-card {
+        width: 350px;
+        height: 200px;
+        background: var(--ink);
+        border-radius: 8px;
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .business-card::before {
+        content: '';
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 150px;
+        height: 150px;
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        opacity: 0.2;
+      }
+
+      .bc-logo {
+        color: #fff;
+        font-family: var(--font-en);
+        font-weight: 800;
+        font-size: 1.5rem;
+      }
+      .bc-logo span { color: var(--accent); }
+      
+      .bc-info {
+        color: var(--mist);
+        font-family: var(--font-en);
+        font-size: 0.75rem;
+        line-height: 1.8;
+      }
+
+      .ui-mockup {
+        width: 80%;
+        height: 80%;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .ui-header {
+        height: 60px;
+        border-bottom: 1px solid var(--paper-deep);
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        gap: 24px;
+      }
+
+      .ui-nav {
+        display: flex;
+        gap: 16px;
+      }
+
+      .ui-nav-item {
+        width: 40px;
+        height: 6px;
+        background: var(--paper-deep);
+        border-radius: 4px;
+      }
+
+      .ui-nav-item.active { background: var(--accent); }
+
+      .ui-body {
+        padding: 32px;
+        display: flex;
+        gap: 24px;
+      }
+
+      .ui-sidebar {
+        width: 120px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .ui-block {
+        height: 12px;
+        background: var(--paper-deep);
+        border-radius: 6px;
+      }
+
+      .ui-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .ui-hero {
+        height: 120px;
+        background: var(--accent-glow);
+        border-radius: 12px;
+        border: 1px solid color-mix(in oklch, var(--accent) 20%, transparent);
+      }
+
+      .app-caption {
+        padding: 24px;
+        font-size: 1.125rem;
+        font-weight: 500;
+        border-top: 1px solid color-mix(in oklch, var(--ink) 5%, transparent);
+      }
+
+      @media (max-width: 1024px) {
+        .section-header { grid-template-columns: 1fr; gap: 16px; }
+        .grid-3, .grid-4, .app-grid { grid-template-columns: repeat(2, 1fr); }
+        .type-row { grid-template-columns: 1fr; gap: 16px; }
+      }
+
+      @media (max-width: 768px) {
+        .grid-2, .grid-3, .grid-4, .app-grid { grid-template-columns: 1fr; }
+        .type-weights { flex-wrap: wrap; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-content">
+          <div>
+            <div class="brand-title">UNBOUND<span>X</span></div>
+            <div class="brand-subtitle">Brand Visual Guidelines</div>
+          </div>
+          <div class="meta-info">
+            <div>VERSION 2.0</div>
+            <div>AESTHETIC SYSTEM</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Section 1: The Logo Concept -->
+      <section id="logo">
+        <div class="section-header">
+          <div>
+            <div class="section-num">01</div>
+            <h2 class="section-title">The<br>Concept</h2>
+          </div>
+          <div class="section-desc">
+            方案 21：重影破局 (Echo Break)。融合了多维嵌套与极简突破的概念。三个同心方框代表了系统、规则与多维度的限制，而一道强有力的熔岩橙 X 贯穿所有图层，直达边界之外。直白、极简且极具冲击力。
+          </div>
+        </div>
+
+        <div class="logo-stage">
+          <svg class="hero-logo-svg" viewBox="0 0 120 120">
+            <g class="layer-1" transform-origin="60 60"><rect x="15" y="15" width="90" height="90" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" rx="4" /></g>
+            <g class="layer-2" transform-origin="60 60"><rect x="25" y="25" width="70" height="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3" rx="4" /></g>
+            <g class="layer-3" transform-origin="60 60"><rect x="35" y="35" width="50" height="50" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="4" rx="4" /></g>
+            
+            <!-- X Breaking out -->
+            <path class="center-x" d="M 5 5 L 115 115 M 115 5 L 5 115" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" />
+          </svg>
+        </div>
+      </section>
+
+      <!-- Section 2: Logo Variants -->
+      <section id="variants">
+        <div class="section-header">
+          <div>
+            <div class="section-num">02</div>
+            <h2 class="section-title">Clearance &<br>Lockups</h2>
+          </div>
+          <div class="section-desc">
+            Logo 在不同背景环境下的应用规范。保持足够的留白空间，确保品牌标识的识别度和视觉冲击力。字标(Wordmark)与图形(Icon)的组合比例经过严谨的视觉校准。
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="showcase-card">
+            <div class="card-label">Light Background</div>
+            <div class="logo-lockup">
+              <div class="wordmark">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+          
+          <div class="showcase-card card-dark">
+            <div class="card-label">Dark Background</div>
+            <div class="logo-lockup">
+              <div class="wordmark">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+
+          <div class="showcase-card card-accent">
+            <div class="card-label">Accent Background</div>
+            <div class="logo-lockup">
+              <div class="wordmark">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Colors -->
+      <section id="colors">
+        <div class="section-header">
+          <div>
+            <div class="section-num">03</div>
+            <h2 class="section-title">Color<br>System</h2>
+          </div>
+          <div class="section-desc">
+            色彩系统基于 OKLCH 色彩空间构建，确保感知均匀和对比度清晰。主品牌色采用充满活力的熔岩橙(Accent)，配合沉稳的墨黑(Ink)与细腻的纸白(Paper)，形成强烈的科技与人文张力。
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <!-- Accent -->
+          <div class="color-swatch">
+            <div class="color-fill" style="background: var(--accent)"></div>
+            <div class="color-info">
+              <div class="color-name">Lava Accent</div>
+              <div class="color-codes">
+                <div><span>HEX</span><span>#DB5C3D</span></div>
+                <div><span>OKLCH</span><span>64% 0.18 34</span></div>
+                <div><span>Usage</span><span>Primary Brand</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ink -->
+          <div class="color-swatch">
+            <div class="color-fill" style="background: var(--ink)"></div>
+            <div class="color-info">
+              <div class="color-name">Deep Ink</div>
+              <div class="color-codes">
+                <div><span>HEX</span><span>#10141B</span></div>
+                <div><span>OKLCH</span><span>21% 0.018 257</span></div>
+                <div><span>Usage</span><span>Text / Dark BG</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paper -->
+          <div class="color-swatch">
+            <div class="color-fill" style="background: var(--paper); border-bottom: 1px solid var(--paper-deep);"></div>
+            <div class="color-info">
+              <div class="color-name">Tech Paper</div>
+              <div class="color-codes">
+                <div><span>HEX</span><span>#F3F5F8</span></div>
+                <div><span>OKLCH</span><span>96% 0.008 250</span></div>
+                <div><span>Usage</span><span>Background</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mist -->
+          <div class="color-swatch">
+            <div class="color-fill" style="background: var(--mist)"></div>
+            <div class="color-info">
+              <div class="color-name">Cool Mist</div>
+              <div class="color-codes">
+                <div><span>HEX</span><span>#AAB7C4</span></div>
+                <div><span>OKLCH</span><span>79% 0.03 250</span></div>
+                <div><span>Usage</span><span>Borders / Muted</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Typography -->
+      <section id="typography">
+        <div class="section-header">
+          <div>
+            <div class="section-num">04</div>
+            <h2 class="section-title">Type<br>Hierarchy</h2>
+          </div>
+          <div class="section-desc">
+            英文字体选用 Outfit，其几何骨架与圆润细节完美平衡了科技感与亲和力；中文字体选用 Noto Sans SC，提供极佳的屏幕阅读体验与字重扩展性。
+          </div>
+        </div>
+
+        <div class="type-showcase">
+          <div class="type-row">
+            <div>
+              <div class="card-label">Primary English</div>
+              <div class="type-name font-en">Outfit</div>
+            </div>
+            <div>
+              <div class="type-weights font-en">
+                <span style="font-weight: 300;">Light</span>
+                <span style="font-weight: 400;">Regular</span>
+                <span style="font-weight: 500;">Medium</span>
+                <span style="font-weight: 700;">Bold</span>
+              </div>
+              <div class="type-specimen font-en" style="margin-top: 24px;">
+                Unbound Dimensions.<br>Break the boundaries.
+              </div>
+            </div>
+          </div>
+
+          <div class="type-row">
+            <div>
+              <div class="card-label">Primary Chinese</div>
+              <div class="type-name font-cn">Noto Sans</div>
+            </div>
+            <div>
+              <div class="type-weights font-cn">
+                <span style="font-weight: 300;">细体</span>
+                <span style="font-weight: 400;">常规</span>
+                <span style="font-weight: 500;">中黑</span>
+                <span style="font-weight: 700;">粗体</span>
+              </div>
+              <div class="type-specimen font-cn" style="margin-top: 24px;">
+                多维空间突破。<br>探索无界可能。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Applications -->
+      <section id="applications">
+        <div class="section-header">
+          <div>
+            <div class="section-num">05</div>
+            <h2 class="section-title">Brand<br>Applications</h2>
+          </div>
+          <div class="section-desc">
+            品牌视觉在实际物料和数字产品中的延伸。通过一致的留白、排版比例与标志性的熔岩橙点缀，建立专业且极具辨识度的品牌认知。
+          </div>
+        </div>
+
+        <div class="app-grid">
+          <!-- Business Card -->
+          <div class="app-item">
+            <div class="app-image-placeholder">
+              <div class="business-card">
+                <div class="bc-logo">UNBOUND<span>X</span></div>
+                <div class="bc-info">
+                  <strong>JACKIE XIAO</strong><br>
+                  Founder & Designer<br>
+                  jackie@unboundx.tech
+                </div>
+              </div>
+            </div>
+            <div class="app-caption">Business Card Design</div>
+          </div>
+
+          <!-- UI Application -->
+          <div class="app-item">
+            <div class="app-image-placeholder">
+              <div class="ui-mockup">
+                <div class="ui-header">
+                  <div class="bc-logo" style="color: var(--ink); font-size: 1rem;">U<span>X</span></div>
+                  <div class="ui-nav">
+                    <div class="ui-nav-item active"></div>
+                    <div class="ui-nav-item"></div>
+                    <div class="ui-nav-item"></div>
+                  </div>
+                </div>
+                <div class="ui-body">
+                  <div class="ui-sidebar">
+                    <div class="ui-block" style="width: 100%;"></div>
+                    <div class="ui-block" style="width: 80%;"></div>
+                    <div class="ui-block" style="width: 60%;"></div>
+                  </div>
+                  <div class="ui-content">
+                    <div class="ui-hero"></div>
+                    <div class="ui-block" style="width: 40%; height: 24px; margin-top: 16px;"></div>
+                    <div class="ui-block" style="width: 100%;"></div>
+                    <div class="ui-block" style="width: 90%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-caption">Digital UI Interface</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

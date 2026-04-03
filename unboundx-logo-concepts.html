@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 全新 Logo 探索方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: oklch(0.965 0.008 250);
+        --ink: oklch(0.12 0.018 257); /* Darker ink for gallery */
+        --ink-soft: oklch(0.18 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34);      /* #db5c3d */
+        --accent-light: oklch(0.74 0.18 34); /* Brighter for gradients */
+        --accent-glow: oklch(0.64 0.18 34 / 0.15);
+        
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+        
+        --max-width: 1440px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--ink);
+        color: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 50;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 5vw 120px;
+        position: relative;
+        z-index: 1;
+      }
+
+      header {
+        padding: 80px 0 60px;
+        text-align: center;
+      }
+
+      .title {
+        font-family: var(--font-en);
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+      }
+      
+      .title span { color: var(--accent); }
+
+      .subtitle {
+        font-size: 1.125rem;
+        color: var(--mist);
+        letter-spacing: 0.1em;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .gallery {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+      }
+
+      .logo-card {
+        background: var(--ink-soft);
+        border: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+        border-radius: 32px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      }
+
+      .logo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px var(--accent);
+      }
+
+      .logo-stage {
+        padding: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+        border-right: 1px solid color-mix(in oklch, var(--paper) 5%, transparent);
+      }
+
+      .logo-svg {
+        width: 240px;
+        height: 240px;
+        filter: drop-shadow(0 12px 24px rgba(219, 92, 61, 0.2));
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .logo-card:hover .logo-svg {
+        transform: scale(1.05);
+      }
+
+      .logo-info {
+        padding: 80px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .logo-number {
+        font-family: var(--font-en);
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 0.1em;
+        margin-bottom: 16px;
+      }
+
+      .logo-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+      }
+
+      .logo-desc {
+        font-size: 1.125rem;
+        color: var(--mist);
+        line-height: 1.8;
+        margin-bottom: 40px;
+      }
+
+      .wordmark-lockup {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-top: 40px;
+        border-top: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+      }
+
+      .wordmark-lockup svg {
+        width: 48px;
+        height: 48px;
+      }
+
+      .wordmark-text {
+        font-family: var(--font-en);
+        font-weight: 800;
+        font-size: 1.75rem;
+        letter-spacing: -0.02em;
+      }
+      .wordmark-text span { color: var(--accent); }
+
+      /* Animation for specific logos */
+      @keyframes spin { 100% { transform: rotate(360deg); } }
+      @keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 1; } }
+      
+      .spin-slow { animation: spin 20s linear infinite; }
+      .pulse-slow { animation: pulse 4s ease-in-out infinite; }
+
+      @media (max-width: 1024px) {
+        .logo-card { grid-template-columns: 1fr; }
+        .logo-stage { border-right: none; border-bottom: 1px solid color-mix(in oklch, var(--paper) 5%, transparent); padding: 60px 40px; }
+        .logo-info { padding: 40px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">UNBOUND<span>X</span></div>
+        <div class="subtitle">全新 Logo 视觉探索方案。摒弃传统的线框表达，采用更具质感、高级感与现代科技美学的设计手法，通过负空间、几何折叠、流体等概念重新诠释"打破边界"的 X。</div>
+      </header>
+
+      <div class="gallery">
+        
+        <!-- Concept 1: 负空间视界 -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--accent-light)" />
+                  <stop offset="100%" stop-color="var(--accent)" />
+                </linearGradient>
+                <mask id="xMask">
+                  <rect width="120" height="120" fill="white" rx="32" />
+                  <path d="M 20,20 L 100,100 M 100,20 L 20,100" stroke="black" stroke-width="20" stroke-linecap="round" />
+                </mask>
+              </defs>
+              <!-- Outer glowing shape -->
+              <rect x="0" y="0" width="120" height="120" rx="36" fill="url(#grad1)" mask="url(#xMask)" />
+              <!-- Inner floating spark -->
+              <circle cx="60" cy="60" r="6" fill="#fff" class="pulse-slow" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-number">CONCEPT 01</div>
+            <h2 class="logo-title">The Portal / 负空间视界</h2>
+            <p class="logo-desc">极简而充满力量的设计。使用一个圆润的科技方块代表"现有的边界/维度"，通过负空间切割出一个锐利的 X。中心的一点星光代表奇点，象征着从已知维度向未知宇宙的突破口，视觉冲击力极强，极具现代 SaaS 质感。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><rect x="0" y="0" width="120" height="120" rx="36" fill="var(--accent)" mask="url(#xMask)" /><circle cx="60" cy="60" r="6" fill="#fff" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 2: 奇点引擎 -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="transform-origin: center;">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#b04025" />
+                  <stop offset="100%" stop-color="#ff7d5e" />
+                </linearGradient>
+              </defs>
+              <g transform="translate(60,60)">
+                <path d="M 0,-50 L 15,-15 L 0,0 L -15,-15 Z" fill="url(#grad2)" />
+                <path d="M 50,0 L 15,15 L 0,0 L 15,-15 Z" fill="var(--accent)" />
+                <path d="M 0,50 L -15,15 L 0,0 L 15,15 Z" fill="#8a2e18" />
+                <path d="M -50,0 L -15,-15 L 0,0 L -15,15 Z" fill="var(--accent-light)" />
+                <circle cx="0" cy="0" r="3" fill="#fff" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-number">CONCEPT 02</div>
+            <h2 class="logo-title">The Nexus / 奇点引擎</h2>
+            <p class="logo-desc">由四个向外扩张的菱形飞行器/箭头组成的 X 与星芒复合图形。利用不同明度的熔岩橙营造出立体感与旋转向外的动能。它不仅是一个字母 X，更是一个不断向四面八方扩张、探索的科技引擎。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g transform="translate(60,60)"><path d="M 0,-50 L 15,-15 L 0,0 L -15,-15 Z" fill="#ff7d5e" /><path d="M 50,0 L 15,15 L 0,0 L 15,-15 Z" fill="var(--accent)" /><path d="M 0,50 L -15,15 L 0,0 L 15,15 Z" fill="#8a2e18" /><path d="M -50,0 L -15,-15 L 0,0 L -15,15 Z" fill="var(--accent-light)" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 3: 无垠流转 -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff7d5e" />
+                  <stop offset="50%" stop-color="var(--accent)" />
+                  <stop offset="100%" stop-color="#8a2e18" />
+                </linearGradient>
+              </defs>
+              <path d="M 20,20 Q 60,60 100,20 Q 80,60 100,100 Q 60,60 20,100 Q 40,60 20,20 Z" fill="url(#grad3)" />
+              <path d="M 20,20 Q 60,60 100,20 Q 80,60 100,100 Q 60,60 20,100 Q 40,60 20,20 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.3" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-number">CONCEPT 03</div>
+            <h2 class="logo-title">Fluid Infinity / 无垠流转</h2>
+            <p class="logo-desc">数学中的星形线（Hypocycloid）演变。这是一条连续、优雅且充满张力的曲线，它向内收缩形成锐利的 X，向外展开又暗示着无限。它展现了品牌高端、优雅、极具生命力的一面，如同液态金属般自由变化。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 20,20 Q 60,60 100,20 Q 80,60 100,100 Q 60,60 20,100 Q 40,60 20,20 Z" fill="var(--accent)" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 4: 降维折叠 -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(0, 10)">
+                <!-- Left Wing -->
+                <path d="M 20,20 L 45,35 L 60,75 L 35,60 Z" fill="var(--accent-light)" />
+                <!-- Right Wing -->
+                <path d="M 100,20 L 75,35 L 60,75 L 85,60 Z" fill="#b04025" />
+                <!-- Center Fold -->
+                <path d="M 60,75 L 45,35 L 60,10 L 75,35 Z" fill="var(--accent)" />
+                <!-- Bottom Fold -->
+                <path d="M 60,75 L 35,60 L 60,100 L 85,60 Z" fill="#8a2e18" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-number">CONCEPT 04</div>
+            <h2 class="logo-title">Origami Dimension / 降维折叠</h2>
+            <p class="logo-desc">利用空间几何与光影错觉构成的立体 X。像是一张折叠的纸或者扭曲的三维空间。它非常直观地传达了"多维"的概念，同时具有建筑感和结构美学，非常适合作为一家前沿科技/架构类公司的标志。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g transform="translate(0, 10)"><path d="M 20,20 L 45,35 L 60,75 L 35,60 Z" fill="var(--accent-light)" /><path d="M 100,20 L 75,35 L 60,75 L 85,60 Z" fill="#b04025" /><path d="M 60,75 L 45,35 L 60,10 L 75,35 Z" fill="var(--accent)" /><path d="M 60,75 L 35,60 L 60,100 L 85,60 Z" fill="#8a2e18" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 5: 动能脉冲 -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g transform="rotate(45 60 60)">
+                <!-- Vertical Bars -->
+                <rect x="35" y="15" width="12" height="90" rx="6" fill="var(--accent)" opacity="0.4" />
+                <rect x="54" y="5" width="12" height="110" rx="6" fill="var(--accent)" opacity="1" />
+                <rect x="73" y="15" width="12" height="90" rx="6" fill="var(--accent)" opacity="0.4" />
+                
+                <!-- Horizontal Bars -->
+                <rect x="15" y="35" width="90" height="12" rx="6" fill="var(--accent-light)" opacity="0.6" />
+                <rect x="5" y="54" width="110" height="12" rx="6" fill="#fff" opacity="0.9" />
+                <rect x="15" y="73" width="90" height="12" rx="6" fill="var(--accent-light)" opacity="0.6" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-number">CONCEPT 05</div>
+            <h2 class="logo-title">Kinetic Pulse / 动能脉冲</h2>
+            <p class="logo-desc">由交错的、带有呼吸感的平行圆角线条构成的 X。这种设计语言充满了数据流、声波和数字脉冲的科技感。代表着信息的无界传输和数据处理的极速动能，设计语言现代且充满节奏感。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g transform="rotate(45 60 60)"><rect x="35" y="15" width="12" height="90" rx="6" fill="var(--accent)" opacity="0.4" /><rect x="54" y="5" width="12" height="110" rx="6" fill="var(--accent)" opacity="1" /><rect x="73" y="15" width="12" height="90" rx="6" fill="var(--accent)" opacity="0.4" /><rect x="15" y="35" width="90" height="12" rx="6" fill="var(--accent-light)" opacity="0.6" /><rect x="5" y="54" width="110" height="12" rx="6" fill="#fff" opacity="0.9" /><rect x="15" y="73" width="90" height="12" rx="6" fill="var(--accent-light)" opacity="0.6" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

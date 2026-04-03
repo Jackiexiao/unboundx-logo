@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 官方静态 Logo 套件</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --paper: #F3F5F8;
+        --ink: #10141B;
+        --ink-soft: #1A2230;
+        --accent: #db5c3d;
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--ink);
+        color: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container { max-width: 1200px; margin: 0 auto; padding: 60px 5vw; }
+      header { margin-bottom: 60px; text-align: center; }
+      h1 { font-family: var(--font-en); font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+      h1 span { color: var(--accent); }
+      p.desc { color: rgba(255,255,255,0.6); font-size: 1.1rem; }
+      
+      .suite-grid { display: flex; flex-direction: column; gap: 80px; }
+      .suite-item {
+        background: var(--ink-soft);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 24px;
+        overflow: hidden;
+      }
+      .suite-header {
+        padding: 24px 40px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .suite-title { font-size: 1.25rem; font-weight: 700; }
+      .suite-tags span {
+        font-size: 0.75rem; background: rgba(255,255,255,0.1);
+        padding: 4px 12px; border-radius: 12px; margin-left: 8px; letter-spacing: 0.05em;
+      }
+      
+      .stage {
+        padding: 80px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at center, rgba(219, 92, 61, 0.1) 0%, transparent 60%);
+      }
+      
+      .code-panel {
+        background: #0a0c10;
+        padding: 30px 40px;
+        position: relative;
+      }
+      .code-panel h4 { font-size: 0.85rem; color: var(--accent); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.1em; }
+      pre {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 0.85rem;
+        color: #aab7c4;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .copy-btn {
+        position: absolute; top: 24px; right: 40px;
+        background: var(--accent); color: #fff;
+        border: none; padding: 8px 16px; border-radius: 6px;
+        font-weight: 700; font-size: 0.8rem; cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .copy-btn:hover { opacity: 0.8; }
+      
+      /* Specific sizes for visual preview */
+      .svg-icon { height: 160px; }
+      .svg-wordmark { height: 48px; }
+      .svg-horizontal { height: 80px; }
+      .svg-vertical { height: 200px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>UNBOUND<span>X</span></h1>
+        <p class="desc">官方静态 Logo 套件 / 纯矢量 Path 绘制 / 无依赖字体 / 完美倒角切割</p>
+      </header>
+
+      <div class="suite-grid">
+        
+        <!-- 1. Icon (Symbol Only) -->
+        <div class="suite-item">
+          <div class="suite-header">
+            <div class="suite-title">① 图形标 (Icon Symbol)</div>
+            <div class="suite-tags"><span>App 图标</span><span>社交头像</span><span>Favicon</span></div>
+          </div>
+          <div class="stage">
+            <!-- PREVIEW -->
+            <svg class="svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+              <path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z" fill="#db5c3d"/>
+              <path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z" fill="#db5c3d"/>
+            </svg>
+          </div>
+          <div class="code-panel">
+            <h4>SVG Code (Transparent, Static)</h4>
+            <button class="copy-btn" onclick="copyCode(this, 'code-1')">Copy SVG</button>
+            <pre id="code-1">&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%"&gt;
+  &lt;!-- UNBOUNDX Symbol --&gt;
+  &lt;path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z" fill="#db5c3d"/&gt;
+  &lt;path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z" fill="#db5c3d"/&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </div>
+
+        <!-- 2. Wordmark Only -->
+        <div class="suite-item">
+          <div class="suite-header">
+            <div class="suite-title">② 纯字标 (Wordmark)</div>
+            <div class="suite-tags"><span>纯文字排版</span><span>全大写</span><span>纯Path无字体依赖</span></div>
+          </div>
+          <div class="stage">
+            <!-- PREVIEW -->
+            <svg class="svg-wordmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 60">
+              <g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2">
+                <path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/>
+                <path d="M 43 50 L 43 10 L 65 50 L 65 10"/>
+                <path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/>
+                <path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/>
+                <path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/>
+                <path d="M 203 50 L 203 10 L 225 50 L 225 10"/>
+                <path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/>
+              </g>
+              <g fill="#db5c3d">
+                <path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/>
+                <path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/>
+              </g>
+            </svg>
+          </div>
+          <div class="code-panel">
+            <h4>SVG Code (Transparent, Static)</h4>
+            <button class="copy-btn" onclick="copyCode(this, 'code-2')">Copy SVG</button>
+            <pre id="code-2">&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 60" width="100%" height="100%"&gt;
+  &lt;!-- UNBOUND Text (Pure Geometric Paths, No Fonts Needed) --&gt;
+  &lt;g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2"&gt;
+    &lt;path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/&gt;
+    &lt;path d="M 43 50 L 43 10 L 65 50 L 65 10"/&gt;
+    &lt;path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/&gt;
+    &lt;path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/&gt;
+    &lt;path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/&gt;
+    &lt;path d="M 203 50 L 203 10 L 225 50 L 225 10"/&gt;
+    &lt;path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/&gt;
+  &lt;/g&gt;
+  &lt;!-- Scaled X Symbol --&gt;
+  &lt;g fill="#db5c3d"&gt;
+    &lt;path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/&gt;
+    &lt;path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </div>
+
+        <!-- 3. Horizontal Lockup -->
+        <div class="suite-item">
+          <div class="suite-header">
+            <div class="suite-title">③ 主 Logo (Horizontal Lockup) ⭐</div>
+            <div class="suite-tags"><span>官网导航</span><span>名片</span><span>海报</span><span>真正的主视觉</span></div>
+          </div>
+          <div class="stage">
+            <!-- PREVIEW -->
+            <svg class="svg-horizontal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120">
+              <!-- Icon -->
+              <g transform="translate(0, 0)">
+                <path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z" fill="#db5c3d"/>
+                <path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z" fill="#db5c3d"/>
+              </g>
+              <!-- Wordmark -->
+              <g transform="translate(150, 30) scale(1.1)">
+                <g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2">
+                  <path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/>
+                  <path d="M 43 50 L 43 10 L 65 50 L 65 10"/>
+                  <path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/>
+                  <path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/>
+                  <path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/>
+                  <path d="M 203 50 L 203 10 L 225 50 L 225 10"/>
+                  <path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/>
+                </g>
+                <g fill="#db5c3d">
+                  <path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/>
+                  <path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="code-panel">
+            <h4>SVG Code (Transparent, Static)</h4>
+            <button class="copy-btn" onclick="copyCode(this, 'code-3')">Copy SVG</button>
+            <pre id="code-3">&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 120" width="100%" height="100%"&gt;
+  &lt;!-- UNBOUNDX Icon --&gt;
+  &lt;g transform="translate(0, 0)" fill="#db5c3d"&gt;
+    &lt;path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z"/&gt;
+    &lt;path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z"/&gt;
+  &lt;/g&gt;
+  &lt;!-- UNBOUNDX Wordmark --&gt;
+  &lt;g transform="translate(150, 30) scale(1.1)"&gt;
+    &lt;g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2"&gt;
+      &lt;path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/&gt;
+      &lt;path d="M 43 50 L 43 10 L 65 50 L 65 10"/&gt;
+      &lt;path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/&gt;
+      &lt;path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/&gt;
+      &lt;path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/&gt;
+      &lt;path d="M 203 50 L 203 10 L 225 50 L 225 10"/&gt;
+      &lt;path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/&gt;
+    &lt;/g&gt;
+    &lt;g fill="#db5c3d"&gt;
+      &lt;path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/&gt;
+      &lt;path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </div>
+
+        <!-- 4. Vertical Lockup -->
+        <div class="suite-item">
+          <div class="suite-header">
+            <div class="suite-title">④ 竖版 Logo (Stacked Lockup)</div>
+            <div class="suite-tags"><span>启动页</span><span>封面图</span><span>海报中心</span></div>
+          </div>
+          <div class="stage">
+            <!-- PREVIEW -->
+            <svg class="svg-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220">
+              <!-- Icon -->
+              <g transform="translate(110, 0)">
+                <path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z" fill="#db5c3d"/>
+                <path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z" fill="#db5c3d"/>
+              </g>
+              <!-- Wordmark -->
+              <g transform="translate(0, 150)">
+                <g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2">
+                  <path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/>
+                  <path d="M 43 50 L 43 10 L 65 50 L 65 10"/>
+                  <path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/>
+                  <path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/>
+                  <path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/>
+                  <path d="M 203 50 L 203 10 L 225 50 L 225 10"/>
+                  <path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/>
+                </g>
+                <g fill="#db5c3d">
+                  <path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/>
+                  <path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="code-panel">
+            <h4>SVG Code (Transparent, Static)</h4>
+            <button class="copy-btn" onclick="copyCode(this, 'code-4')">Copy SVG</button>
+            <pre id="code-4">&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 220" width="100%" height="100%"&gt;
+  &lt;!-- UNBOUNDX Icon --&gt;
+  &lt;g transform="translate(110, 0)" fill="#db5c3d"&gt;
+    &lt;path d="M 10 35 L 10 10 L 35 10 L 110 85 L 110 110 L 85 110 Z"/&gt;
+    &lt;path d="M 85 10 L 110 10 L 110 35 L 35 110 L 10 110 L 10 85 Z"/&gt;
+  &lt;/g&gt;
+  &lt;!-- UNBOUNDX Wordmark --&gt;
+  &lt;g transform="translate(0, 150)"&gt;
+    &lt;g fill="none" stroke="#F3F5F8" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2"&gt;
+      &lt;path d="M 3 10 L 3 36 A 11 11 0 0 0 25 36 L 25 10"/&gt;
+      &lt;path d="M 43 50 L 43 10 L 65 50 L 65 10"/&gt;
+      &lt;path d="M 83 10 L 83 50 M 83 10 L 96 10 A 9 9 0 0 1 105 19 A 9 9 0 0 1 96 28 L 83 28 M 96 28 A 9 9 0 0 1 105 39 A 9 9 0 0 1 96 50 L 83 50"/&gt;
+      &lt;path d="M 134 10 A 14 20 0 1 0 134 50 A 14 20 0 1 0 134 10"/&gt;
+      &lt;path d="M 163 10 L 163 36 A 11 11 0 0 0 185 36 L 185 10"/&gt;
+      &lt;path d="M 203 50 L 203 10 L 225 50 L 225 10"/&gt;
+      &lt;path d="M 243 10 L 243 50 M 243 10 L 254 10 A 14 20 0 0 1 268 30 A 14 20 0 0 1 254 50 L 243 50"/&gt;
+    &lt;/g&gt;
+    &lt;g fill="#db5c3d"&gt;
+      &lt;path d="M 294 20 L 294 10 L 304 10 L 334 40 L 334 50 L 324 50 Z"/&gt;
+      &lt;path d="M 324 10 L 334 10 L 334 20 L 304 50 L 294 50 L 294 40 Z"/&gt;
+    &lt;/g&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</pre>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+      function copyCode(btn, elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = btn.innerText;
+          btn.innerText = "Copied!";
+          btn.style.background = "#28a745";
+          setTimeout(() => {
+            btn.innerText = originalText;
+            btn.style.background = "var(--accent)";
+          }, 2000);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 自由维度 终极探索</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: oklch(0.965 0.008 250);
+        --ink: oklch(0.10 0.018 257); /* Deepest dark */
+        --ink-soft: oklch(0.16 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34);      /* Lava Orange #db5c3d */
+        --accent-light: oklch(0.74 0.18 34); 
+        --accent-glow: oklch(0.64 0.18 34 / 0.15);
+        --accent-faded: oklch(0.64 0.18 34 / 0.3);
+        --border-color: color-mix(in oklch, var(--paper) 15%, transparent);
+        
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+        
+        --max-width: 1440px;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--ink);
+        color: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: ""; position: fixed; inset: 0;
+        background-image: 
+          radial-gradient(circle at 50% 0%, rgba(219, 92, 61, 0.05), transparent 40%),
+          url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 50;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto; padding: 0 5vw 120px;
+        position: relative; z-index: 1;
+      }
+
+      header { padding: 120px 0 80px; text-align: center; }
+
+      .title {
+        font-family: var(--font-en);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800; letter-spacing: -0.02em;
+        text-transform: uppercase; margin-bottom: 24px;
+      }
+      .title span { color: var(--accent); }
+
+      .subtitle {
+        font-size: 1.125rem; color: var(--mist);
+        letter-spacing: 0.05em; max-width: 800px;
+        margin: 0 auto; line-height: 1.8;
+      }
+      .subtitle strong { color: var(--paper); }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .logo-card {
+        background: var(--ink-soft);
+        border: 1px solid color-mix(in oklch, var(--paper) 8%, transparent);
+        border-radius: 24px; overflow: hidden;
+        display: flex; flex-direction: column;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      }
+
+      .logo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px var(--accent);
+      }
+
+      .logo-stage {
+        height: 360px;
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+        border-bottom: 1px solid color-mix(in oklch, var(--paper) 5%, transparent);
+      }
+
+      .logo-svg {
+        width: 180px; height: 180px;
+        filter: drop-shadow(0 12px 24px rgba(219, 92, 61, 0.2));
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .logo-card:hover .logo-svg { transform: scale(1.05); }
+
+      .logo-info { padding: 40px; flex: 1; display: flex; flex-direction: column; }
+
+      .logo-header {
+        display: flex; justify-content: space-between;
+        align-items: baseline; margin-bottom: 20px;
+      }
+
+      .logo-number {
+        font-family: var(--font-en); font-size: 0.875rem;
+        font-weight: 700; color: var(--accent); letter-spacing: 0.1em;
+      }
+
+      .logo-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+
+      .logo-desc { font-size: 1rem; color: var(--mist); line-height: 1.7; flex: 1; }
+
+      .wordmark-lockup {
+        display: flex; align-items: center; gap: 16px;
+        margin-top: 32px; padding-top: 24px;
+        border-top: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+      }
+
+      .wordmark-lockup svg { width: 32px; height: 32px; }
+
+      .wordmark-text {
+        font-family: var(--font-en); font-weight: 800;
+        font-size: 1.25rem; letter-spacing: -0.02em;
+      }
+      .wordmark-text span { color: var(--accent); }
+
+      /* Ethereal Animations */
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      @keyframes drift { 0%, 100% { transform: translate(0, 0); } 33% { transform: translate(6px, -6px); } 66% { transform: translate(-6px, -2px); } }
+      @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+      @keyframes pulse-soft { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+      
+      .float { animation: float 6s ease-in-out infinite; }
+      .drift { animation: drift 10s ease-in-out infinite; }
+      .spin-slow { animation: spin-slow 30s linear infinite; }
+      .pulse-soft { animation: pulse-soft 4s ease-in-out infinite; }
+
+      @media (max-width: 1024px) {
+        .gallery { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">UNBOUND<span>X</span></div>
+        <div class="subtitle">第四阶段终极探索：彻底提纯 <strong>“自由维度” (Free Dimensions)</strong>。超越简单的破框，去捕捉“无界”、“高维投影”、“量子纠缠”和“无限延展”的纯粹感知。</div>
+      </header>
+
+      <div class="gallery">
+        
+        <!-- Concept 31: 维度游走 (Dimensional Walk) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Non-euclidean lines -->
+              <g stroke="var(--border-color)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 20 60 Q 40 20 60 60 T 100 60" opacity="0.3" class="drift" />
+                <path d="M 20 60 Q 40 100 60 60 T 100 60" opacity="0.3" class="drift" style="animation-delay: -2s;" />
+              </g>
+              <path d="M 10 10 C 60 10, 60 110, 110 110" stroke="var(--accent)" stroke-width="12" fill="none" stroke-linecap="round" class="float" />
+              <path d="M 10 110 C 60 110, 60 10, 110 10" stroke="#fff" stroke-width="12" fill="none" stroke-linecap="round" class="float" style="animation-delay: -3s;" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Dimensional Walk / 维度游走</h2>
+              <div class="logo-number">31</div>
+            </div>
+            <p class="logo-desc">X 不再是两条笔直的直线相交，而是由两条在引力场中自由游走的贝塞尔曲线纠缠而成。背景是代表多维空间的非欧几何波浪线。它传达出一种不受平直物理空间限制的游离感与自由态。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 10 10 C 60 10, 60 110, 110 110" stroke="var(--accent)" stroke-width="16" fill="none" stroke-linecap="round" /><path d="M 10 110 C 60 110, 60 10, 110 10" stroke="var(--accent)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.6" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 32: 悬浮四面体 (Floating Tetrahedron) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg float" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" stroke-width="8" stroke-linejoin="round" fill="none">
+                <!-- Top peak to base -->
+                <path d="M 60 10 L 20 80 L 100 80 Z" stroke="var(--border-color)" stroke-width="4" />
+                <path d="M 60 10 L 60 60" />
+                <path d="M 20 80 L 60 60" />
+                <path d="M 100 80 L 60 60" />
+                <!-- Hidden dimension line forming the 4th leg of X -->
+                <path d="M 60 60 L 60 110" stroke="#fff" stroke-width="8" stroke-dasharray="8 8" />
+              </g>
+              <circle cx="60" cy="60" r="6" fill="#fff" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Floating Tetrahedron / 悬浮四面体</h2>
+              <div class="logo-number">32</div>
+            </div>
+            <p class="logo-desc">用三维空间中最基础的结构“四面体”来隐喻维度。构成 X 的第四条腿是一道向未知维度延伸的虚线光束。它既在结构之内，又向无限的深处延伸，代表跨越维度的自由下坠。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 60 10 L 60 60 M 20 80 L 60 60 M 100 80 L 60 60" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" fill="none" /><path d="M 60 60 L 60 110" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" stroke-dasharray="12 12" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 33: 量子纠缠 (Quantum Entangle) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Interlocking orbital paths -->
+              <ellipse cx="60" cy="60" rx="50" ry="15" fill="none" stroke="var(--border-color)" stroke-width="4" transform="rotate(45 60 60)" />
+              <ellipse cx="60" cy="60" rx="50" ry="15" fill="none" stroke="var(--border-color)" stroke-width="4" transform="rotate(-45 60 60)" />
+              
+              <!-- High energy particles defining the X -->
+              <circle cx="25" cy="25" r="8" fill="var(--accent)" />
+              <circle cx="95" cy="95" r="8" fill="var(--accent)" />
+              <circle cx="25" cy="95" r="8" fill="#fff" />
+              <circle cx="95" cy="25" r="8" fill="#fff" />
+              
+              <!-- Energy connection -->
+              <path d="M 25 25 Q 60 60 95 95 M 25 95 Q 60 60 95 25" stroke="var(--accent-light)" stroke-width="4" fill="none" opacity="0.6" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Quantum Entangle / 量子纠缠</h2>
+              <div class="logo-number">33</div>
+            </div>
+            <p class="logo-desc">完全抛弃实体的 X 线条，取而代之的是四个处于量子纠缠态的粒子和它们无形的能量轨道。在宏观世界中被束缚的规则，在量子的高维视角中是完全自由且瞬时连接的。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><circle cx="25" cy="25" r="10" fill="var(--accent)" /><circle cx="95" cy="95" r="10" fill="var(--accent)" /><circle cx="25" cy="95" r="10" fill="var(--accent)" opacity="0.6" /><circle cx="95" cy="25" r="10" fill="var(--accent)" opacity="0.6" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 34: 开放立方 (Open Hypercube) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path d="M 20 40 L 60 20 L 100 40 L 100 80 L 60 100 L 20 80 Z" stroke-width="4" opacity="0.3" />
+                <path d="M 20 40 L 60 60 L 100 40" stroke-width="12" />
+                <path d="M 60 60 L 60 100" stroke-width="12" />
+                <!-- Missing edge creates the illusion of a floating X passing through -->
+                <path d="M 20 80 L 60 60 L 100 80" stroke="#fff" stroke-width="12" opacity="0.9" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Open Hypercube / 开放超立方</h2>
+              <div class="logo-number">34</div>
+            </div>
+            <p class="logo-desc">用高维空间（超立方体/超体）的二维投影作为底座。它的外壳是完整的六边形维度，但内部却被两组相互穿插、并未连接的折线（构成 X 的错视）占据。这是用错觉来表达维度穿越的最佳案例。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 20 40 L 60 60 L 100 40 M 60 60 L 60 100 M 20 80 L 60 60 L 100 80" stroke="var(--accent)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 35: 逸出边界 (Spillover) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="25" width="70" height="70" fill="var(--ink)" stroke="var(--border-color)" stroke-width="6" rx="35" />
+              <path d="M 10 10 L 110 110 M 110 10 L 10 110" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" stroke-dasharray="14 10" class="drift" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Spillover / 逸出边界</h2>
+              <div class="logo-number">35</div>
+            </div>
+            <p class="logo-desc">中心是一个绝对完美的圆形（代表无懈可击的固有维度或系统）。而 X 变成了一条条虚线能量流，不仅粗暴地切开了这个圆，并且像液体或辐射一样逸散（Spillover）出了边界，这是一种非常肆意且失控的自由感。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="35" fill="none" stroke="var(--border-color)" stroke-width="8" /><path d="M 10 10 L 110 110 M 110 10 L 10 110" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" stroke-dasharray="14 10" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 36: 折射光栅 (Refractive Grid) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg pulse-soft" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" stroke-width="4" stroke-linecap="round" opacity="0.8">
+                <path d="M 10 10 L 110 110" /><path d="M 20 10 L 110 100" /><path d="M 10 20 L 100 110" />
+                <path d="M 110 10 L 10 110" /><path d="M 100 10 L 10 100" /><path d="M 110 20 L 20 110" />
+              </g>
+              <!-- Center solid to focus the eye -->
+              <circle cx="60" cy="60" r="15" fill="#fff" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Refractive Grid / 折射光栅</h2>
+              <div class="logo-number">36</div>
+            </div>
+            <p class="logo-desc">X 不是单调的线条，而是由一组平行的光栅/维度线交错而成。这种多重线条的交织产生了极强的纵深感与速度感，代表了无数个平行维度在同一点的相交和穿透。极其适合用作硬核科技品牌的标志。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 20 20 L 100 100 M 35 20 L 100 85 M 20 35 L 85 100" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" /><path d="M 100 20 L 20 100 M 85 20 L 20 85 M 100 35 L 35 100" stroke="var(--accent)" stroke-width="8" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 37: 时空涟漪 (Spacetime Distortion) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Distorted grid lines -->
+              <path d="M 10 30 Q 60 10 110 30 M 10 60 Q 60 40 110 60 M 10 90 Q 60 70 110 90" stroke="var(--border-color)" stroke-width="2" fill="none" class="pulse-soft" />
+              <path d="M 30 10 Q 10 60 30 110 M 60 10 Q 40 60 60 110 M 90 10 Q 70 60 90 110" stroke="var(--border-color)" stroke-width="2" fill="none" class="pulse-soft" />
+              
+              <!-- Massive X bending spacetime -->
+              <path d="M 20 20 C 50 50, 70 70, 100 100 M 100 20 C 70 50, 50 70, 20 100" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" fill="none" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Spacetime Distortion / 时空扭曲</h2>
+              <div class="logo-number">37</div>
+            </div>
+            <p class="logo-desc">背景是被引力扭曲的时空网格（代表多维空间）。而巨大的 X 带着庞大的质量/能量降临在这个空间中，其自身的力量导致了周围维度的扭曲。这是对“维度之力”最物理学的直观表达。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 20 20 C 50 50, 70 70, 100 100 M 100 20 C 70 50, 50 70, 20 100" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" fill="none" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 38: 无形之境 (Formless Realm) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg drift" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <!-- Amorphous blob -->
+              <path d="M 60 10 C 90 10, 110 30, 100 60 C 90 90, 80 110, 60 110 C 30 110, 10 90, 20 60 C 30 30, 30 10, 60 10 Z" fill="var(--accent-glow)" stroke="var(--accent)" stroke-width="4" />
+              <path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="#fff" stroke-width="10" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Formless Realm / 无形之境</h2>
+              <div class="logo-number">38</div>
+            </div>
+            <p class="logo-desc">最高级的自由，是没有固定的形态（Formless）。外围不再是方框或圆，而是一个像阿米巴原虫/流体一样的液态边界，它在不停地蠕动。白色的 X 在这个无形的维度中闪耀，代表绝对的、不被定义的自由。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 60 20 C 90 20, 100 40, 100 60 C 100 90, 80 100, 60 100 C 30 100, 20 80, 20 60 C 20 30, 30 20, 60 20 Z" fill="none" stroke="var(--accent)" stroke-width="8" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 39: 离散向量 (Discrete Vectors) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g fill="var(--accent)" opacity="0.8">
+                <polygon points="10,10 30,10 20,30" /> <polygon points="40,40 60,40 50,60" /> <polygon points="70,70 90,70 80,90" /> <polygon points="100,100 120,100 110,120" />
+                <polygon points="110,10 90,10 100,30" /> <polygon points="80,40 60,40 70,60" /> <polygon points="50,70 30,70 40,90" /> <polygon points="20,100 0,100 10,120" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Discrete Vectors / 离散向量</h2>
+              <div class="logo-number">39</div>
+            </div>
+            <p class="logo-desc">X 被完全打碎成了多个独立的方向性三角向量（箭头）。它们不再是一条连续的线，而是向着各自维度自由飞行的向量集群。形散而神聚，在无序中构成了宏观的 X 形状。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><g fill="var(--accent)"><polygon points="20,20 40,20 30,40" /><polygon points="50,50 70,50 60,70" /><polygon points="80,80 100,80 90,100" /><polygon points="100,20 80,20 90,40" /><polygon points="40,80 20,80 30,100" /></g></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept 40: 无极象限 (Infinite Quadrant) -->
+        <div class="logo-card">
+          <div class="logo-stage">
+            <svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="var(--accent)" stroke-width="8" stroke-linecap="round" fill="none">
+                <!-- Top left expanding outward -->
+                <path d="M 50 50 L 10 50 M 50 50 L 50 10" />
+                <!-- Bottom right expanding outward -->
+                <path d="M 70 70 L 110 70 M 70 70 L 70 110" />
+                <!-- The X breaking through the empty space -->
+                <path d="M 20 100 L 100 20" stroke="#fff" stroke-width="12" />
+              </g>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">Infinite Quadrant / 无极象限</h2>
+              <div class="logo-number">40</div>
+            </div>
+            <p class="logo-desc">用极简的直角折线勾勒出两个反向的开放象限（没有闭合的方框）。而一道势不可挡的白色斜线（X的一半）直接将这两个维度象限切开。它用最少的笔墨，画出了最开阔、完全不受任何拘束的空间感。</p>
+            <div class="wordmark-lockup">
+              <svg viewBox="0 0 120 120"><path d="M 50 50 L 10 50 M 50 50 L 50 10 M 70 70 L 110 70 M 70 70 L 70 110 M 20 100 L 100 20" stroke="var(--accent)" stroke-width="14" stroke-linecap="round" fill="none" /></svg>
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

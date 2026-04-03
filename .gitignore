@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+.agents/
+.claude/
+.playwright-cli/
+.trae/
+.vscode/
+.vercel/
+skills/
+skills-lock.json
+node_modules/

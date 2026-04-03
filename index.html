@@ -1,0 +1,1592 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 自由维度科技品牌视觉</title>
+    <meta
+      name="description"
+      content="UNBOUNDX 自由维度科技原创品牌视觉方案：包含 logo、色彩系统、字体系统与应用场景展示。"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: #f3f5f8;
+        --paper: oklch(0.965 0.008 250);
+        --paper-deep: #e8edf2;
+        --paper-deep: oklch(0.93 0.012 250);
+        --ink: #10141b;
+        --ink: oklch(0.21 0.018 257);
+        --ink-soft: #1a2230;
+        --ink-soft: oklch(0.29 0.025 256);
+        --mist: #aab7c4;
+        --mist: oklch(0.79 0.03 250);
+        --muted: #5e6876;
+        --muted: oklch(0.54 0.03 255);
+        --accent: #db5c3d;
+        --accent: oklch(0.64 0.18 34);
+        --accent-soft: #f2c4b7;
+        --accent-soft: oklch(0.84 0.06 34);
+        --line: rgba(16, 20, 27, 0.12);
+        --line-strong: rgba(16, 20, 27, 0.2);
+        --white-line: rgba(255, 255, 255, 0.12);
+        --panel: rgba(255, 255, 255, 0.68);
+        --panel-strong: rgba(255, 255, 255, 0.88);
+        --shadow: 0 22px 58px rgba(12, 17, 24, 0.12);
+        --radius-xl: 34px;
+        --radius-lg: 26px;
+        --radius-md: 18px;
+        --max-width: 1380px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", "Noto Sans SC", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(219, 92, 61, 0.08), transparent 28%),
+          radial-gradient(circle at 92% 8%, rgba(170, 183, 196, 0.18), transparent 24%),
+          linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.34) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+        background-size: 52px 52px;
+        mask-image: radial-gradient(circle at center, black 46%, transparent 100%);
+        pointer-events: none;
+        opacity: 0.34;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .page {
+        width: min(var(--max-width), calc(100vw - 32px));
+        margin: 0 auto;
+        padding: clamp(24px, 3vw, 36px) 0 72px;
+        position: relative;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+        gap: clamp(22px, 3vw, 42px);
+        align-items: stretch;
+        padding-top: 18px;
+      }
+
+      .hero-copy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(12px, 2vw, 24px) 0;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        color: var(--muted);
+      }
+
+      .eyebrow::before,
+      .section-kicker::before {
+        content: "";
+        width: 42px;
+        height: 1px;
+        background: color-mix(in oklab, var(--accent), white 30%);
+      }
+
+      .hero-title {
+        margin: 18px 0 14px;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: clamp(3rem, 8.5vw, 6.4rem);
+        line-height: 0.92;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero-title span {
+        color: var(--accent);
+      }
+
+      .hero-text {
+        max-width: 42rem;
+        font-size: clamp(1rem, 1.55vw, 1.18rem);
+        line-height: 1.72;
+        color: var(--ink-soft);
+        margin: 0 0 26px;
+      }
+
+      .chip-row,
+      .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .chip {
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.44);
+        backdrop-filter: blur(10px);
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+      }
+
+      .action-row {
+        margin-top: 28px;
+      }
+
+      .button {
+        appearance: none;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 13px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        transition:
+          transform 180ms ease,
+          background 180ms ease,
+          color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .button-primary {
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: 0 14px 28px rgba(16, 20, 27, 0.15);
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.56);
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .hero-note {
+        margin-top: 22px;
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 38rem;
+      }
+
+      .logo-stage {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 660px;
+        padding: clamp(24px, 3vw, 34px);
+        border-radius: 36px 10px 36px 10px;
+        background:
+          radial-gradient(circle at 76% 26%, rgba(219, 92, 61, 0.18), transparent 18%),
+          radial-gradient(circle at 24% 74%, rgba(170, 183, 196, 0.18), transparent 26%),
+          linear-gradient(160deg, #0d1118 0%, #111722 38%, #131a26 64%, #0f1218 100%);
+        color: rgba(247, 249, 252, 0.95);
+        box-shadow: 0 30px 70px rgba(9, 14, 20, 0.2);
+        isolation: isolate;
+      }
+
+      .logo-stage::before {
+        content: "";
+        position: absolute;
+        inset: -8%;
+        background:
+          linear-gradient(135deg, transparent 0 39%, rgba(255, 255, 255, 0.08) 39% 39.7%, transparent 39.7% 100%),
+          linear-gradient(160deg, transparent 0 60%, rgba(255, 255, 255, 0.06) 60% 60.8%, transparent 60.8% 100%),
+          linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        background-size: 100% 100%, 100% 100%, 74px 74px, 74px 74px;
+        transform: rotate(-8deg) scale(1.06);
+        opacity: 0.46;
+        z-index: -2;
+      }
+
+      .logo-stage::after {
+        content: "";
+        position: absolute;
+        width: 52%;
+        height: 52%;
+        right: -7%;
+        bottom: 10%;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 58%);
+        transform: skewX(-18deg) rotate(-8deg);
+        z-index: -1;
+      }
+
+      .stage-tag {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        color: rgba(255, 255, 255, 0.66);
+      }
+
+      .stage-tag strong {
+        color: rgba(255, 255, 255, 0.95);
+        font-weight: 700;
+      }
+
+      .stage-center {
+        display: grid;
+        gap: 18px;
+        align-self: start;
+      }
+
+      .mark-wrap {
+        width: clamp(172px, 22vw, 228px);
+        aspect-ratio: 1.2;
+        display: grid;
+        place-items: center;
+        border-radius: 30px 8px 30px 8px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+          rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      }
+
+      .mark-wrap svg,
+      .variant-mark svg,
+      .geometry-svg svg,
+      .icon-badge svg,
+      .poster-mark svg {
+        width: 100%;
+        height: auto;
+      }
+
+      .hero-mark {
+        width: 72%;
+        color: rgba(247, 249, 252, 0.96);
+        filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.24));
+        animation: drift 12s ease-in-out infinite;
+      }
+
+      .lockup {
+        position: relative;
+        padding-bottom: 38px;
+      }
+
+      .wordmark {
+        position: relative;
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 0.08em;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: clamp(2.7rem, 6.4vw, 6rem);
+        line-height: 0.92;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .wordmark-main {
+        color: rgba(247, 249, 252, 0.96);
+      }
+
+      .wordmark-x {
+        color: var(--accent);
+        transform: translateY(0.03em);
+      }
+
+      .wordmark-trace {
+        position: absolute;
+        right: -1.8%;
+        top: -8%;
+        width: 18%;
+        height: 2px;
+        background: linear-gradient(90deg, color-mix(in oklab, var(--accent), white 4%), rgba(255, 255, 255, 0.82));
+        transform: rotate(-41deg);
+        transform-origin: right center;
+        box-shadow: 0 0 18px rgba(219, 92, 61, 0.28);
+      }
+
+      .wordmark-cn {
+        position: absolute;
+        left: 0.44em;
+        bottom: 0;
+        transform: translateY(100%);
+        font-family: "Noto Sans SC", "Manrope", sans-serif;
+        font-size: 0.9rem;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .brand-sentence {
+        max-width: 34rem;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: clamp(1rem, 1.4vw, 1.08rem);
+        line-height: 1.72;
+      }
+
+      .signal-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .signal {
+        padding: 14px 14px 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
+      }
+
+      .signal-label {
+        display: block;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.26em;
+        color: rgba(255, 255, 255, 0.54);
+        margin-bottom: 10px;
+      }
+
+      .signal strong {
+        display: block;
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+        color: rgba(255, 255, 255, 0.96);
+      }
+
+      .signal span:last-child {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+
+      .content-grid,
+      .system-grid,
+      .applications-grid {
+        display: grid;
+        gap: clamp(18px, 2vw, 24px);
+        margin-top: clamp(20px, 4vw, 56px);
+      }
+
+      .content-grid {
+        grid-template-columns: 1.02fr 0.98fr;
+      }
+
+      .system-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .applications-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
+
+      .card-pad {
+        padding: clamp(22px, 3vw, 30px);
+      }
+
+      .section-title {
+        margin: 14px 0 0;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .section-title-tight {
+        max-width: 13ch;
+      }
+
+      .section-text {
+        margin: 16px 0 0;
+        max-width: 44rem;
+        color: var(--ink-soft);
+        line-height: 1.78;
+        font-size: 1rem;
+      }
+
+      .principles {
+        display: grid;
+        gap: 18px;
+        margin-top: 28px;
+      }
+
+      .principle {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 16px;
+        padding-top: 16px;
+        border-top: 1px solid var(--line);
+      }
+
+      .principle-label {
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: 0.86rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .principle p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+
+      .geometry-card {
+        background:
+          radial-gradient(circle at 82% 14%, rgba(219, 92, 61, 0.12), transparent 16%),
+          linear-gradient(165deg, #111722 0%, #161d28 100%);
+        color: rgba(247, 249, 252, 0.95);
+      }
+
+      .geometry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: end;
+      }
+
+      .geometry-head p {
+        margin: 16px 0 0;
+        max-width: 26rem;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.7;
+      }
+
+      .geometry-svg {
+        margin-top: 24px;
+        padding: 14px;
+        border-radius: 24px;
+        border: 1px solid var(--white-line);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .geometry-meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .geometry-meta div {
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .geometry-meta span {
+        display: block;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.24em;
+        margin-bottom: 8px;
+      }
+
+      .geometry-meta strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .logo-system-card {
+        display: grid;
+        gap: 20px;
+      }
+
+      .variant-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .variant {
+        min-height: 230px;
+        padding: 18px;
+        border-radius: 26px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow: hidden;
+      }
+
+      .variant-dark {
+        background:
+          radial-gradient(circle at 80% 10%, rgba(219, 92, 61, 0.18), transparent 18%),
+          linear-gradient(160deg, #0f131a 0%, #121924 100%);
+        color: rgba(248, 250, 253, 0.96);
+      }
+
+      .variant-light {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 248, 251, 0.84));
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+
+      .variant-accent {
+        background:
+          linear-gradient(160deg, color-mix(in oklab, var(--accent), black 14%), color-mix(in oklab, var(--accent), black 34%)),
+          var(--accent);
+        color: #fff5f2;
+      }
+
+      .variant-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        opacity: 0.78;
+      }
+
+      .variant-mark {
+        width: 92px;
+      }
+
+      .variant-lockup {
+        position: relative;
+        display: inline-flex;
+        align-items: flex-end;
+        gap: 0.08em;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: clamp(1.12rem, 2vw, 1.36rem);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .variant-lockup span:last-child {
+        color: var(--accent);
+      }
+
+      .variant-light .variant-lockup span:last-child {
+        color: color-mix(in oklab, var(--accent), black 6%);
+      }
+
+      .variant-accent .variant-lockup span:last-child {
+        color: #fff2ed;
+      }
+
+      .variant-caption {
+        color: inherit;
+        opacity: 0.76;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .swatches {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .swatch {
+        display: grid;
+        grid-template-columns: 86px 1fr;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .swatch-color {
+        height: 86px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.44);
+      }
+
+      .swatch-color-ink {
+        background: var(--ink);
+      }
+
+      .swatch-color-paper {
+        background: linear-gradient(180deg, var(--paper), #ffffff);
+      }
+
+      .swatch-color-accent {
+        background: linear-gradient(180deg, color-mix(in oklab, var(--accent), white 8%), color-mix(in oklab, var(--accent), black 12%));
+      }
+
+      .swatch-color-mist {
+        background: linear-gradient(180deg, color-mix(in oklab, var(--mist), white 10%), color-mix(in oklab, var(--mist), black 6%));
+      }
+
+      .swatch strong,
+      .type-sample strong,
+      .app-shell strong,
+      .footer-note strong {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .swatch span,
+      .type-sample span {
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.55;
+      }
+
+      .type-card {
+        display: grid;
+        gap: 24px;
+      }
+
+      .type-sample {
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .type-logo {
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: clamp(2rem, 5vw, 3.8rem);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        line-height: 0.95;
+        margin-bottom: 10px;
+      }
+
+      .type-logo span {
+        color: var(--accent);
+      }
+
+      .type-body {
+        font-size: 1.02rem;
+        line-height: 1.82;
+        color: var(--ink-soft);
+      }
+
+      .app-card {
+        min-height: 360px;
+        padding: 20px;
+      }
+
+      .app-shell {
+        height: 100%;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .mission-ui {
+        background:
+          radial-gradient(circle at 76% 24%, rgba(219, 92, 61, 0.2), transparent 18%),
+          linear-gradient(165deg, #10151d 0%, #151d29 100%);
+        color: rgba(248, 250, 253, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 18px;
+      }
+
+      .mission-header,
+      .badge-header,
+      .poster-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .mission-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .mission-logo svg {
+        width: 28px;
+        color: rgba(248, 250, 253, 0.95);
+      }
+
+      .mission-tag,
+      .badge-code,
+      .poster-tag {
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.58);
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .stat {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .stat span {
+        display: block;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: rgba(255, 255, 255, 0.56);
+        margin-bottom: 8px;
+      }
+
+      .stat strong {
+        font-size: 1.44rem;
+        line-height: 1;
+      }
+
+      .stat small {
+        display: block;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.55;
+      }
+
+      .mission-line {
+        margin-top: 18px;
+        padding: 14px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.7;
+      }
+
+      .badge-shell {
+        position: relative;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(245, 247, 250, 0.84));
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+
+      .badge-shell::after {
+        content: "";
+        position: absolute;
+        inset: auto -12% 18% 44%;
+        height: 70px;
+        background: color-mix(in oklab, var(--accent), white 24%);
+        transform: rotate(-20deg);
+        opacity: 0.2;
+      }
+
+      .badge-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .badge-logo svg {
+        width: 42px;
+        color: var(--ink);
+      }
+
+      .badge-body {
+        margin-top: 34px;
+      }
+
+      .badge-body strong {
+        font-size: 1.24rem;
+      }
+
+      .badge-body p {
+        margin: 10px 0 0;
+        color: var(--ink-soft);
+        line-height: 1.68;
+      }
+
+      .badge-footer {
+        margin-top: 26px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .poster-shell {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        background:
+          radial-gradient(circle at 78% 18%, rgba(219, 92, 61, 0.22), transparent 18%),
+          linear-gradient(180deg, #eef2f6 0%, #dfe6ed 100%);
+        padding: 18px;
+      }
+
+      .poster-mark {
+        width: 80px;
+        color: var(--ink);
+      }
+
+      .poster-title {
+        align-self: end;
+        margin: 0;
+        font-family: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 0.98;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .poster-title span {
+        color: var(--accent);
+      }
+
+      .poster-copy {
+        margin: 14px 0 0;
+        max-width: 18rem;
+        color: var(--ink-soft);
+        line-height: 1.75;
+      }
+
+      .poster-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(16, 20, 27, 0.12);
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
+
+      .icon-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .icon-badge {
+        width: 88px;
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+        border-radius: 24px;
+        overflow: hidden;
+      }
+
+      .icon-badge-dark {
+        background: linear-gradient(160deg, #10141b, #161d29);
+        color: rgba(248, 250, 253, 0.96);
+      }
+
+      .icon-badge-light {
+        background: linear-gradient(180deg, #ffffff, #eef2f5);
+        color: var(--ink);
+        border: 1px solid var(--line);
+      }
+
+      .icon-badge svg {
+        width: 54%;
+      }
+
+      .footer-note {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 24px;
+        padding: 24px 4px 0;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .footer-note p {
+        margin: 0;
+        max-width: 40rem;
+      }
+
+      .fine {
+        font-size: 0.88rem;
+      }
+
+      @keyframes drift {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-8px) rotate(-1.2deg);
+        }
+      }
+
+      @media (max-width: 1120px) {
+        .hero,
+        .content-grid,
+        .system-grid,
+        .applications-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .logo-stage {
+          min-height: 560px;
+        }
+
+        .variant-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(var(--max-width), calc(100vw - 18px));
+          padding-bottom: 40px;
+        }
+
+        .signal-grid,
+        .geometry-meta {
+          grid-template-columns: 1fr;
+        }
+
+        .principle {
+          grid-template-columns: 1fr;
+        }
+
+        .wordmark {
+          font-size: clamp(2rem, 12vw, 3.2rem);
+          letter-spacing: 0.08em;
+        }
+
+        .wordmark-cn {
+          position: static;
+          transform: none;
+          display: block;
+          margin-top: 10px;
+          letter-spacing: 0.2em;
+        }
+
+        .footer-note {
+          flex-direction: column;
+        }
+
+        .swatch {
+          grid-template-columns: 1fr;
+        }
+
+        .swatch-color {
+          height: 68px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg aria-hidden="true" width="0" height="0" style="position: absolute">
+      <defs>
+        <linearGradient id="trajectory" x1="78" y1="139" x2="196" y2="22" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#f0dad2"></stop>
+          <stop offset="0.45" stop-color="#dd6a4a"></stop>
+          <stop offset="1" stop-color="#ffffff"></stop>
+        </linearGradient>
+
+        <symbol id="ux-mark" viewBox="0 0 240 180">
+          <path
+            d="M54 116V58L120 26L186 58"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M186 88V122L120 154L54 122"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="14"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M84 120L120 98L148 72L186 58"
+            fill="none"
+            stroke="url(#trajectory)"
+            stroke-width="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M120 98L152 130"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+          <circle cx="120" cy="98" r="6" fill="#db5c3d"></circle>
+        </symbol>
+      </defs>
+    </svg>
+
+    <template id="logo-mark-template">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" fill="none">
+        <path
+          d="M54 116V58L120 26L186 58"
+          stroke="#10141B"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M186 88V122L120 154L54 122"
+          stroke="#10141B"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <defs>
+          <linearGradient id="uxExportTrajectory" x1="84" y1="120" x2="186" y2="58" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#F0DAD2" />
+            <stop offset="0.45" stop-color="#DD6A4A" />
+            <stop offset="1" stop-color="#FFFFFF" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M84 120L120 98L148 72L186 58"
+          stroke="url(#uxExportTrajectory)"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M120 98L152 130"
+          stroke="#10141B"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle cx="120" cy="98" r="6" fill="#DB5C3D" />
+      </svg>
+    </template>
+
+    <template id="icon-template">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+        <rect width="256" height="256" rx="64" fill="#10141B" />
+        <path
+          d="M66 149V88L128 54L190 88"
+          stroke="#F4F6F9"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M190 118V150L128 186L66 150"
+          stroke="#F4F6F9"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <defs>
+          <linearGradient id="iconTrajectory" x1="94" y1="148" x2="190" y2="88" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#F0DAD2" />
+            <stop offset="0.45" stop-color="#DD6A4A" />
+            <stop offset="1" stop-color="#FFFFFF" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M94 148L128 128L156 102L190 88"
+          stroke="url(#iconTrajectory)"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M128 128L160 160"
+          stroke="#F4F6F9"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <circle cx="128" cy="128" r="6" fill="#DB5C3D" />
+      </svg>
+    </template>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero-copy">
+          <div>
+            <div class="eyebrow">Original Identity / Boundless Tech / Dimensional Systems</div>
+            <h1 class="hero-title">UNBOUND<span>X</span></h1>
+            <p class="hero-text">
+              为 <strong>unboundX / 自由维度科技</strong> 设计的一套原创品牌视觉。
+              方向把重点收拢到
+              <strong>自由、维度、不受限</strong> 这三个关键词：
+              像一个正在打开新坐标系的未来科技系统。
+            </p>
+            <div class="chip-row" aria-label="brand traits">
+              <span class="chip">自由感 Logo</span>
+              <span class="chip">维度切换语言</span>
+              <span class="chip">开放边界科技感</span>
+              <span class="chip">适合官网 / 产品 / 品牌物料</span>
+            </div>
+            <div class="action-row">
+              <button class="button button-primary" data-download="logo-mark-template" data-file="unboundx-mark.svg">
+                下载图形标志
+              </button>
+              <button class="button button-secondary" data-download="icon-template" data-file="unboundx-app-icon.svg">
+                下载 App Icon
+              </button>
+              <a class="button button-secondary" href="unboundx-logo-showcase.html">查看 Logo 备选方向</a>
+            </div>
+            <p class="hero-note">
+              标志逻辑：开放框架代表 <strong>unbound</strong>，
+              内部折线代表 <strong>dimension shift</strong>，
+              节点与分叉则让 <strong>X</strong> 不再是字母本身，而是“跨维度展开”的动作。
+            </p>
+          </div>
+        </div>
+
+        <div class="logo-stage">
+          <div class="stage-tag">
+            <span>Brand Preview</span>
+            <strong>Boundless Tech System</strong>
+          </div>
+
+          <div class="stage-center">
+            <div class="mark-wrap">
+              <svg class="hero-mark" viewBox="0 0 240 180" role="img" aria-label="unboundX brand mark">
+                <use href="#ux-mark"></use>
+              </svg>
+            </div>
+
+            <div class="lockup">
+              <div class="wordmark" aria-label="unboundX">
+                <span class="wordmark-main">UNBOUND</span>
+                <span class="wordmark-x">X</span>
+                <span class="wordmark-trace" aria-hidden="true"></span>
+              </div>
+              <span class="wordmark-cn">自由维度科技</span>
+            </div>
+
+            <p class="brand-sentence">
+              Open systems. Shift dimensions. Stay unbound. <br />
+              适合 AI 工具、创意科技、系统平台、未来硬件等品牌场景。
+            </p>
+          </div>
+
+          <div class="signal-grid">
+            <div class="signal">
+              <span class="signal-label">01 / Open Frame</span>
+              <strong>自由感来自“开口结构”</strong>
+              <span>主体不是闭合徽章，而是一个留有出口的框架，品牌从结构上就拒绝被封住。</span>
+            </div>
+            <div class="signal">
+              <span class="signal-label">02 / Split Axis</span>
+              <strong>像维度切换，不像飞船轨迹</strong>
+              <span>内部折线不是“起飞”，而是从一个平面折入另一个平面的切换动作。</span>
+            </div>
+            <div class="signal">
+              <span class="signal-label">03 / Boundless Tone</span>
+              <strong>保留锋利，强化开放维度</strong>
+              <span>整体仍然克制、精确、未来，但核心语义已经明确切到“开放维度”的科技感。</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="card card-pad">
+          <div class="section-kicker">Brand DNA</div>
+          <h2 class="section-title section-title-tight">像一个正在打开新维度的科技系统。</h2>
+          <p class="section-text">
+            这个方向不做常规 SaaS 科技感，而是更像一家拥有
+            <strong>开放边界、抽象维度感、未来系统能力</strong> 的科技公司。
+            视觉上强调留白、折面、切换、控制感与结构张力。
+          </p>
+
+          <div class="principles">
+            <div class="principle">
+              <div class="principle-label">Freedom</div>
+              <p>主体轮廓不做闭合密封，而是保留出口与呼吸感，让“自由”先出现在结构里，再进入文案里。</p>
+            </div>
+            <div class="principle">
+              <div class="principle-label">Dimension</div>
+              <p>折线与节点像坐标轴切换，不像飞行航迹；它表达的是界面、层级、维度之间的跃迁。</p>
+            </div>
+            <div class="principle">
+              <div class="principle-label">Clarity</div>
+              <p>整体依然保持克制、英文优先和工程感比例，但语义更抽象、更现代，也更适合广义科技品牌。</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-pad geometry-card">
+          <div class="geometry-head">
+            <div>
+              <div class="section-kicker">Geometry</div>
+              <h2 class="section-title">标志构成</h2>
+            </div>
+          </div>
+          <p>
+            图形由开放六边框架、切换轴线和节点构成；
+            像一扇未被关上的门，也像一个正在展开的维度界面。
+            它强调的是进入更多可能性。
+          </p>
+
+          <div class="geometry-svg">
+            <svg viewBox="0 0 420 280" role="img" aria-label="unboundX logo geometry">
+              <rect x="0" y="0" width="420" height="280" rx="24" fill="rgba(255,255,255,0.02)"></rect>
+              <polygon points="78,76 168,36 258,76 258,164 168,206 78,164" fill="none" stroke="rgba(255,255,255,0.08)" stroke-dasharray="5 8"></polygon>
+              <polygon points="110,96 168,68 226,96 226,152 168,180 110,152" fill="none" stroke="rgba(255,255,255,0.06)" stroke-dasharray="5 10"></polygon>
+              <line x1="32" y1="140" x2="388" y2="140" stroke="rgba(255,255,255,0.08)" stroke-dasharray="6 10"></line>
+              <line x1="168" y1="24" x2="168" y2="254" stroke="rgba(255,255,255,0.08)" stroke-dasharray="6 10"></line>
+              <line x1="108" y1="174" x2="250" y2="86" stroke="rgba(255,255,255,0.16)" stroke-dasharray="4 8"></line>
+              <g transform="translate(42 42) scale(1.36)">
+                <use href="#ux-mark" fill="none"></use>
+              </g>
+              <circle cx="205" cy="175" r="6" fill="#db5c3d"></circle>
+              <text x="282" y="72" fill="rgba(255,255,255,0.62)" font-size="12" letter-spacing="3">DIMENSION AXIS</text>
+              <text x="270" y="152" fill="rgba(255,255,255,0.62)" font-size="12" letter-spacing="3">SHIFT NODE</text>
+              <text x="280" y="224" fill="rgba(255,255,255,0.62)" font-size="12" letter-spacing="3">OPEN FRAME</text>
+            </svg>
+          </div>
+
+          <div class="geometry-meta">
+            <div>
+              <span>Form</span>
+              <strong>Open frame + split axis</strong>
+            </div>
+            <div>
+              <span>Meaning</span>
+              <strong>Freedom expressed as structure</strong>
+            </div>
+            <div>
+              <span>Use</span>
+              <strong>Logo / icon / motion cue</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="system-grid">
+        <article class="card card-pad logo-system-card">
+          <div>
+            <div class="section-kicker">Logo System</div>
+            <h2 class="section-title">主标、单色、强调版</h2>
+            <p class="section-text">
+              这套系统优先保证在网站首屏、产品启动页、名片、硬件贴纸、社媒头像里都能稳定成立。
+              对外传播建议优先使用主标；空间有限或需要更抽象表达时使用图形标志。
+            </p>
+          </div>
+
+          <div class="variant-grid">
+            <div class="variant variant-dark">
+              <div class="variant-top">
+                <span>Primary</span>
+                <span>Dark Field</span>
+              </div>
+              <div>
+                <div class="variant-mark">
+                  <svg viewBox="0 0 240 180" aria-hidden="true">
+                    <use href="#ux-mark"></use>
+                  </svg>
+                </div>
+                <div class="variant-lockup">
+                  <span>UNBOUND</span>
+                  <span>X</span>
+                </div>
+              </div>
+              <div class="variant-caption">官网首屏、Key Visual、对外发布封面。</div>
+            </div>
+
+            <div class="variant variant-light">
+              <div class="variant-top">
+                <span>Mono</span>
+                <span>Light Field</span>
+              </div>
+              <div>
+                <div class="variant-mark" style="color: var(--ink)">
+                  <svg viewBox="0 0 240 180" aria-hidden="true">
+                    <use href="#ux-mark"></use>
+                  </svg>
+                </div>
+                <div class="variant-lockup" style="color: var(--ink)">
+                  <span>UNBOUND</span>
+                  <span>X</span>
+                </div>
+              </div>
+              <div class="variant-caption">文档封面、白底物料、产品后台与硬件丝印。</div>
+            </div>
+
+            <div class="variant variant-accent">
+              <div class="variant-top">
+                <span>Signal</span>
+                <span>Impact Use</span>
+              </div>
+              <div>
+                <div class="variant-mark" style="color: rgba(255,245,242,0.96)">
+                  <svg viewBox="0 0 240 180" aria-hidden="true">
+                    <use href="#ux-mark"></use>
+                  </svg>
+                </div>
+                <div class="variant-lockup" style="color: rgba(255,245,242,0.96)">
+                  <span>UNBOUND</span>
+                  <span>X</span>
+                </div>
+              </div>
+              <div class="variant-caption">海报、启动页、发布会主视觉强调场景。</div>
+            </div>
+          </div>
+        </article>
+
+        <div style="display: grid; gap: clamp(18px, 2vw, 24px)">
+          <article class="card card-pad">
+            <div class="section-kicker">Palette</div>
+            <h2 class="section-title">色彩系统</h2>
+            <div class="swatches">
+              <div class="swatch">
+                <div class="swatch-color swatch-color-ink"></div>
+                <div>
+                  <strong>Frame Black</strong>
+                  <span>主品牌底色。用于深色界面、主标展示与系统骨架。</span>
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color swatch-color-paper"></div>
+                <div>
+                  <strong>Field White</strong>
+                  <span>留白基底。不是纯白，带一点冷调，让界面更安静。</span>
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color swatch-color-accent"></div>
+                <div>
+                  <strong>Signal Coral</strong>
+                  <span>唯一高识别强调色。用于切换轴线、按钮焦点和关键节点。</span>
+                </div>
+              </div>
+              <div class="swatch">
+                <div class="swatch-color swatch-color-mist"></div>
+                <div>
+                  <strong>Dimension Mist</strong>
+                  <span>辅助灰蓝。用于辅助文字、系统信息层与二级界面。</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card-pad type-card">
+            <div>
+              <div class="section-kicker">Typography</div>
+              <h2 class="section-title">字体系</h2>
+            </div>
+            <div class="type-sample">
+              <strong>Display · Sora</strong>
+              <div class="type-logo">UNBOUND<span>X</span></div>
+              <span>建议用于品牌名、标题与主视觉字标。更克制，也更适合当前“自由维度”的方向。</span>
+            </div>
+            <div class="type-sample">
+              <strong>Text / UI · Manrope + Noto Sans SC</strong>
+              <div class="type-body">
+                英文正文与产品界面使用 Manrope，中文内容搭配 Noto Sans SC。整体更稳定，不会和主标抢戏。
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="applications-grid">
+        <article class="card app-card">
+          <div class="app-shell mission-ui">
+            <div class="mission-header">
+              <div class="mission-logo">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <use href="#ux-mark"></use>
+                </svg>
+                <span>UNBOUNDX</span>
+              </div>
+              <div class="mission-tag">Product Interface</div>
+            </div>
+
+            <div class="mission-grid">
+              <div class="stat">
+                <span>Open Threads</span>
+                <strong>97.4%</strong>
+                <small>多线程能力持续打开</small>
+              </div>
+              <div class="stat">
+                <span>Mode Shift</span>
+                <strong>+12.8°</strong>
+                <small>界面状态已切入下一层级</small>
+              </div>
+              <div class="stat">
+                <span>Latency</span>
+                <strong>18 ms</strong>
+                <small>交互层响应保持即时</small>
+              </div>
+              <div class="stat">
+                <span>Flex Nodes</span>
+                <strong>144</strong>
+                <small>系统节点保留开放扩展性</small>
+              </div>
+            </div>
+
+            <div class="mission-line">
+              品牌在产品界面里更像一个“系统锚点”——图形标志适合做状态灯、加载动画和导航入口。
+            </div>
+          </div>
+        </article>
+
+        <article class="card app-card">
+          <div class="app-shell badge-shell">
+            <div class="badge-header">
+              <div class="badge-logo">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <use href="#ux-mark"></use>
+                </svg>
+                <span>UNBOUNDX</span>
+              </div>
+              <div class="badge-code">Brand Card</div>
+            </div>
+
+            <div class="badge-body">
+              <strong>自由维度科技</strong>
+              <p>
+                用于名片、硬件标签、访客牌时，建议用极简留白和一条斜向色带即可，
+                不需要额外图形装饰或视觉噪音。
+              </p>
+            </div>
+
+            <div class="icon-row">
+              <div class="icon-badge icon-badge-dark">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <use href="#ux-mark"></use>
+                </svg>
+              </div>
+              <div class="icon-badge icon-badge-light">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <use href="#ux-mark"></use>
+                </svg>
+              </div>
+            </div>
+
+            <div class="badge-footer">
+              <span>Minimal identity asset</span>
+              <span>Print-safe</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card app-card">
+          <div class="app-shell poster-shell">
+            <div class="poster-header">
+              <div class="poster-mark">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <use href="#ux-mark"></use>
+                </svg>
+              </div>
+              <div class="poster-tag">Campaign Visual</div>
+            </div>
+
+            <div>
+              <h3 class="poster-title">Open <span>Dimensions</span></h3>
+              <p class="poster-copy">
+                用于发布页、招聘页、投资人材料时，可让主标与一句短句形成强对比，建立记忆点。
+              </p>
+            </div>
+
+            <div class="poster-footer">
+              <span>UNBOUNDX</span>
+              <span>Boundless by design</span>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer-note">
+        <p>
+          <strong>建议延展方向：</strong>
+          如果你喜欢这个版本，下一步可以继续拆成完整交付物：SVG Logo 套件、favicon / app icon、
+          官网首屏落地页、品牌规范 PDF、名片 / 贴纸 / 启动页。
+        </p>
+        <p class="fine">
+          当前方案重点突出“自由、维度、不受限”的科技感，
+          同时保留了精度、秩序和未来系统感。
+        </p>
+      </div>
+    </main>
+
+    <script>
+      const downloadAsset = (templateId, filename) => {
+        const template = document.getElementById(templateId);
+        if (!template) return;
+        const markup = template.innerHTML.trim();
+        const blob = new Blob([markup], { type: "image/svg+xml;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
+
+      document.querySelectorAll("[data-download]").forEach((button) => {
+        button.addEventListener("click", () => {
+          downloadAsset(button.dataset.download, button.dataset.file);
+        });
+      });
+    </script>
+  </body>
+</html>

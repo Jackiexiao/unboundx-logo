@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNBOUNDX 主色调方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+            padding: 60px 40px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 80px;
+            letter-spacing: 4px;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .color-option {
+            border: 2px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .color-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.05);
+        }
+
+        .color-option.blue:hover { border-color: #0096ff; box-shadow: 0 20px 40px rgba(0, 150, 255, 0.2); }
+        .color-option.purple:hover { border-color: #8b5cf6; box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2); }
+        .color-option.cyan:hover { border-color: #06b6d4; box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2); }
+        .color-option.violet:hover { border-color: #a855f7; box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2); }
+        .color-option.emerald:hover { border-color: #10b981; box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2); }
+        .color-option.orange:hover { border-color: #f97316; box-shadow: 0 20px 40px rgba(249, 115, 22, 0.2); }
+
+        .color-display {
+            background: #000;
+            padding: 60px 40px;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .color-info {
+            background: #0a0a0a;
+            padding: 30px;
+            border-top: 1px solid #222;
+        }
+
+        .color-name {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .color-desc {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .color-code {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .logo-text {
+            font-size: 56px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .logo-subtitle {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 6px;
+            margin-bottom: 30px;
+        }
+
+        .recommendation {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+            border: 2px solid #0096ff;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .recommendation h2 {
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #0096ff;
+        }
+
+        .recommendation p {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .comparison {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid #222;
+        }
+
+        .comparison h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: #222;
+            border: 2px solid #222;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-item {
+            background: #000;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .comparison-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UNBOUNDX 主色调方案</h1>
+        <p class="subtitle">选择最能代表品牌精神的颜色</p>
+
+        <div class="color-grid">
+            <!-- Option 1: 科技蓝 -->
+            <div class="color-option blue">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#0096ff" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #0096ff; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #0096ff;">方案一：科技蓝（当前方案）</div>
+                    <div class="color-desc">
+                        经典的科技蓝，代表创新、专业、可靠。这是科技公司最常用的颜色，
+                        给人以信任感和专业感，适合 B2B 和企业级产品。
+                    </div>
+                    <div class="color-code">
+                        主色：#0096FF | RGB(0, 150, 255)<br>
+                        适用场景：企业服务、云计算、AI 平台
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 2: 深紫 -->
+            <div class="color-option purple">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#8b5cf6" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #8b5cf6; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #8b5cf6;">方案二：深紫（推荐）</div>
+                    <div class="color-desc">
+                        神秘而富有创造力的紫色，代表多维度、想象力和突破边界。
+                        比蓝色更独特，能体现"维度"的概念，适合创新型科技公司。
+                    </div>
+                    <div class="color-code">
+                        主色：#8B5CF6 | RGB(139, 92, 246)<br>
+                        适用场景：创新产品、元宇宙、创意平台
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 3: 青色 -->
+            <div class="color-option cyan">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #06b6d4; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #06b6d4;">方案三：未来青</div>
+                    <div class="color-desc">
+                        清新的青色，代表未来、流动和自由。比蓝色更轻盈，
+                        给人以开放、灵活的感觉，适合强调"自由"概念的品牌。
+                    </div>
+                    <div class="color-code">
+                        主色：#06B6D4 | RGB(6, 182, 212)<br>
+                        适用场景：SaaS 产品、协作工具、开发者平台
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 4: 亮紫 -->
+            <div class="color-option violet">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#a855f7" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #a855f7; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #a855f7;">方案四：量子紫</div>
+                    <div class="color-desc">
+                        更明亮的紫色，充满能量和创造力。代表突破、创新和无限可能，
+                        视觉冲击力强，适合面向年轻用户的创新产品。
+                    </div>
+                    <div class="color-code">
+                        主色：#A855F7 | RGB(168, 85, 247)<br>
+                        适用场景：消费级产品、创意工具、Web3
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 5: 翡翠绿 -->
+            <div class="color-option emerald">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#10b981" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #10b981; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #10b981;">方案五：突破绿</div>
+                    <div class="color-desc">
+                        充满生机的绿色，代表成长、突破和新生。与众不同的选择，
+                        能传达积极向上、持续进化的品牌形象。
+                    </div>
+                    <div class="color-code">
+                        主色：#10B981 | RGB(16, 185, 129)<br>
+                        适用场景：可持续科技、成长型平台、教育产品
+                    </div>
+                </div>
+            </div>
+
+            <!-- Option 6: 能量橙 -->
+            <div class="color-option orange">
+                <div class="color-display">
+                    <svg width="200" height="120" viewBox="0 0 200 120">
+                        <path d="M 40 30 L 70 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 90 30 L 160 30 L 160 50" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 160 70 L 160 90 L 90 90" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 90 L 40 90 L 40 70" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 40 50 L 40 30" stroke="#444" stroke-width="1.5"/>
+                        <path d="M 70 50 L 100 80 M 100 50 L 70 80"
+                              stroke="#f97316" stroke-width="8" stroke-linecap="round"/>
+                    </svg>
+                    <div class="logo-text" style="color: #fff;">UNBOUND<span style="color: #f97316; font-weight: 700;">X</span></div>
+                    <div class="logo-subtitle">自由维度</div>
+                </div>
+                <div class="color-info">
+                    <div class="color-name" style="color: #f97316;">方案六：能量橙</div>
+                    <div class="color-desc">
+                        充满活力的橙色，代表热情、行动力和突破精神。
+                        视觉冲击力最强，适合强调"不受限"和"突破"的品牌定位。
+                    </div>
+                    <div class="color-code">
+                        主色：#F97316 | RGB(249, 115, 22)<br>
+                        适用场景：激进创新、颠覆性产品、运动科技
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="recommendation">
+            <h2>我的推荐：深紫 #8B5CF6</h2>
+            <p>
+                考虑到 UNBOUNDX"自由维度"的品牌定位，我推荐使用<strong>深紫色</strong>作为主色调。
+                紫色在色彩心理学中代表创造力、想象力和神秘感，完美契合"多维度"的概念。
+                相比常见的科技蓝，紫色更独特、更有辨识度，能让品牌在众多科技公司中脱颖而出。
+                同时，深紫色保持了专业感和科技感，不会显得过于轻浮。
+            </p>
+            <br>
+            <p style="font-size: 14px; color: #666;">
+                如果希望更保守、更专业：选择<strong>科技蓝 #0096FF</strong><br>
+                如果希望更年轻、更有活力：选择<strong>量子紫 #A855F7</strong><br>
+                如果希望强调流动和自由：选择<strong>未来青 #06B6D4</strong>
+            </p>
+        </div>
+
+        <!-- Comparison -->
+        <div class="comparison">
+            <h2>色彩对比</h2>
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comparison-label">科技蓝</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #0096ff;">X</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">深紫</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #8b5cf6;">X</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">未来青</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #06b6d4;">X</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">量子紫</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #a855f7;">X</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">突破绿</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #10b981;">X</div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-label">能量橙</div>
+                    <div style="font-size: 48px; font-weight: 700; color: #f97316;">X</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

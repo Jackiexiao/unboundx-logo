@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 品牌视觉规范 (Brand Guidelines)</title>
+    <meta name="description" content="UNBOUNDX 自由维度科技 - 多维空间突破品牌视觉规范系统。" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%23DB5C3D'/></svg>" type="image/svg+xml" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    
+    <style>
+      :root {
+        /* Core Colors from index.html */
+        --paper: oklch(0.965 0.008 250);
+        --paper-deep: oklch(0.93 0.012 250);
+        --ink: oklch(0.21 0.018 257);
+        --ink-soft: oklch(0.29 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        --accent: oklch(0.64 0.18 34); /* #DB5C3D */
+        --accent-soft: oklch(0.84 0.06 34);
+        
+        /* Semantic */
+        --bg-primary: var(--paper);
+        --text-primary: var(--ink);
+        --text-secondary: var(--ink-soft);
+        --text-muted: var(--muted);
+        --border-light: color-mix(in oklch, var(--ink) 12%, transparent);
+        --border-strong: color-mix(in oklch, var(--ink) 24%, transparent);
+        
+        /* Spacing & Layout */
+        --space-xs: clamp(0.5rem, 1vw, 1rem);
+        --space-sm: clamp(1rem, 2vw, 2rem);
+        --space-md: clamp(2rem, 4vw, 4rem);
+        --space-lg: clamp(4rem, 8vw, 8rem);
+        --space-xl: clamp(8rem, 12vw, 12rem);
+        
+        --container-w: 1440px;
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 32px;
+        
+        /* Typography */
+        --font-display: "Sora", "Manrope", "Noto Sans SC", sans-serif;
+        --font-body: "Manrope", "Noto Sans SC", sans-serif;
+        
+        --text-xs: clamp(0.75rem, 0.8vw, 0.875rem);
+        --text-sm: clamp(0.875rem, 1vw, 1rem);
+        --text-base: clamp(1rem, 1.2vw, 1.125rem);
+        --text-lg: clamp(1.25rem, 1.5vw, 1.5rem);
+        --text-xl: clamp(1.5rem, 2vw, 2rem);
+        --text-2xl: clamp(2rem, 3vw, 3rem);
+        --text-3xl: clamp(2.5rem, 5vw, 5rem);
+        --text-4xl: clamp(4rem, 8vw, 8rem);
+        --text-mega: clamp(6rem, 14vw, 14rem);
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
+      html {
+        scroll-behavior: smooth;
+        background-color: var(--bg-primary);
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-primary);
+        line-height: 1.6;
+        background: 
+          radial-gradient(circle at 0% 0%, color-mix(in oklch, var(--accent) 8%, transparent) 0%, transparent 40%),
+          radial-gradient(circle at 100% 100%, color-mix(in oklch, var(--mist) 15%, transparent) 0%, transparent 40%);
+        background-attachment: fixed;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay for texture */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        opacity: 0.025;
+        pointer-events: none;
+        z-index: 999;
+      }
+
+      a { color: inherit; text-decoration: none; }
+      ul { list-style: none; }
+      
+      /* Typography Classes */
+      .font-display { font-family: var(--font-display); }
+      .text-uppercase { text-transform: uppercase; letter-spacing: 0.08em; }
+      .text-muted { color: var(--text-muted); }
+      .text-accent { color: var(--accent); }
+      
+      /* Layout */
+      .container {
+        width: min(var(--container-w), 100% - var(--space-sm) * 2);
+        margin: 0 auto;
+      }
+      
+      .grid {
+        display: grid;
+        gap: var(--space-md);
+      }
+      
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        padding: var(--space-sm) 0;
+        z-index: 100;
+        mix-blend-mode: difference;
+        color: #fff;
+      }
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 700;
+        font-size: var(--text-sm);
+      }
+      .nav-logo svg { height: 24px; width: auto; }
+
+      /* Section Layouts */
+      section {
+        padding: var(--space-lg) 0;
+        position: relative;
+      }
+      
+      .section-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+        margin-bottom: var(--space-lg);
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: var(--space-sm);
+      }
+      
+      @media(min-width: 768px) {
+        .section-header {
+          grid-template-columns: 1fr 2fr;
+          align-items: end;
+        }
+      }
+      
+      .section-num {
+        font-family: var(--font-display);
+        font-size: var(--text-sm);
+        font-weight: 600;
+        color: var(--accent);
+      }
+      
+      .section-title {
+        font-size: var(--text-2xl);
+        font-family: var(--font-display);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--ink);
+        color: var(--paper);
+        position: relative;
+        overflow: hidden;
+        padding-top: var(--space-xl);
+      }
+      
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: 
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 4vw 4vw;
+        mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 80%);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+
+      @media(min-width: 1024px) {
+        .hero-content {
+          grid-template-columns: 1.5fr 1fr;
+          align-items: center;
+        }
+      }
+
+      .hero-mark-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 4/3;
+      }
+
+      .hero-mark {
+        width: 100%;
+        height: 100%;
+        color: var(--paper);
+        filter: drop-shadow(0 0 40px rgba(219, 92, 61, 0.3));
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero-text-block h1 {
+        font-size: var(--text-mega);
+        line-height: 0.85;
+        margin-bottom: var(--space-sm);
+        letter-spacing: -0.04em;
+      }
+      
+      .hero-text-block p {
+        font-size: var(--text-lg);
+        color: rgba(255,255,255,0.7);
+        max-width: 30ch;
+      }
+
+      /* --- Concept Section --- */
+      .concept-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      @media(min-width: 1024px) {
+        .concept-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      
+      .concept-card {
+        background: var(--panel);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        padding: var(--space-md);
+        backdrop-filter: blur(20px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+      }
+      
+      .concept-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 48px rgba(16, 20, 27, 0.08);
+        border-color: var(--border-strong);
+      }
+      
+      .concept-card h3 {
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-sm);
+        font-family: var(--font-display);
+      }
+      
+      .concept-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: var(--space-sm);
+        color: var(--accent);
+      }
+
+      /* --- Logo System --- */
+      .logo-showcase {
+        background: var(--ink);
+        border-radius: var(--radius-xl);
+        padding: var(--space-lg) var(--space-md);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: var(--space-md);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo-showcase::after {
+        content: '';
+        position: absolute;
+        top: -50%; right: -20%;
+        width: 70%; height: 150%;
+        background: radial-gradient(circle, color-mix(in oklch, var(--accent) 20%, transparent) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .logo-primary {
+        display: flex;
+        align-items: flex-end;
+        gap: 0.1em;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 8vw, 8rem);
+        line-height: 0.8;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        z-index: 1;
+      }
+      .logo-primary .x { color: var(--accent); }
+      
+      .logo-variants {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-sm);
+      }
+      
+      .variant-box {
+        aspect-ratio: 16/9;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border: 1px solid var(--border-light);
+      }
+      .variant-box.dark { background: var(--ink); color: white; }
+      .variant-box.light { background: white; color: var(--ink); }
+      .variant-box.accent { background: var(--accent); color: white; border-color: transparent; }
+      
+      .variant-box svg { width: 40%; height: auto; }
+      .variant-label {
+        position: absolute;
+        bottom: 16px; left: 16px;
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.6;
+      }
+
+      /* --- Color System --- */
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: var(--space-sm);
+      }
+      
+      .color-card {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border-light);
+        background: var(--panel);
+      }
+      
+      .color-swatch {
+        aspect-ratio: 3/2;
+        width: 100%;
+      }
+      
+      .color-info {
+        padding: var(--space-sm);
+      }
+      
+      .color-info h4 {
+        font-family: var(--font-display);
+        font-size: var(--text-base);
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      
+      .color-info p {
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+        font-family: monospace;
+      }
+
+      /* --- Typography --- */
+      .type-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+      }
+      @media(min-width: 1024px) {
+        .type-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      
+      .type-card {
+        padding: var(--space-md);
+        border: 1px solid var(--border-light);
+        border-radius: var(--radius-lg);
+        background: rgba(255,255,255,0.4);
+      }
+      
+      .type-card h3 {
+        font-size: var(--text-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        margin-bottom: var(--space-md);
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+      }
+      
+      .type-sample-large {
+        font-size: var(--text-4xl);
+        line-height: 1.1;
+        margin-bottom: var(--space-sm);
+        word-break: break-word;
+      }
+      
+      .type-sample-body {
+        font-size: var(--text-base);
+        color: var(--text-secondary);
+        max-width: 40ch;
+      }
+
+      /* --- Applications --- */
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: var(--space-md);
+      }
+      
+      .app-card-mock {
+        background: var(--ink);
+        border-radius: var(--radius-xl);
+        padding: var(--space-md);
+        color: white;
+        aspect-ratio: 4/5;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 30px 60px rgba(16, 20, 27, 0.15);
+      }
+      
+      .app-card-mock::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, rgba(219, 92, 61, 0.15), transparent 50%);
+      }
+      
+      .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+      }
+      
+      .app-logo { height: 24px; color: white; }
+      
+      .app-body {
+        z-index: 1;
+      }
+      
+      .app-body h4 {
+        font-family: var(--font-display);
+        font-size: var(--text-2xl);
+        line-height: 1.1;
+        margin-bottom: 12px;
+      }
+      .app-body p { color: rgba(255,255,255,0.6); font-size: var(--text-sm); }
+      
+      .app-footer {
+        z-index: 1;
+        display: flex;
+        gap: 8px;
+      }
+      .app-tag {
+        padding: 6px 12px;
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 99px;
+        font-size: var(--text-xs);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        backdrop-filter: blur(10px);
+      }
+
+      .app-card-light {
+        background: white;
+        color: var(--ink);
+        border: 1px solid var(--border-light);
+      }
+      .app-card-light::before {
+        background: radial-gradient(circle at bottom left, rgba(170, 183, 196, 0.15), transparent 50%);
+      }
+      .app-card-light .app-logo { color: var(--ink); }
+      .app-card-light .app-body p { color: var(--text-secondary); }
+      .app-card-light .app-tag { border-color: var(--border-light); }
+
+      /* Footer */
+      footer {
+        padding: var(--space-md) 0;
+        border-top: 1px solid var(--border-light);
+        text-align: center;
+        font-size: var(--text-sm);
+        color: var(--text-muted);
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- SVG Defs -->
+    <svg aria-hidden="true" width="0" height="0" style="position: absolute">
+      <defs>
+        <linearGradient id="ux-core-gradient" x1="84" y1="120" x2="188" y2="56" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#F0DAD2"></stop>
+          <stop offset="0.45" stop-color="#DD6A4A"></stop>
+          <stop offset="1" stop-color="#FFFFFF"></stop>
+        </linearGradient>
+        <symbol id="mark-open-frame" viewBox="0 0 240 180">
+          <path d="M54 116V58L120 26L186 58" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M186 88V122L120 154L54 122" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M84 120L120 98L148 72L186 58" fill="none" stroke="url(#ux-core-gradient)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M120 98L152 130" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path>
+          <circle cx="120" cy="98" r="6" fill="#DB5C3D"></circle>
+        </symbol>
+      </defs>
+    </svg>
+
+    <nav>
+      <div class="container nav-inner">
+        <div class="nav-logo font-display">
+          <svg viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+          UNBOUNDX
+        </div>
+        <div class="text-xs text-uppercase">Brand Guidelines</div>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text-block font-display">
+          <h1>多维<br/><span class="text-accent">空间</span><br/>突破</h1>
+          <p>UNBOUNDX 品牌视觉系统。<br/>基于“开放框架”与“维度切换”的全新坐标系。</p>
+        </div>
+        <div class="hero-mark-container">
+          <svg class="hero-mark" viewBox="0 0 240 180" aria-hidden="true">
+            <use href="#mark-open-frame"></use>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="concept" class="container">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2 class="section-title">核心理念 <span class="text-muted">/ Concept</span></h2>
+      </div>
+      
+      <div class="concept-grid">
+        <div class="concept-card">
+          <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg>
+          <h3>开放框架 (Open Frame)</h3>
+          <p class="text-secondary">打破传统的封闭边界。外围线条不闭合，象征“Unbound”（不受限），代表品牌始终处于开放、可扩展、向外生长的状态。</p>
+        </div>
+        <div class="concept-card">
+          <svg class="concept-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          <h3>维度切换 (Dimension Shift)</h3>
+          <p class="text-secondary">内部的折线与橙色原点，在视觉上形成了一个正在发生的三维空间折叠动作。它不仅是一个 X，更是一个通往新坐标系的入口。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="logo" class="container">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2 class="section-title">标志系统 <span class="text-muted">/ Logo System</span></h2>
+      </div>
+      
+      <div class="logo-showcase">
+        <div class="logo-primary">
+          UNBOUND<span class="x">X</span>
+        </div>
+        <p style="margin-top: 24px; opacity: 0.7; font-size: var(--text-sm); letter-spacing: 0.2em; text-transform: uppercase;">Primary Wordmark</p>
+      </div>
+      
+      <div class="logo-variants">
+        <div class="variant-box dark">
+          <div class="variant-label">Dark Mode</div>
+          <svg viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+        </div>
+        <div class="variant-box light">
+          <div class="variant-label">Light Mode</div>
+          <svg viewBox="0 0 240 180" aria-hidden="true" style="color: var(--ink)"><use href="#mark-open-frame"></use></svg>
+        </div>
+        <div class="variant-box accent">
+          <div class="variant-label">Accent Fill</div>
+          <svg viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="colors" class="container">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2 class="section-title">色彩规范 <span class="text-muted">/ Color Palette</span></h2>
+      </div>
+      
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--accent);"></div>
+          <div class="color-info">
+            <h4>Brand Accent</h4>
+            <p>oklch(0.64 0.18 34)</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--ink);"></div>
+          <div class="color-info">
+            <h4>Deep Ink</h4>
+            <p>oklch(0.21 0.018 257)</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--paper); border-bottom: 1px solid var(--border-light)"></div>
+          <div class="color-info">
+            <h4>Tech Paper</h4>
+            <p>oklch(0.965 0.008 250)</p>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background: var(--mist);"></div>
+          <div class="color-info">
+            <h4>Mist Blue</h4>
+            <p>oklch(0.79 0.03 250)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="typography" class="container">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2 class="section-title">字体系统 <span class="text-muted">/ Typography</span></h2>
+      </div>
+      
+      <div class="type-grid">
+        <div class="type-card">
+          <h3>Display / Headings</h3>
+          <div class="font-display">
+            <div class="type-sample-large">Sora</div>
+            <div class="type-sample-large" style="font-weight: 600">Aa Bb Cc</div>
+            <p class="type-sample-body">用于品牌大标题、英文主视觉与核心数据展示。Sora 具有强烈的几何感和科技属性，完美契合“多维空间”的锋利气质。</p>
+          </div>
+        </div>
+        <div class="type-card">
+          <h3>Body / Content</h3>
+          <div>
+            <div class="type-sample-large font-display">Manrope & 思源黑体</div>
+            <div class="type-sample-large" style="font-weight: 500">空间突破 123</div>
+            <p class="type-sample-body">用于正文排版。中文字体采用 Noto Sans SC (思源黑体)，英文字体采用 Manrope。两者搭配在保证阅读舒适度的同时，维持了现代科技感。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="applications" class="container">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2 class="section-title">应用展示 <span class="text-muted">/ Applications</span></h2>
+      </div>
+      
+      <div class="app-grid">
+        <!-- Dark App Card -->
+        <div class="app-card-mock">
+          <div class="app-header">
+            <svg class="app-logo" viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+            <div class="text-xs text-uppercase" style="opacity: 0.5">App Interface</div>
+          </div>
+          <div class="app-body">
+            <h4>Dimensional<br/>Analytics</h4>
+            <p>Real-time spatial data processing system active.</p>
+          </div>
+          <div class="app-footer">
+            <span class="app-tag">System</span>
+            <span class="app-tag">v2.0</span>
+          </div>
+        </div>
+
+        <!-- Light App Card -->
+        <div class="app-card-mock app-card-light">
+          <div class="app-header">
+            <svg class="app-logo" viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+            <div class="text-xs text-uppercase" style="opacity: 0.5">Print / Card</div>
+          </div>
+          <div class="app-body">
+            <h4 style="font-size: var(--text-xl)">UNBOUNDX<br/>TECHNOLOGY</h4>
+            <p>Break the limits.<br/>Build the new coordinates.</p>
+          </div>
+          <div class="app-footer">
+            <span class="app-tag">Brand</span>
+          </div>
+        </div>
+        
+        <!-- Accent App Card -->
+        <div class="app-card-mock" style="background: var(--accent);">
+          <div class="app-header">
+            <svg class="app-logo" viewBox="0 0 240 180" aria-hidden="true"><use href="#mark-open-frame"></use></svg>
+            <div class="text-xs text-uppercase" style="opacity: 0.8">Event Poster</div>
+          </div>
+          <div class="app-body">
+            <h4 style="font-size: var(--text-3xl)">2024<br/>X-CONF</h4>
+            <p style="color: rgba(255,255,255,0.9)">The Next Dimension.</p>
+          </div>
+          <div class="app-footer">
+            <span class="app-tag" style="border-color: rgba(255,255,255,0.4)">Join Now</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        &copy; 2024 UNBOUNDX 自由维度科技. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>

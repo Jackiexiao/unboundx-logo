@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:#0096ff;stop-opacity:0.8"/><stop offset="100%" style="stop-color:#0096ff;stop-opacity:0"/></radialGradient></defs><path d="M0 0h800v1200H0z"/><text x="400" y="50" fill="#666" font-family="Arial, sans-serif" font-size="24" letter-spacing="4" text-anchor="middle">
+    LOGO DESIGN OPTIONS
+  </text><g transform="translate(400 150)"><text y="-80" fill="#0096ff" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" text-anchor="middle">
+      方案一：无限维度 X
+    </text><circle r="70" fill="none" stroke="#0096ff" stroke-width="1.5" opacity=".3"/><circle r="55" fill="none" stroke="#0096ff" stroke-width="1.5" opacity=".5"/><circle r="40" fill="none" stroke="#0096ff" stroke-width="2" opacity=".7"/><path stroke="#0096ff" stroke-linecap="round" stroke-width="4" d="m-25-25 50 50m0-50-50 50"/><path stroke="#0096ff" stroke-linecap="round" stroke-width="2" d="M-30 0h60M0-30v60" opacity=".6"/><path fill="none" stroke="#0096ff" stroke-linecap="round" stroke-width="2" d="M-60-60h10v10M60-60H50v10M-60 60h10V50M60 60H50V50"/><text y="110" fill="#fff" font-family="Arial, sans-serif" font-size="32" font-weight="300" text-anchor="middle">
+      unbound<tspan fill="#0096ff" font-weight="700">X</tspan>
+    </text><text y="135" fill="#666" font-family="Arial, sans-serif" font-size="11" letter-spacing="6" text-anchor="middle">
+      自由维度
+    </text></g><g transform="translate(400 420)"><text y="-80" fill="#0096ff" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" text-anchor="middle">
+      方案二：突破边界
+    </text><path stroke="#666" stroke-linecap="round" stroke-width="2" d="M-60-60h40m40 0h40v40m0 40v40H20m-40 0h-40V20m0-40v-40"/><path stroke="#0096ff" stroke-linecap="round" stroke-width="5" d="M-30-30-5-5M5 5l30 30m-5-65L5-5M-5 5l-30 30"/><circle cx="-15" cy="-15" r="2" fill="#0096ff" opacity=".8"/><circle cx="15" cy="15" r="2" fill="#0096ff" opacity=".8"/><circle cx="15" cy="-15" r="2" fill="#0096ff" opacity=".8"/><circle cx="-15" cy="15" r="2" fill="#0096ff" opacity=".8"/><circle cx="-25" r="1.5" fill="#0096ff" opacity=".6"/><circle cx="25" r="1.5" fill="#0096ff" opacity=".6"/><circle cy="-25" r="1.5" fill="#0096ff" opacity=".6"/><circle cy="25" r="1.5" fill="#0096ff" opacity=".6"/><text y="110" fill="#fff" font-family="Arial, sans-serif" font-size="32" font-weight="300" text-anchor="middle">
+      unbound<tspan fill="#0096ff" font-weight="700">X</tspan>
+    </text><text y="135" fill="#666" font-family="Arial, sans-serif" font-size="11" letter-spacing="6" text-anchor="middle">
+      自由维度
+    </text></g><g transform="translate(400 690)"><text y="-80" fill="#0096ff" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" text-anchor="middle">
+      方案三：量子 X
+    </text><path fill="none" stroke="#0096ff" stroke-width="2" d="m0-60 52 30v60L0 60l-52-30v-60z" opacity=".4"/><path stroke="#0096ff" stroke-width="1.5" d="M-40 0h80m-60-35 40 70m-40 0 40-70" opacity=".5"/><circle r="35" fill="url(#a)" opacity=".3"/><path stroke="#0096ff" stroke-linecap="round" stroke-width="5" d="m-22-22 44 44m0-44-44 44"/><circle cy="-60" r="4" fill="#0096ff"/><circle cx="52" cy="-30" r="4" fill="#0096ff"/><circle cx="52" cy="30" r="4" fill="#0096ff"/><circle cy="60" r="4" fill="#0096ff"/><circle cx="-52" cy="30" r="4" fill="#0096ff"/><circle cx="-52" cy="-30" r="4" fill="#0096ff"/><text y="110" fill="#fff" font-family="Arial, sans-serif" font-size="32" font-weight="300" text-anchor="middle">
+      unbound<tspan fill="#0096ff" font-weight="700">X</tspan>
+    </text><text y="135" fill="#666" font-family="Arial, sans-serif" font-size="11" letter-spacing="6" text-anchor="middle">
+      自由维度
+    </text></g><g transform="translate(400 960)"><text y="-80" fill="#0096ff" font-family="Arial, sans-serif" font-size="16" letter-spacing="2" text-anchor="middle">
+      方案四：极简主义（SpaceX 风格）
+    </text><path stroke="#0096ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8" d="m-35-35 70 70m0-70-70 70"/><circle r="55" fill="none" stroke="#0096ff" stroke-dasharray="5,5" opacity=".3"/><text y="110" fill="#fff" font-family="Arial, sans-serif" font-size="36" font-weight="300" letter-spacing="-1" text-anchor="middle">
+      unbound<tspan fill="#0096ff" font-weight="700">X</tspan>
+    </text><text y="135" fill="#666" font-family="Arial, sans-serif" font-size="11" letter-spacing="6" text-anchor="middle">
+      自由维度
+    </text></g><text x="400" y="1170" fill="#444" font-family="Arial, sans-serif" font-size="12" text-anchor="middle">
+    unboundX Brand Identity System © 2026
+  </text></svg>
