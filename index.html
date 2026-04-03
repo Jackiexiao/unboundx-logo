@@ -8,7 +8,7 @@
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&amp;family=Noto+Sans+SC:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       /* Brand Core Colors */
@@ -35,7 +35,10 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 96px;
+    }
 
     body {
       font-family: var(--font-cn);
@@ -47,6 +50,10 @@
       display: flex;
     }
 
+    body.nav-open {
+      overflow: hidden;
+    }
+
     /* Subtle Film Grain Noise for SaaS Premium Texture */
     body::before {
       content: ""; 
@@ -56,6 +63,106 @@
     }
 
     /* === Sidebar Navigation === */
+    .sidebar-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.56);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.28s ease, visibility 0.28s ease;
+      z-index: 90;
+    }
+
+    .mobile-topbar {
+      display: none;
+      position: sticky;
+      top: 0;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 24px;
+      background: rgba(5, 5, 5, 0.82);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(18px);
+      z-index: 110;
+    }
+
+    .mobile-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .mobile-brand-lockup {
+      display: block;
+      width: 118px;
+      height: auto;
+    }
+
+    .mobile-brand-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .mobile-brand-text strong {
+      font-size: 0.92rem;
+      font-family: var(--font-en);
+      letter-spacing: 0.04em;
+    }
+
+    .mobile-brand-text span {
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      white-space: nowrap;
+    }
+
+    .mobile-nav-toggle,
+    .sidebar-close {
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: var(--text-primary);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-nav-toggle {
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav-toggle span {
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: transform 0.24s ease, opacity 0.24s ease;
+    }
+
+    body.nav-open .mobile-nav-toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    body.nav-open .mobile-nav-toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    body.nav-open .mobile-nav-toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
     .sidebar {
       width: var(--sidebar-width);
       height: 100vh;
@@ -66,12 +173,16 @@
       padding: 40px 0;
       display: flex;
       flex-direction: column;
-      z-index: 100;
+      z-index: 120;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transition: transform 0.28s ease;
     }
 
     .sidebar-brand {
       padding: 0 40px;
       margin-bottom: 60px;
+      position: relative;
     }
 
     .sidebar-brand-lockup {
@@ -85,6 +196,17 @@
       font-size: 0.75rem;
       color: var(--text-secondary);
       line-height: 1.55;
+    }
+
+    .sidebar-close {
+      display: none;
+      width: 44px;
+      height: 44px;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -6px;
+      right: 0;
     }
 
     .nav-menu {
@@ -139,7 +261,8 @@
 
     .container {
       max-width: var(--max-width);
-      margin: 0 auto; padding: 0 60px;
+      margin: 0 auto;
+      padding: 0 clamp(24px, 4vw, 60px);
     }
 
     /* === Hero Section === */
@@ -196,6 +319,9 @@
       margin-bottom: 20px;
     }
     .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       padding: 8px 14px;
       border-radius: 999px;
       border: 1px solid var(--surface-2);
@@ -892,18 +1018,327 @@
       line-height: 1.7;
     }
 
+    section,
+    #home {
+      scroll-margin-top: 96px;
+    }
+
+    @media (max-width: 1200px) {
+      .story-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .download-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 1024px) {
-      .sidebar { display: none; }
-      .main-content { margin-left: 0; }
-      .logo-grid, .story-grid, .color-grid, .typo-section, .ui-grid, .poster-grid, .case-grid, .download-grid, .dialog-grid, .ui-principle-grid { grid-template-columns: 1fr; }
+      body {
+        display: block;
+      }
+
+      .mobile-topbar {
+        display: flex;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        width: min(86vw, 320px);
+        padding: 28px 24px 24px;
+        transform: translateX(-100%);
+        box-shadow: 24px 0 60px rgba(0,0,0,0.45);
+      }
+
+      body.nav-open .sidebar {
+        transform: translateX(0);
+      }
+
+      body.nav-open .sidebar-backdrop {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .sidebar-brand {
+        padding: 0 0 24px;
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--surface-2);
+      }
+
+      .sidebar-close {
+        display: inline-flex;
+      }
+
+      .nav-menu {
+        gap: 6px;
+      }
+
+      .nav-item a {
+        padding: 14px 0;
+        border-left: none;
+        border-bottom: 1px solid transparent;
+      }
+
+      .nav-item a.active {
+        border-bottom-color: var(--brand-accent);
+      }
+
+      .sidebar-footer {
+        padding: 24px 0 0;
+        margin-top: 24px;
+        border-top: 1px solid var(--surface-2);
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 48px;
+        padding-bottom: 72px;
+      }
+
+      .hero::after {
+        width: 420px;
+        height: 420px;
+        top: 18%;
+        right: -12%;
+        transform: none;
+      }
+
+      .section-header {
+        margin-bottom: 48px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .logo-grid,
+      .color-grid,
+      .typo-section,
+      .ui-grid,
+      .dialog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .poster-grid,
+      .ui-principle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-stage {
+        padding: 40px;
+        height: auto;
+        min-height: 260px;
+      }
+
+      .mock-header,
+      .copy-prompt-header,
+      .dialog-head,
+      .typo-details {
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 84px 0;
+      }
+
+      .hero {
+        padding-top: 32px;
+        padding-bottom: 60px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.6rem, 12vw, 4.25rem);
+      }
+
+      .hero-subtitle,
+      .section-desc {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .hero-link {
+        width: 100%;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .story-grid,
+      .poster-grid,
+      .case-grid,
+      .download-grid,
+      .dialog-grid,
+      .ui-principle-grid,
+      .mock-card-grid,
+      .mini-stat-grid,
+      .color-values {
+        grid-template-columns: 1fr;
+      }
+
+      .story-card,
+      .ui-card,
+      .dl-card,
+      .copy-prompt-shell,
+      .dialog-shell {
+        padding: 24px;
+      }
+
+      .card-stage,
+      .cover-shell,
+      .stage-shell {
+        padding: 24px;
+      }
+
+      .color-main-card {
+        min-height: auto;
+        gap: 28px;
+        padding: 36px 24px;
+      }
+
+      .neutral-row {
+        align-items: flex-start;
+      }
+
+      .neutral-swatch {
+        margin-right: 16px;
+      }
+
+      .typo-display {
+        font-size: 4.3rem;
+      }
+
+      .typo-display.cn {
+        font-size: 3.6rem;
+      }
+
+      .mock-header,
+      .copy-prompt-header,
+      .dialog-head,
+      .typo-details {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .poster {
+        min-height: 360px;
+      }
+
+      .cover-title,
+      .stage-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-topbar {
+        padding: 12px 16px;
+      }
+
+      .mobile-brand-lockup {
+        width: 106px;
+      }
+
+      .mobile-brand-text span {
+        display: none;
+      }
+
+      .sidebar {
+        width: 100%;
+      }
+
+      .hero-logo-stage {
+        margin-bottom: 28px;
+      }
+
+      .hero-pill {
+        width: 100%;
+        font-size: 0.74rem;
+      }
+
+      .section-tag {
+        gap: 12px;
+        font-size: 0.78rem;
+      }
+
+      .section-tag::after {
+        width: 36px;
+      }
+
+      .section-title {
+        font-size: 1.72rem;
+      }
+
+      .poster-title,
+      .color-main-name {
+        font-size: 2rem;
+      }
+
+      .typo-display {
+        font-size: 3.3rem;
+      }
+
+      .typo-display.cn {
+        font-size: 2.9rem;
+      }
+
+      .brand-dialog {
+        width: calc(100vw - 16px);
+        border-radius: 20px;
+      }
+
+      .dialog-shell {
+        padding: 20px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
+  <div class="sidebar-backdrop" data-nav-close></div>
+  <header class="mobile-topbar">
+    <a class="mobile-brand" href="#home" aria-label="返回首页">
+      <img class="mobile-brand-lockup" src="public/logos/svg/unboundx-lockup-dark.svg" alt="UNBOUNDX 品牌标识">
+      <span class="mobile-brand-text">
+        <strong>UNBOUNDX</strong>
+        <span>Brand Guidelines</span>
+      </span>
+    </a>
+    <button class="mobile-nav-toggle" type="button" aria-label="打开导航菜单" aria-controls="site-sidebar" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
   <!-- ================= SIDEBAR NAVIGATION ================= -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="site-sidebar" aria-label="Section Navigation">
     <div class="sidebar-brand">
+      <button class="sidebar-close" type="button" aria-label="关闭导航菜单" data-nav-close>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <path d="M18 6 6 18"></path>
+          <path d="M6 6l12 12"></path>
+        </svg>
+      </button>
       <img class="sidebar-brand-lockup" src="public/logos/svg/unboundx-lockup-dark.svg" alt="UNBOUNDX Primary Lockup">
       <div class="sidebar-brand-sub">自由维度（深圳）科技有限公司</div>
     </div>
@@ -1529,28 +1964,73 @@ When generating HTML/CSS, output production-ready code that strictly adheres to 
   </div>
 
   <script>
-    // Simple script to handle active state of sidebar nav items
     document.addEventListener('DOMContentLoaded', () => {
-      const sections = document.querySelectorAll('section, #home');
-      const navItems = document.querySelectorAll('.nav-item a');
+      const sections = Array.from(document.querySelectorAll('section, #home'));
+      const navItems = Array.from(document.querySelectorAll('.nav-item a'));
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const navCloseTriggers = document.querySelectorAll('[data-nav-close]');
+      const desktopQuery = window.matchMedia('(min-width: 1025px)');
 
-      window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (pageYOffset >= (sectionTop - 200)) {
+      const setNavState = (isOpen) => {
+        document.body.classList.toggle('nav-open', isOpen);
+        if (mobileNavToggle) {
+          mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
+          mobileNavToggle.setAttribute('aria-label', isOpen ? '关闭导航菜单' : '打开导航菜单');
+        }
+      };
+
+      const closeNav = () => setNavState(false);
+      const toggleNav = () => setNavState(!document.body.classList.contains('nav-open'));
+
+      const updateActiveNav = () => {
+        let current = 'home';
+        sections.forEach((section) => {
+          if (window.scrollY >= section.offsetTop - 220) {
             current = section.getAttribute('id');
           }
         });
 
-        navItems.forEach(item => {
-          item.classList.remove('active');
-          if (item.getAttribute('href').includes(current)) {
-            item.classList.add('active');
+        navItems.forEach((item) => {
+          item.classList.toggle('active', item.getAttribute('href') === `#${current}`);
+        });
+      };
+
+      updateActiveNav();
+      window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+      if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', toggleNav);
+      }
+
+      navCloseTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', closeNav);
+      });
+
+      navItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          if (window.innerWidth <= 1024) {
+            closeNav();
           }
         });
       });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeNav();
+        }
+      });
+
+      const handleDesktopChange = (event) => {
+        if (event.matches) {
+          closeNav();
+        }
+      };
+
+      if (desktopQuery.addEventListener) {
+        desktopQuery.addEventListener('change', handleDesktopChange);
+      } else if (desktopQuery.addListener) {
+        desktopQuery.addListener(handleDesktopChange);
+      }
 
       document.querySelectorAll("[data-dialog-open]").forEach((button) => {
         button.addEventListener("click", () => {
