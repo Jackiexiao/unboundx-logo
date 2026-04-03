@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import shutil
 import subprocess
 from pathlib import Path
@@ -43,6 +44,13 @@ def reset_public() -> None:
     if PUBLIC.exists():
         shutil.rmtree(PUBLIC)
     PUBLIC.mkdir(parents=True, exist_ok=True)
+
+
+def reset_downloads() -> None:
+    downloads = PUBLIC / "downloads"
+    if downloads.exists():
+        shutil.rmtree(downloads)
+    downloads.mkdir(parents=True, exist_ok=True)
 
 
 def write_public_file(relative_path: str, content: str) -> None:
@@ -326,7 +334,27 @@ def build_bundles() -> None:
     zip_bundle("UNBOUNDX_Brand_Kit.zip", ["logos", "materials"])
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Generate UNBOUNDX public brand assets and download bundles.",
+    )
+    parser.add_argument(
+        "--downloads-only",
+        action="store_true",
+        help="Only rebuild public/downloads ZIP bundles from the existing public assets.",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
+    args = parse_args()
+
+    if args.downloads_only:
+        reset_downloads()
+        write_public_readme()
+        build_bundles()
+        return
+
     reset_public()
     write_assets()
     write_public_readme()

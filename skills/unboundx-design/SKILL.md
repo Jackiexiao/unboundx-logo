@@ -46,7 +46,6 @@ Use this skill whenever the output must look unmistakably like UNBOUNDX.
 - Logo system: `assets/logos/`
 - Existing brand compositions: `assets/materials/`
 - New starter templates for reusable scenarios: `assets/templates/`
-- Download bundles: `assets/downloads/`
 
 ## Scenario Routing
 
@@ -64,4 +63,3 @@ Use this skill whenever the output must look unmistakably like UNBOUNDX.
 - If the user asks for a visual draft first, keep text/placeholders editable and clearly labeled.
 - Report which logo variant, starter asset, and color strategy were used.
 - If information is missing, use obvious placeholders rather than inventing sensitive details.
-

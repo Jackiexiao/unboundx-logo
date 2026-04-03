@@ -73,15 +73,6 @@ Each starter also has a PNG preview in `assets/materials/png/`.
 - `assets/templates/unboundx-business-card.svg` — business card starter
 - `assets/templates/unboundx-employee-badge.svg` — employee badge / work card starter
 
-## Bundled Download Packs
-
-- `assets/downloads/UNBOUNDX_Brand_Kit.zip`
-- `assets/downloads/UNBOUNDX_Logos_SVG.zip`
-- `assets/downloads/UNBOUNDX_Logos_PNG.zip`
-- `assets/downloads/UNBOUNDX_Materials.zip`
-
-Use these when the user needs a packaged handoff instead of individual files.
-
 ## Style Rules To Preserve
 
 - Dark first. `#050505` is the base, not `#000000`.
@@ -90,4 +81,3 @@ Use these when the user needs a packaged handoff instead of individual files.
 - Geometry beats ornament.
 - Negative space is part of the brand.
 - Avoid generic “AI product” aesthetics such as purple glow, glass cards, and overloaded gradients.
-
