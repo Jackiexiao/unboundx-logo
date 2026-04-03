@@ -20,13 +20,13 @@
 
 围绕“自由维度 / 多维空间突破 / X / 边界突破”这些关键词，先快速产出大量 Logo 方向：
 
-- `unboundx-10-logo-concepts.html`
-- `unboundx-logo-concepts.html`
-- `unboundx-logo-candidates.html`
-- `unboundx-freedom-dimensions-logos.html`
-- `unboundx-free-dimensions-ultimate.html`
-- `unboundx-frame-break-logos.html`
-- `unboundX Logo-claude.html`
+- `archive/history/unboundx-10-logo-concepts.html`
+- `archive/history/unboundx-logo-concepts.html`
+- `archive/history/unboundx-logo-candidates.html`
+- `archive/history/unboundx-freedom-dimensions-logos.html`
+- `archive/history/unboundx-free-dimensions-ultimate.html`
+- `archive/history/unboundx-frame-break-logos.html`
+- `archive/history/unboundX Logo-claude.html`
 
 这一阶段重点不是直接定稿，而是拉开设计搜索空间，让人类判断哪个方向最有品牌势能。
 
@@ -46,9 +46,9 @@
 
 定下核心结构后，开始从单个 Logo 升级到品牌规范：
 
-- `unboundx-brand-guidelines.html`
-- `unboundx-brand-guidelines-v2.html`
-- `unboundx-brand-guidelines-v3.html`
+- `archive/history/unboundx-brand-guidelines.html`
+- `archive/history/unboundx-brand-guidelines-v2.html`
+- `archive/history/unboundx-brand-guidelines-v3.html`
 - `unboundx-brand-guidelines-v4-final.html`
 
 演进重点包括：
@@ -73,6 +73,23 @@
 - 设计资产交付能力
 - 对外汇报能力
 
+### 5. Dark Guidelines 最终定稿
+
+在最新版本中，项目正式切换到以 `index.html` 为核心的深色规范页方案，并放弃旧的多层框体语言：
+
+- 最新主稿：`index.html`
+- 深色预览别名：`unboundx-brand-guidelines-dark.html`
+- 品牌物料目录：`public/`
+
+这次定稿的关键变化是：
+
+- Logo 彻底重构为两条相交弧线的极简 X
+- X 被重新定义为 “Dimension / 维度”
+- 品牌主色固定为 `Aerospace Orange #F26122`
+- 全站转入 `Deep Void #050505` 黑曜石底色
+- 下载区从示意按钮升级为真实可下载的 Brand Kit
+- 静态资源结构收敛为单一 `public/`，不再保留额外镜像目录
+
 ## AI 协作分工
 
 ### Claude Code / Codex CLI
@@ -84,7 +101,7 @@
 ### Gemini 3.1 Pro
 
 - 在视觉概念扩散与版本复盘上提供强力支持
-- 输出了 `gemini-logo-design.md` 这类设计过程记录
+- 输出了 `docs/gemini-logo-design.md` 这类设计过程记录
 - 参与品牌概念表达、迭代总结与文案归纳
 
 ### 人类主导
@@ -97,8 +114,10 @@
 
 - 在线站点：`https://logo.unboundx.tech`
 - 代码仓库：`https://github.com/jackiexiao/unboundx-logo`
-- 最终规范文件：`unboundx-brand-guidelines-v4-final.html`
-- 在线部署入口：`site/index.html`
+- 最终规范文件：`index.html`
+- 深色规范页别名：`unboundx-brand-guidelines-dark.html`
+- 品牌素材目录：`public/`
+- 历史探索归档：`archive/history/`
 
 ## 权利归属
 

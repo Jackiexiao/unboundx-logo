@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UnBoundX 自由维度 | Brand Identity Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Brand Colors */
+      --brand-orange: #F26122; /* Aerospace/International Orange - Energetic, Technical, Safe for Print */
+      --brand-orange-light: #FF8A54;
+      --brand-orange-dark: #C6410B;
+      
+      /* Neutrals */
+      --obsidian: #0A0A0C; /* Deeper, colder black than generic 'ink', gives a tech/space vibe */
+      --obsidian-light: #151518;
+      --graphite: #2A2A2F;
+      --cloud: #F5F5F7; /* Slightly cool white */
+      --paper: #FFFFFF;
+      
+      /* Typography */
+      --font-en: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-cn: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-en);
+      background-color: var(--cloud);
+      color: var(--obsidian);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Header */
+    header {
+      padding: 100px 0 60px;
+      text-align: center;
+      background-color: var(--obsidian);
+      color: var(--paper);
+    }
+    
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    
+    header h1 span {
+      color: var(--brand-orange);
+    }
+
+    header p {
+      font-family: var(--font-cn);
+      font-size: 1.1rem;
+      color: #888;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--brand-orange);
+      font-weight: 700;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .section-title::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background-color: rgba(0,0,0,0.1);
+    }
+
+    /* The Final Logo Section */
+    .hero-logo-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .logo-box {
+      background: var(--paper);
+      border-radius: 16px;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-box.dark {
+      background: var(--obsidian);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .logo-box.dark::before {
+        content: ""; position: absolute; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+    }
+
+    .logo-label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--graphite);
+      opacity: 0.5;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .logo-box.dark .logo-label { color: var(--paper); }
+
+    .logo-svg {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      z-index: 1;
+    }
+
+    .concept-desc {
+      font-family: var(--font-cn);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+      max-width: 800px;
+      margin-top: 40px;
+    }
+
+    .concept-desc strong {
+      color: var(--obsidian);
+    }
+
+    /* Color Palette Section */
+    .palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .color-card {
+      background: var(--paper);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    }
+
+    .color-swatch {
+      height: 120px;
+      width: 100%;
+    }
+
+    .color-info {
+      padding: 20px;
+    }
+
+    .color-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: var(--obsidian);
+    }
+
+    .color-codes {
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: #666;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Typography Section */
+    .typo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .typo-card {
+      background: var(--paper);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    }
+
+    .font-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .font-desc {
+      font-family: var(--font-cn);
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .font-sample {
+      font-size: 4rem;
+      line-height: 1.2;
+      color: var(--obsidian);
+    }
+
+    .font-weights {
+      margin-top: 20px;
+      display: flex;
+      gap: 15px;
+      color: #888;
+    }
+    
+    /* Layouts */
+    .layouts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    
+    .layout-card {
+      background: var(--paper);
+      padding: 40px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+    }
+    
+    .layout-card svg {
+      width: 100%;
+      max-height: 80px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-logo-showcase, .typo-grid { grid-template-columns: 1fr; }
+      .palette-grid { grid-template-columns: repeat(2, 1fr); }
+      .layouts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>UNBOUND<span>X</span></h1>
+      <p>Final Brand Identity & Visual Guidelines / 自由维度最终视觉规范</p>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- 1. The Final Logo -->
+    <section>
+      <div class="section-title">01. The Final Mark / 最终标识</div>
+      
+      <div class="hero-logo-showcase">
+        <!-- Light Mode -->
+        <div class="logo-box">
+          <div class="logo-label">Light Background</div>
+          <svg class="logo-svg" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Icon -->
+            <g transform="translate(10, 20)">
+              <!-- The "Geo-Lens" Concept: Merging 10's Silhouette with 15's Gravity curves -->
+              <path d="M 40 5 C 65 30, 65 50, 40 75" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M 5 40 C 30 15, 50 15, 75 40" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" opacity="0.3"/>
+              
+              <path d="M 40 5 L 40 75" stroke="var(--obsidian)" stroke-width="12" stroke-linecap="round" opacity="0.9" transform="rotate(45 40 40)"/>
+              <path d="M 5 40 L 75 40" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+            </g>
+            <!-- Wordmark -->
+            <g transform="translate(110, 68)">
+              <text x="0" y="0" font-family="'Outfit', sans-serif" font-weight="800" font-size="46" fill="var(--obsidian)" letter-spacing="-0.02em">UNBOUND<tspan fill="var(--brand-orange)">X</tspan></text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Dark Mode -->
+        <div class="logo-box dark">
+          <div class="logo-label">Dark Background</div>
+          <svg class="logo-svg" viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+            <!-- Icon -->
+            <g transform="translate(10, 20)">
+              <path d="M 40 5 C 65 30, 65 50, 40 75" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M 5 40 C 30 15, 50 15, 75 40" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" opacity="0.3"/>
+              
+              <path d="M 40 5 L 40 75" stroke="var(--paper)" stroke-width="12" stroke-linecap="round" opacity="0.9" transform="rotate(45 40 40)"/>
+              <path d="M 5 40 L 75 40" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+            </g>
+            <!-- Wordmark -->
+            <g transform="translate(110, 68)">
+              <text x="0" y="0" font-family="'Outfit', sans-serif" font-weight="800" font-size="46" fill="var(--paper)" letter-spacing="-0.02em">UNBOUND<tspan fill="var(--brand-orange)">X</tspan></text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="concept-desc">
+        <strong>设计解析 (The "Geo-Lens" Concept)：</strong><br>
+        我深刻理解了您希望“不跟别人冲突，且具有独特识别度”的诉求。我将第 10 款（稳重的几何切割感）与第 15 款（引力透镜的流畅感）进行了完美的融合创新。<br><br>
+        这个全新的图形由**坚实的几何切割（直线X）**与**柔和的引力张力（弧线半包围）**构成。直线代表了科技的绝对精准、底层逻辑与打破常规的突破（Break）；而外部的弧线则代表了人文的包容、引力场的汇聚与生态的柔和。两者结合，形成了一个极度独特、几乎不可能在市面上撞车的超级符号 `X`。
+      </div>
+    </section>
+
+    <!-- 2. Color Palette -->
+    <section>
+      <div class="section-title">02. Color System / 核心色彩</div>
+      <p class="concept-desc" style="margin-top:0; margin-bottom: 30px;">
+        我们摒弃了模糊的橙色，为您选定了 <strong>Aerospace Orange (航天橙)</strong>。它在设计界被称为“国际安全橙”，不仅在数字屏幕上极具科技活力，更重要的是它在 <strong>CMYK 印刷中非常稳定</strong>，绝不会发灰发暗。搭配比普通黑色更深邃、偏冷的 <strong>Obsidian (黑曜石)</strong>，将高级 SaaS 质感拉满。
+      </p>
+
+      <div class="palette-grid">
+        <!-- Orange -->
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: var(--brand-orange);"></div>
+          <div class="color-info">
+            <div class="color-name">Aerospace Orange</div>
+            <div class="color-codes">
+              <span>HEX: #F26122</span>
+              <span>RGB: 242, 97, 34</span>
+              <span>CMYK: 0, 75, 95, 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orange Light -->
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: var(--brand-orange-light);"></div>
+          <div class="color-info">
+            <div class="color-name">Orange Glow (辅色)</div>
+            <div class="color-codes">
+              <span>HEX: #FF8A54</span>
+              <span>RGB: 255, 138, 84</span>
+              <span>CMYK: 0, 50, 70, 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Obsidian -->
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: var(--obsidian);"></div>
+          <div class="color-info">
+            <div class="color-name">Obsidian (主暗色)</div>
+            <div class="color-codes">
+              <span>HEX: #0A0A0C</span>
+              <span>RGB: 10, 10, 12</span>
+              <span>CMYK: 75, 65, 65, 90</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cloud -->
+        <div class="color-card">
+          <div class="color-swatch" style="background-color: var(--cloud); border: 1px solid #eee;"></div>
+          <div class="color-info">
+            <div class="color-name">Cloud (主亮色)</div>
+            <div class="color-codes">
+              <span>HEX: #F5F5F7</span>
+              <span>RGB: 245, 245, 247</span>
+              <span>CMYK: 2, 2, 0, 0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Layouts -->
+    <section>
+      <div class="section-title">03. Lockups / 排版组合</div>
+      
+      <div class="layouts-grid">
+        <!-- Horizontal -->
+        <div class="layout-card">
+          <span class="logo-label" style="position:static; opacity:1; margin-bottom:10px;">Primary Horizontal</span>
+          <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0, 0)">
+              <path d="M 40 5 C 65 30, 65 50, 40 75" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M 5 40 C 30 15, 50 15, 75 40" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 40 5 L 40 75" stroke="var(--obsidian)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+              <path d="M 5 40 L 75 40" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+            </g>
+            <g transform="translate(95, 53)">
+              <text x="0" y="0" font-family="'Outfit', sans-serif" font-weight="800" font-size="42" fill="var(--obsidian)" letter-spacing="-0.02em">UNBOUND<tspan fill="var(--brand-orange)">X</tspan></text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Vertical -->
+        <div class="layout-card">
+          <span class="logo-label" style="position:static; opacity:1; margin-bottom:10px;">Stacked Vertical</span>
+          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" style="max-height:120px;">
+            <g transform="translate(60, 0)">
+              <path d="M 40 5 C 65 30, 65 50, 40 75" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M 5 40 C 30 15, 50 15, 75 40" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 40 5 L 40 75" stroke="var(--obsidian)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+              <path d="M 5 40 L 75 40" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+            </g>
+            <g transform="translate(10, 130)">
+              <text x="0" y="0" font-family="'Outfit', sans-serif" font-weight="800" font-size="32" fill="var(--obsidian)" letter-spacing="-0.02em">UNBOUND<tspan fill="var(--brand-orange)">X</tspan></text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Icon Only -->
+        <div class="layout-card">
+          <span class="logo-label" style="position:static; opacity:1; margin-bottom:10px;">Icon / Favicon</span>
+          <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0, 0)">
+              <path d="M 40 5 C 65 30, 65 50, 40 75" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M 5 40 C 30 15, 50 15, 75 40" fill="none" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" opacity="0.3"/>
+              <path d="M 40 5 L 40 75" stroke="var(--obsidian)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+              <path d="M 5 40 L 75 40" stroke="var(--brand-orange)" stroke-width="12" stroke-linecap="round" transform="rotate(45 40 40)"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Typography -->
+    <section>
+      <div class="section-title">04. Typography / 字体规范</div>
+      <div class="typo-grid">
+        <div class="typo-card">
+          <div class="font-name" style="font-family: 'Outfit', sans-serif;">Outfit</div>
+          <div class="font-desc">主要英文字体。具有极其完美的几何感与现代气质，圆润的曲线中和了科技的冰冷，呼应了 Logo 图形中的人文弧线。</div>
+          <div class="font-sample" style="font-family: 'Outfit', sans-serif;">Aa Bb Cc<br>01 23 45</div>
+          <div class="font-weights">
+            <span style="font-weight: 300;">Light</span>
+            <span style="font-weight: 400;">Regular</span>
+            <span style="font-weight: 600;">SemiBold</span>
+            <span style="font-weight: 800;">ExtraBold</span>
+          </div>
+        </div>
+
+        <div class="typo-card">
+          <div class="font-name" style="font-family: 'Noto Sans SC', sans-serif;">思源黑体 (Noto Sans)</div>
+          <div class="font-desc">主要中文字体。作为无衬线字体的标杆，极其适合作为 SaaS 软件的界面字体，阅读体验绝佳且没有多余的情感偏向。</div>
+          <div class="font-sample" style="font-family: 'Noto Sans SC', sans-serif;">自由维度<br>突破边界</div>
+          <div class="font-weights">
+            <span style="font-weight: 300;">Light</span>
+            <span style="font-weight: 400;">Regular</span>
+            <span style="font-weight: 500;">Medium</span>
+            <span style="font-weight: 700;">Bold</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align: center; padding: 60px 0; color: #888; font-size: 0.9rem;">
+    <p>UnBoundX Brand Identity Guidelines © 2024</p>
+  </footer>
+
+</body>
+</html>

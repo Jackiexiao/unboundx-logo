@@ -4,16 +4,26 @@ UNBOUNDX 品牌 Logo、视觉规范与设计过程归档仓库。
 
 - 在线站点：`https://logo.unboundx.tech`
 - GitHub 仓库：`https://github.com/jackiexiao/unboundx-logo`
-- 最终规范页源文件：`unboundx-brand-guidelines-v4-final.html`
+- 最新规范页源文件：`index.html`
+- 深色规范页别名：`unboundx-brand-guidelines-dark.html`
 - 设计过程记录：`docs/logo-design-process.md`
+- Gemini 设计复盘：`docs/gemini-logo-design.md`
 
-## 仓库内容
+## 仓库结构
 
-- `unboundx-brand-guidelines-v4-final.html`：最终版品牌视觉与 UI 规范。
-- `site/index.html`：Vercel 部署入口页，与最终规范页保持同步。
-- `gemini-logo-design.md`：Gemini 视角的阶段性设计复盘。
-- `docs/logo-design-process.md`：整理后的完整 Logo 设计过程与协作说明。
-- 其余 `*.html` / `*.svg` / `*.png`：概念探索稿、候选方案、演进版本与辅助资产。
+- `index.html`：当前最新、最终采用的深色品牌规范页源码。
+- `unboundx-brand-guidelines-dark.html`：与 `index.html` 同步的深色规范页别名。
+- `public/`：当前最终方案的品牌交付物料包，含 `logos/`、`materials/` 与下载压缩包。
+- `docs/`：设计过程、AI 协作文档与项目说明。
+- `archive/history/`：历史探索稿、临时演进页、浏览器导出稿与生成脚本归档。
+
+## 维护约定
+
+- 日常编辑优先修改 `index.html`
+- 发布深色规范页时同步到 `unboundx-brand-guidelines-dark.html`
+- 静态资源统一只维护根目录下这一套 `public/`
+- 历史版本与实验文件统一放在 `archive/history/`
+- `unboundx-brand-guidelines-v4-final.html` 属于旧版方案，不再作为当前主稿
 
 ## 设计与协作
 

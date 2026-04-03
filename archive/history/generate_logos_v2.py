@@ -1,0 +1,359 @@
+import json
+
+html_start = """<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>UNBOUNDX · 20款全新 Logo 探索方案</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --paper: oklch(0.965 0.008 250);
+        --ink: oklch(0.12 0.018 257); 
+        --ink-soft: oklch(0.18 0.025 256);
+        --mist: oklch(0.79 0.03 250);
+        --muted: oklch(0.54 0.03 255);
+        
+        /* 印刷友好色: #f27a25 (接近 CMYK 0, 60, 95, 0) */
+        --accent: #f27a25;
+        --accent-light: #ff9d59; 
+        --accent-glow: rgba(242, 122, 37, 0.15);
+        
+        --font-en: "Outfit", sans-serif;
+        --font-cn: "Noto Sans SC", sans-serif;
+        
+        --max-width: 1440px;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body {
+        font-family: var(--font-cn);
+        background-color: var(--ink);
+        color: var(--paper);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Noise overlay */
+      body::before {
+        content: ""; position: fixed; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none; z-index: 50;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto; padding: 0 5vw 120px;
+        position: relative; z-index: 1;
+      }
+
+      header { padding: 100px 0 80px; text-align: center; }
+
+      .title {
+        font-family: var(--font-en);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 800; letter-spacing: -0.02em;
+        text-transform: uppercase; margin-bottom: 24px;
+      }
+      .title span { color: var(--accent); }
+
+      .subtitle {
+        font-size: 1.125rem; color: var(--mist);
+        letter-spacing: 0.05em; max-width: 700px;
+        margin: 0 auto; line-height: 1.8;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .logo-card {
+        background: var(--ink-soft);
+        border: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+        border-radius: 24px; overflow: hidden;
+        display: flex; flex-direction: column;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      }
+
+      .logo-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 32px 64px rgba(0,0,0,0.4), 0 0 0 1px var(--accent);
+      }
+
+      .logo-stage {
+        height: 360px;
+        display: flex; align-items: center; justify-content: center;
+        position: relative;
+        background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 60%);
+        border-bottom: 1px solid color-mix(in oklch, var(--paper) 5%, transparent);
+      }
+
+      .logo-svg {
+        width: 180px; height: 180px;
+        filter: drop-shadow(0 12px 24px var(--accent-glow));
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .logo-card:hover .logo-svg { transform: scale(1.1); }
+
+      .logo-info { padding: 40px; flex: 1; display: flex; flex-direction: column; }
+
+      .logo-header {
+        display: flex; justify-content: space-between;
+        align-items: baseline; margin-bottom: 20px;
+      }
+
+      .logo-number {
+        font-family: var(--font-en); font-size: 0.875rem;
+        font-weight: 700; color: var(--accent); letter-spacing: 0.1em;
+      }
+
+      .logo-title { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; }
+
+      .logo-desc { font-size: 1rem; color: var(--mist); line-height: 1.7; flex: 1; }
+
+      .wordmark-lockup {
+        display: flex; align-items: center; gap: 16px;
+        margin-top: 32px; padding-top: 24px;
+        border-top: 1px solid color-mix(in oklch, var(--paper) 10%, transparent);
+      }
+
+      .wordmark-lockup svg { width: 32px; height: 32px; }
+
+      .wordmark-text {
+        font-family: var(--font-en); font-weight: 800;
+        font-size: 1.25rem; letter-spacing: -0.02em;
+      }
+      .wordmark-text span { color: var(--accent); }
+
+      /* Animations */
+      @keyframes spin { 100% { transform: rotate(360deg); } }
+      @keyframes pulse { 0%, 100% { opacity: 0.6; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1); } }
+      @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+      
+      .spin-slow { animation: spin 20s linear infinite; }
+      .pulse-slow { animation: pulse 4s ease-in-out infinite; }
+      .float-slow { animation: float 6s ease-in-out infinite; }
+
+      @media (max-width: 1024px) {
+        .gallery { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="title">UNBOUND<span>X</span></div>
+        <div class="subtitle">20 款深度视觉探索。应用了印刷友好的核心品牌色 (#f27a25)，结合空间理念与高级 SaaS 质感美学。涵盖了从极简几何、空间折叠、光影负空间到流动引擎等不同维度的创意表达。</div>
+      </header>
+
+      <div class="gallery">
+"""
+
+html_end = """
+      </div>
+    </div>
+  </body>
+</html>
+"""
+
+def generate_card(id_num, title, en_title, desc, stage_svg, lockup_svg):
+    return f"""
+        <div class="logo-card">
+          <div class="logo-stage">
+            {stage_svg}
+          </div>
+          <div class="logo-info">
+            <div class="logo-header">
+              <h2 class="logo-title">{en_title} / {title}</h2>
+              <div class="logo-number">{id_num:02d}</div>
+            </div>
+            <p class="logo-desc">{desc}</p>
+            <div class="wordmark-lockup">
+              {lockup_svg}
+              <div class="wordmark-text">UNBOUND<span>X</span></div>
+            </div>
+          </div>
+        </div>
+"""
+
+logos = [
+    # 01
+    {
+        "title": "极简破局",
+        "en_title": "Minimal Break",
+        "desc": "传承自原方案的“极简突破”概念。使用不完整的方形边框代表现有的限制与规则，粗壮且悬浮的 X 强力冲破边界。极简且直接，非常适合作为现代软件工具的图标。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 20 20 L 100 20 L 100 100 L 20 100 Z" fill="none" stroke="var(--paper)" stroke-width="4" stroke-dasharray="80 160" stroke-dashoffset="40" /><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" class="float-slow" /><circle cx="90" cy="30" r="4" fill="#fff" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" /></svg>'
+    },
+    # 02
+    {
+        "title": "莫比乌斯流",
+        "en_title": "Mobius Flow",
+        "desc": "结合了原方案“流动自由”的理念。利用两条相交的莫比乌斯环状曲线构成 X 的形态。代表着无尽的循环、思维的流动以及不受物理形态限制的自由维度。",
+        "stage": '<svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grad02" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff9d59" /><stop offset="50%" stop-color="var(--accent)" /><stop offset="100%" stop-color="#cc5a12" /></linearGradient></defs><path d="M 30 30 C 70 10, 110 50, 90 90 C 50 110, 10 70, 30 30" fill="none" stroke="url(#grad02)" stroke-width="12" stroke-linecap="round" /><path d="M 90 30 C 50 10, 10 50, 30 90 C 70 110, 110 70, 90 30" fill="none" stroke="var(--accent-light)" stroke-width="12" stroke-linecap="round" opacity="0.8" style="mix-blend-mode: screen;" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 30 30 C 70 10, 110 50, 90 90 C 50 110, 10 70, 30 30" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" /><path d="M 90 30 C 50 10, 10 50, 30 90 C 70 110, 110 70, 90 30" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" opacity="0.6" /></svg>'
+    },
+    # 03
+    {
+        "title": "矩阵魔方",
+        "en_title": "Matrix Cube",
+        "desc": "传承自“立体维度”的概念。一个具有等距视角的三维立方体，中心通过负空间镂空出十字/X 形。它既是一个空间容器，又被 X 打破了核心，极具架构美学。",
+        "stage": '<svg class="logo-svg float-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g transform="translate(60, 60)"><path d="M 0 -40 L 35 -20 L 0 0 L -35 -20 Z" fill="var(--accent-light)" /><path d="M -35 -20 L 0 0 L 0 40 L -35 20 Z" fill="var(--accent)" /><path d="M 0 0 L 35 -20 L 35 20 L 0 40 Z" fill="#cc5a12" /><path d="M 0 -15 L 15 5 L 0 25 L -15 5 Z" fill="var(--ink-soft)" /></g></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><g transform="translate(60, 60)"><path d="M 0 -40 L 35 -20 L 0 0 L -35 -20 Z" fill="var(--accent-light)" /><path d="M -35 -20 L 0 0 L 0 40 L -35 20 Z" fill="var(--accent)" /><path d="M 0 0 L 35 -20 L 35 20 L 0 40 Z" fill="#cc5a12" /><path d="M 0 -15 L 15 5 L 0 25 L -15 5 Z" fill="var(--ink-soft)" /></g></svg>'
+    },
+    # 04
+    {
+        "title": "维度弦论",
+        "en_title": "String Theory",
+        "desc": "借鉴了“维度交织”的概念。使用参数化生成的抛物线网格交织形成 X。它暗示了宇宙底层的弦理论与多维度的交织叠加，充满极客精神与数据科学的精密度。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g stroke="var(--accent)" fill="none" stroke-linecap="round"><path d="M 20 20 Q 60 80 100 20" stroke-width="2" opacity="0.3" /><path d="M 25 30 Q 60 80 95 30" stroke-width="4" opacity="0.6" /><path d="M 30 40 Q 60 80 90 40" stroke-width="6" opacity="0.8" /><path d="M 35 50 Q 60 80 85 50" stroke-width="8" /><path d="M 20 100 Q 60 40 100 100" stroke-width="2" opacity="0.3" /><path d="M 25 90 Q 60 40 95 90" stroke-width="4" opacity="0.6" /><path d="M 30 80 Q 60 40 90 80" stroke-width="6" opacity="0.8" /><path d="M 35 70 Q 60 40 85 70" stroke-width="8" /></g><circle cx="60" cy="60" r="4" fill="#fff" class="pulse-slow" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 20 20 L 100 100 M 100 20 L 20 100" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" /></svg>'
+    },
+    # 05
+    {
+        "title": "奇点视界",
+        "en_title": "Event Horizon",
+        "desc": "一颗发光的熔岩恒星，被锋利的 X 形裂缝切开，透出内部耀眼的白光。代表打破宇宙的边界（视界），释放出无穷的能量。设计感极其现代、激进。",
+        "stage": '<svg class="logo-svg pulse-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="grad05" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="var(--accent)" stop-opacity="1" /><stop offset="100%" stop-color="var(--accent)" stop-opacity="0" /></radialGradient></defs><circle cx="60" cy="60" r="40" fill="url(#grad05)" /><path d="M 35 35 L 85 85 M 85 35 L 35 85" stroke="var(--ink-soft)" stroke-width="12" stroke-linecap="round" /><circle cx="60" cy="60" r="8" fill="#fff" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="var(--accent)" /><path d="M 35 35 L 85 85 M 85 35 L 35 85" stroke="var(--ink-soft)" stroke-width="16" stroke-linecap="round" /></svg>'
+    },
+    # 06
+    {
+        "title": "无限延展",
+        "en_title": "Infinite Expand",
+        "desc": "传承自“无限扩展”方案。由四个向外指引的箭头共同构成一个中心凝聚的 X。它既是一个坐标系的起源，也是向四个象限不断开拓的指引，寓意着多维度的扩张。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round"><path d="M 60 60 L 20 20 L 50 20" stroke-width="8" fill="none" /><path d="M 60 60 L 100 20 L 100 50" stroke-width="8" fill="none" /><path d="M 60 60 L 100 100 L 70 100" stroke-width="8" fill="none" /><path d="M 60 60 L 20 100 L 20 70" stroke-width="8" fill="none" /><circle cx="60" cy="60" r="6" fill="#fff" stroke="none" /></g></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><g stroke="var(--accent)" stroke-linecap="round" stroke-linejoin="round"><path d="M 60 60 L 20 20 L 50 20" stroke-width="12" fill="none" /><path d="M 60 60 L 100 100 L 70 100" stroke-width="12" fill="none" /></g></svg>'
+    },
+    # 07
+    {
+        "title": "棱镜折射",
+        "en_title": "Prism Refract",
+        "desc": "多层嵌套的菱形代表不同的维度空间，一道凌厉的白色 X 光束贯穿所有层级。象征着一击即破的穿透力，光芒折射出空间的层次感。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><polygon points="60,10 110,60 60,110 10,60" fill="none" stroke="var(--accent)" stroke-width="4" opacity="0.4" /><polygon points="60,25 95,60 60,95 25,60" fill="none" stroke="var(--accent)" stroke-width="8" opacity="0.7" /><polygon points="60,40 80,60 60,80 40,60" fill="var(--accent)" /><path d="M 10 10 L 110 110 M 110 10 L 10 110" stroke="#fff" stroke-width="4" opacity="0.9" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><polygon points="60,20 100,60 60,100 20,60" fill="var(--accent)" /><path d="M 20 20 L 100 100 M 100 20 L 20 100" stroke="#fff" stroke-width="8" /></svg>'
+    },
+    # 08
+    {
+        "title": "像素重构",
+        "en_title": "Pixel Rebuild",
+        "desc": "用数字时代最基础的单元（像素点/体素）重构出一个离散的 X。它具有极强的科技、AI 与代码感。中心点的高亮暗示着数据的核心处理枢纽。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g fill="var(--accent)"><rect x="20" y="20" width="16" height="16" rx="4" /><rect x="40" y="40" width="16" height="16" rx="4" opacity="0.8" /><rect x="60" y="60" width="16" height="16" rx="4" fill="#fff" /><rect x="80" y="80" width="16" height="16" rx="4" opacity="0.8" /><rect x="100" y="100" width="16" height="16" rx="4" /><rect x="100" y="20" width="16" height="16" rx="4" /><rect x="80" y="40" width="16" height="16" rx="4" opacity="0.8" /><rect x="40" y="80" width="16" height="16" rx="4" opacity="0.8" /><rect x="20" y="100" width="16" height="16" rx="4" /></g></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><rect x="20" y="20" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="76" y="20" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="48" y="48" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="20" y="76" width="24" height="24" fill="var(--accent)" rx="6" /><rect x="76" y="76" width="24" height="24" fill="var(--accent)" rx="6" /></svg>'
+    },
+    # 09
+    {
+        "title": "光圈跃迁",
+        "en_title": "Aperture Jump",
+        "desc": "断裂的能量光圈环绕着中心的 X。光圈代表维度的边界，断裂感代表跃迁与突破。整体形态非常平衡，适用于任何高精尖硬件或软件品牌。",
+        "stage": '<svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="grad09" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--accent-light)" /><stop offset="100%" stop-color="#cc5a12" /></linearGradient></defs><circle cx="60" cy="60" r="45" fill="none" stroke="url(#grad09)" stroke-width="12" stroke-dasharray="40 30" stroke-linecap="round" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="#fff" stroke-width="8" stroke-linecap="round" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="var(--accent)" stroke-width="16" stroke-dasharray="40 22" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="#fff" stroke-width="10" stroke-linecap="round" /></svg>'
+    },
+    # 10
+    {
+        "title": "几何剪影",
+        "en_title": "Geo Silhouette",
+        "desc": "两个背对背的三角形（形成一个菱形/正八面体轮廓），被强力的 X 切割开。这是最符合现代扁平化与微立体结合趋势的设计，稳重且不失锐气。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 10 L 110 60 L 60 110 Z" fill="var(--accent)" /><path d="M 60 10 L 10 60 L 60 110 Z" fill="var(--accent-light)" opacity="0.6" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="var(--ink-soft)" stroke-width="12" stroke-linecap="round" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 60 10 L 110 60 L 60 110 Z" fill="var(--accent)" /><path d="M 60 10 L 10 60 L 60 110 Z" fill="var(--accent)" opacity="0.5" /><path d="M 40 40 L 80 80 M 80 40 L 40 80" stroke="var(--ink-soft)" stroke-width="16" stroke-linecap="round" /></svg>'
+    },
+    # 11 (New)
+    {
+        "title": "多维折叠",
+        "en_title": "Dimensional Fold",
+        "desc": "以折纸艺术为灵感，利用纯粹的几何形体通过高低层级折叠出一个立体的 X 形，既展现了空间的纵深，又象征多维度的拓展。适合前沿科技感产品。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><polygon points="30,20 60,50 40,70 10,40" fill="var(--accent-light)" /><polygon points="60,50 90,20 110,40 80,70" fill="var(--accent)" /><polygon points="40,70 60,90 90,120 70,100" fill="#cc5a12" /><polygon points="10,80 30,100 60,70 40,50" fill="var(--accent-light)" opacity="0.7"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><polygon points="20,20 60,60 40,80 0,40" fill="var(--accent-light)" /><polygon points="60,60 100,20 120,40 80,80" fill="var(--accent)" /><polygon points="40,80 60,100 100,120 80,100" fill="#cc5a12" /></svg>'
+    },
+    # 12 (New)
+    {
+        "title": "恒星内核",
+        "en_title": "Stellar Core",
+        "desc": "发散状的放射线与星芒结构汇聚于核心，寓意着无限可能性的发源地。代表核心的驱动力（UnBound 的无尽动力）以及全方位的辐射影响。",
+        "stage": '<svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 60 10 L 65 45 L 100 50 L 65 55 L 60 90 L 55 55 L 20 50 L 55 45 Z" fill="var(--accent)" /><path d="M 30 30 L 50 50 L 90 90 M 90 30 L 70 50 L 30 90" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" fill="none"/><circle cx="60" cy="50" r="4" fill="#fff"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 60 10 L 65 45 L 100 50 L 65 55 L 60 90 L 55 55 L 20 50 L 55 45 Z" fill="var(--accent)" /></svg>'
+    },
+    # 13 (New)
+    {
+        "title": "矢量场",
+        "en_title": "Vector Field",
+        "desc": "抽象的数据流和力场线形成了一个隐形的 X。没有直接画出字母，而是通过周边的粒子与场能线条烘托出字母的存在，富有高级的数据哲学。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><g stroke="var(--accent)" stroke-width="4" stroke-linecap="round"><line x1="20" y1="20" x2="40" y2="40" opacity="0.4"/><line x1="10" y1="30" x2="35" y2="55" opacity="0.6"/><line x1="25" y1="10" x2="55" y2="35" opacity="0.8"/><line x1="100" y1="100" x2="80" y2="80" opacity="0.4"/><line x1="110" y1="90" x2="85" y2="65" opacity="0.6"/><line x1="95" y1="110" x2="65" y2="85" opacity="0.8"/><line x1="100" y1="20" x2="80" y2="40" opacity="0.4"/><line x1="110" y1="30" x2="85" y2="55" opacity="0.6"/><line x1="95" y1="10" x2="65" y2="35" opacity="0.8"/><line x1="20" y1="100" x2="40" y2="80" opacity="0.4"/><line x1="10" y1="90" x2="35" y2="65" opacity="0.6"/><line x1="25" y1="110" x2="55" y2="85" opacity="0.8"/></g><circle cx="60" cy="60" r="6" fill="#fff" class="pulse-slow"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><g stroke="var(--accent)" stroke-width="6" stroke-linecap="round"><line x1="20" y1="20" x2="45" y2="45" /><line x1="100" y1="100" x2="75" y2="75" /><line x1="100" y1="20" x2="75" y2="45" /><line x1="20" y1="100" x2="45" y2="75" /></g></svg>'
+    },
+    # 14 (New)
+    {
+        "title": "神经节点",
+        "en_title": "Neural Node",
+        "desc": "节点之间的链接形成的拓扑网络。X 是网络的中心交汇点，寓意强大的连接能力与人工智能底层的神经网络属性，是智慧与通信的象征。",
+        "stage": '<svg class="logo-svg float-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 20 20 L 60 60 L 100 20 M 20 100 L 60 60 L 100 100" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.5"/><circle cx="20" cy="20" r="8" fill="var(--accent-light)"/><circle cx="100" cy="20" r="6" fill="var(--accent)"/><circle cx="20" cy="100" r="10" fill="var(--accent)"/><circle cx="100" cy="100" r="8" fill="var(--accent-light)"/><circle cx="60" cy="60" r="12" fill="#fff" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 20 20 L 60 60 L 100 20 M 20 100 L 60 60 L 100 100" stroke="var(--accent)" stroke-width="4" fill="none"/><circle cx="20" cy="20" r="10" fill="var(--accent)"/><circle cx="100" cy="20" r="10" fill="var(--accent)"/><circle cx="20" cy="100" r="10" fill="var(--accent)"/><circle cx="100" cy="100" r="10" fill="var(--accent)"/></svg>'
+    },
+    # 15 (New)
+    {
+        "title": "引力透镜",
+        "en_title": "Gravity Lens",
+        "desc": "两个弯曲的弧线（引力波）彼此逼近但未交集，留出了中心的负空间 X。用极少的设计元素传达出宇宙引力扭曲空间的物理学美感。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 20 10 Q 70 60 20 110" fill="none" stroke="var(--accent)" stroke-width="12" stroke-linecap="round"/><path d="M 100 10 Q 50 60 100 110" fill="none" stroke="var(--accent-light)" stroke-width="12" stroke-linecap="round"/><circle cx="60" cy="60" r="4" fill="#fff" class="pulse-slow"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 30 10 Q 80 60 30 110" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round"/><path d="M 90 10 Q 40 60 90 110" fill="none" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" opacity="0.6"/></svg>'
+    },
+    # 16 (New)
+    {
+        "title": "动能波",
+        "en_title": "Kinetic Wave",
+        "desc": "类似于声波或信号频率，中间的波峰波谷错落排布，视觉上形成一个 X 的轮廓。代表了科技工具中的波动、响应以及时刻存在的活跃状态。",
+        "stage": '<svg class="logo-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="8" height="20" rx="4" fill="var(--accent)" opacity="0.5"/><rect x="35" y="30" width="8" height="40" rx="4" fill="var(--accent)" opacity="0.7"/><rect x="50" y="45" width="8" height="30" rx="4" fill="#fff"/><rect x="65" y="30" width="8" height="60" rx="4" fill="var(--accent)" opacity="0.9"/><rect x="80" y="20" width="8" height="40" rx="4" fill="var(--accent)" opacity="0.6"/><rect x="95" y="40" width="8" height="20" rx="4" fill="var(--accent)" opacity="0.4"/><rect x="20" y="80" width="8" height="20" rx="4" fill="var(--accent)" opacity="0.5"/><rect x="80" y="80" width="8" height="20" rx="4" fill="var(--accent)" opacity="0.5"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><rect x="25" y="25" width="12" height="30" rx="6" fill="var(--accent)"/><rect x="55" y="45" width="12" height="30" rx="6" fill="var(--accent)"/><rect x="85" y="25" width="12" height="30" rx="6" fill="var(--accent)"/><rect x="25" y="65" width="12" height="30" rx="6" fill="var(--accent)"/><rect x="85" y="65" width="12" height="30" rx="6" fill="var(--accent)"/></svg>'
+    },
+    # 17 (New)
+    {
+        "title": "构架蓝图",
+        "en_title": "Architect Blueprint",
+        "desc": "设计上采用细线和结构标记，如同精密机械或软件架构的蓝图。表现品牌的建设者精神和底层的逻辑严密性。",
+        "stage": '<svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50" fill="none" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4"/><circle cx="60" cy="60" r="30" fill="none" stroke="var(--accent)" stroke-width="2"/><path d="M 20 20 L 100 100 M 100 20 L 20 100" stroke="var(--accent-light)" stroke-width="4"/><rect x="40" y="40" width="40" height="40" fill="none" stroke="#fff" stroke-width="2" transform="rotate(45 60 60)"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="40" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="8"/></svg>'
+    },
+    # 18 (New)
+    {
+        "title": "量子叠加",
+        "en_title": "Quantum Superposition",
+        "desc": "两个重影的 X 以极小的位移叠加在一起，就像量子力学中的叠加态一样。体现出不确定性与可能性的边界模糊，非常契合自由维度的哲学。",
+        "stage": '<svg class="logo-svg float-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" opacity="0.6" transform="translate(-4, -4)"/><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="#fff" stroke-width="12" stroke-linecap="round" opacity="0.8" transform="translate(4, 4)"/><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" /></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" opacity="0.5" transform="translate(-5, -5)"/><path d="M 30 30 L 90 90 M 90 30 L 30 90" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" transform="translate(5, 5)"/></svg>'
+    },
+    # 19 (New)
+    {
+        "title": "光学耀斑",
+        "en_title": "Optical Flare",
+        "desc": "以中心强光为源头，向四面八方射出光芒，形成交叉的耀斑。在黑暗的太空中尤为夺目，象征着照亮未知的洞察力。",
+        "stage": '<svg class="logo-svg pulse-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="60" rx="60" ry="4" fill="var(--accent)" transform="rotate(45 60 60)"/><ellipse cx="60" cy="60" rx="60" ry="4" fill="var(--accent)" transform="rotate(-45 60 60)"/><ellipse cx="60" cy="60" rx="30" ry="2" fill="#fff" transform="rotate(45 60 60)"/><ellipse cx="60" cy="60" rx="30" ry="2" fill="#fff" transform="rotate(-45 60 60)"/><circle cx="60" cy="60" r="10" fill="#fff" filter="blur(2px)"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="50" ry="8" fill="var(--accent)" transform="rotate(45 60 60)"/><ellipse cx="60" cy="60" rx="50" ry="8" fill="var(--accent)" transform="rotate(-45 60 60)"/></svg>'
+    },
+    # 20 (New)
+    {
+        "title": "超流体",
+        "en_title": "Superfluid",
+        "desc": "用圆润且融合的液体形态构建 X，如同无摩擦的超流体。在科技严谨的基础上融入了极端的人文柔和与生机。",
+        "stage": '<svg class="logo-svg spin-slow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><path d="M 20 20 C 40 40, 50 50, 60 60 C 70 50, 80 40, 100 20 C 80 40, 70 50, 60 60 C 50 70, 40 80, 20 100 C 40 80, 50 70, 60 60 C 70 70, 80 80, 100 100 C 80 80, 70 70, 60 60 C 50 50, 40 40, 20 20" fill="var(--accent)" opacity="0.8"/><path d="M 20 20 Q 60 60 100 100 M 100 20 Q 60 60 20 100" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9"/></svg>',
+        "lockup": '<svg viewBox="0 0 120 120"><path d="M 20 20 C 50 50, 50 70, 20 100" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" fill="none"/><path d="M 100 20 C 70 50, 70 70, 100 100" stroke="var(--accent)" stroke-width="16" stroke-linecap="round" fill="none"/></svg>'
+    }
+]
+
+with open('/Users/jackiexiao/code/temp/temp/unboundx-20-logo-concepts.html', 'w', encoding='utf-8') as f:
+    f.write(html_start)
+    for i, logo in enumerate(logos):
+        f.write(generate_card(i+1, logo['title'], logo['en_title'], logo['desc'], logo['stage'], logo['lockup']))
+    f.write(html_end)
+
+print("HTML generated successfully with 20 items.")
