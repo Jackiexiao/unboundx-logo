@@ -1,0 +1,13 @@
+archive/
+assets/
+docs/
+scripts/
+site/
+.playwright-cli/
+.vscode/
+.agents/
+.claude/
+LICENSE.md
+README.md
+skills-lock.json
+unboundx-brand-guidelines-v4-final.html
