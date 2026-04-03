@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" fill="none" role="img" aria-labelledby="title desc">
   <title id="title">UNBOUNDX primary lockup</title>
   <desc id="desc">UNBOUNDX wordmark with the gravity arcs symbol on the left.</desc>
-  <g transform="translate(10 27) scale(0.95)">
+  <g transform="translate(18 32) scale(0.84)">
     <path d="M 10 10 Q 70 40 70 70" fill="none" stroke="#F26122" stroke-width="14" stroke-linecap="round"/>
     <path d="M 10 70 Q 70 40 70 10" fill="none" stroke="#101012" stroke-width="14" stroke-linecap="round"/>
   </g>

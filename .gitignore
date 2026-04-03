@@ -8,7 +8,9 @@
 .trae/
 .vscode/
 .vercel/
-skills/
+skills/*
+!skills/unboundx-design/
+!skills/unboundx-design/**
 skills-lock.json
 node_modules/
 __pycache__/
