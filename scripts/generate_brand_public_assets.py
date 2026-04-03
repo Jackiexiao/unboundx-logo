@@ -48,9 +48,9 @@ def reset_public() -> None:
 
 def reset_downloads() -> None:
     downloads = PUBLIC / "downloads"
-    if downloads.exists():
-        shutil.rmtree(downloads)
     downloads.mkdir(parents=True, exist_ok=True)
+    for zip_file in downloads.glob("*.zip"):
+        zip_file.unlink()
 
 
 def write_public_file(relative_path: str, content: str) -> None:
@@ -63,6 +63,13 @@ def save_root_file(relative_path: str, content: str) -> None:
     path = ROOT / relative_path
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
+
+
+def write_downloads_gitignore() -> None:
+    write_public_file(
+        "downloads/.gitignore",
+        "*.zip\n!.gitignore\n",
+    )
 
 
 def svg_document(view_box: str, body: str, title: str, desc: str) -> str:
@@ -244,7 +251,7 @@ UNBOUNDX 当前最终版品牌资产包，围绕 `Gravity Arcs` 极简弧线系�
 - `logos/png/`：Logo 透明背景位图
 - `materials/svg/`：主视觉、封面、海报、启动页等矢量物料
 - `materials/png/`：常用交付位图
-- `downloads/`：已打包的压缩包
+- `downloads/`：构建时自动生成的压缩包输出目录
 
 ## Usage Notes
 
@@ -351,11 +358,13 @@ def main() -> None:
 
     if args.downloads_only:
         reset_downloads()
+        write_downloads_gitignore()
         write_public_readme()
         build_bundles()
         return
 
     reset_public()
+    write_downloads_gitignore()
     write_assets()
     write_public_readme()
     render_pngs()

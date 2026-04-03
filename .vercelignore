@@ -1,7 +1,8 @@
 archive/
 assets/
 docs/
-scripts/
+scripts/*
+!scripts/generate_brand_public_assets.py
 site/
 .playwright-cli/
 .vscode/
