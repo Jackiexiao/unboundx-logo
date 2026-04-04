@@ -92,7 +92,6 @@
     .mobile-brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
       min-width: 0;
       color: var(--text-primary);
       text-decoration: none;
@@ -102,24 +101,6 @@
       display: block;
       width: 118px;
       height: auto;
-    }
-
-    .mobile-brand-text {
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-    }
-
-    .mobile-brand-text strong {
-      font-size: 0.92rem;
-      font-family: var(--font-en);
-      letter-spacing: 0.04em;
-    }
-
-    .mobile-brand-text span {
-      color: var(--text-secondary);
-      font-size: 0.72rem;
-      white-space: nowrap;
     }
 
     .mobile-nav-toggle,
@@ -1259,10 +1240,6 @@
         width: 106px;
       }
 
-      .mobile-brand-text span {
-        display: none;
-      }
-
       .sidebar {
         width: 100%;
       }
@@ -1324,10 +1301,6 @@
   <header class="mobile-topbar">
     <a class="mobile-brand" href="#home" aria-label="返回首页">
       <img class="mobile-brand-lockup" src="public/logos/svg/unboundx-lockup-dark.svg" alt="UNBOUNDX 品牌标识">
-      <span class="mobile-brand-text">
-        <strong>UNBOUNDX</strong>
-        <span>Brand Guidelines</span>
-      </span>
     </a>
     <button class="mobile-nav-toggle" type="button" aria-label="打开导航菜单" aria-controls="site-sidebar" aria-expanded="false">
       <span></span>
