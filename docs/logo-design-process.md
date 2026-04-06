@@ -119,6 +119,78 @@
 - 品牌素材目录：`public/`
 - 历史探索归档：`archive/history/`
 
+## 06. Motion Design
+
+品牌动效系统围绕"维度突破"的核心概念展开，通过轨道旋转、磁场交互、扫光显现与脉冲呼吸四类动效语言，让静态标识获得时间维度上的生命力。
+
+### 核心动效类型
+
+**轨道旋转 (Orbital Spin)**
+
+Logo 外围的弧线轨道以不同速度持续旋转，营造多维空间的层次感。主轨道顺时针 4 秒一周，外层轨道逆向 8 秒一周，形成错位的视觉韵律。这种设计让 Logo 始终处于"运动中的稳定"状态。
+
+```css
+.interactive-arc::before {
+    border-top-color: #F26122;
+    animation: spin 4s linear infinite;
+}
+```
+
+**磁场交互 (Magnetic Core)**
+
+中心 X 标识具备磁场般的交互特性：鼠标靠近时产生微妙的吸引偏移，点击拖拽时缩放至 0.9 倍并切换为抓取手势。这种物理感的反馈让品牌标识不再是冰冷的图形，而是可感知、可响应的存在。
+
+```css
+.magnetic-core {
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: grab;
+}
+.magnetic-core:active {
+    transform: scale(0.9);
+    cursor: grabbing;
+}
+```
+
+**扫光显现 (Reveal Block)**
+
+品牌标题的入场动效采用橙色色块从左至右扫过的方式，先遮盖后显现。色块在 0.6 秒时完全覆盖文字，随后从右侧退出，文字在 0.8 秒时瞬间显现。这种"破开维度"的视觉隐喻强化了品牌突破边界的气质。
+
+```css
+@keyframes reveal-block {
+    0% { transform: scaleX(0); transform-origin: left; }
+    50% { transform: scaleX(1); transform-origin: left; }
+    51% { transform: scaleX(1); transform-origin: right; }
+    100% { transform: scaleX(0); transform-origin: right; }
+}
+```
+
+**脉冲呼吸 (Pulse Glow)**
+
+Logo 的发光效果以 2 秒为周期进行呼吸式变化，阴影从 5px 扩散至 20px，透明度在 0.3 至 0.8 之间波动。这种有机的律动让品牌在深色背景中始终保持"活着"的状态，而非静止的装饰。
+
+```css
+@keyframes logo-glow {
+    0%, 100% { filter: drop-shadow(0 0 5px rgba(242, 97, 34, 0.3)); }
+    50% { filter: drop-shadow(0 0 20px rgba(242, 97, 34, 0.8)); }
+}
+```
+
+### 环境氛围层
+
+**胶片颗粒 (Film Grain)**
+
+全局使用 SVG 噪点滤镜叠加 3% 不透明度的分形噪声，模拟高端胶片质感。这层微妙的颗粒感让数字界面摆脱过度光滑的塑料感，获得更具深度的视觉肌理。
+
+**辉光光晕 (Glow Orb)**
+
+页面中心放置一个 60vw 直径的径向渐变光晕，以 10 秒周期在 0.8 至 1.1 倍之间缓慢缩放。光晕的存在为深色背景注入空间深度，让视觉焦点自然聚集在品牌核心区域。
+
+### 时序编排原则
+
+所有动效遵循"先快后慢"的缓动曲线 `cubic-bezier(0.16, 1, 0.3, 1)`，确保动作启动果断、结束柔和。入场动画采用阶梯式延迟（150ms / 300ms / 450ms），避免所有元素同时出现造成的视觉混乱。
+
+交互反馈控制在 200-400ms 内完成，超过 500ms 的响应会让用户感知到延迟。循环动画的周期设定在 2-10 秒之间，过快会显得焦躁，过慢则失去动感。
+
 ## 权利归属
 
 本项目相关品牌设计、视觉系统、代码资产与文档内容著作权归：

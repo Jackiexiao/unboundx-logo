@@ -1039,6 +1039,80 @@
       animation: motion-breathe 3.4s var(--ease-out-quart) infinite;
       filter: drop-shadow(0 0 22px rgba(242,97,34,0.16));
     }
+    .motion-mark-fade .motion-arc-orange,
+    .motion-mark-fade .motion-arc-white {
+      animation: motion-fade 2.8s var(--ease-out-expo) infinite;
+    }
+    .motion-mark-fade .motion-arc-white {
+      animation-delay: 0.3s;
+    }
+    .motion-mark-spinner {
+      animation: motion-spin 2s linear infinite;
+    }
+    .motion-mark-spinner .motion-arc-orange,
+    .motion-mark-spinner .motion-arc-white {
+      stroke-dasharray: 154;
+    }
+    .motion-mark-spinner .motion-arc-orange {
+      stroke-dashoffset: 0;
+    }
+    .motion-mark-spinner .motion-arc-white {
+      stroke-dashoffset: 77;
+    }
+    .motion-mark-glow {
+      animation: motion-glow 2.2s ease-in-out infinite;
+    }
+    .motion-mark-bounce {
+      animation: motion-bounce 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    }
+    .motion-mark-rotate {
+      animation: motion-spin 3s linear infinite;
+    }
+    .motion-section-divider {
+      margin-top: 60px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .motion-section-label {
+      font-family: var(--font-en);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brand-accent);
+      margin-bottom: 6px;
+    }
+    .motion-section-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .motion-grid-stage {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .motion-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(0deg, rgba(242,97,34,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(242,97,34,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: motion-grid-scan 3s linear infinite;
+    }
+    .motion-grid-logo {
+      position: relative;
+      z-index: 1;
+      width: 80px;
+      height: 80px;
+      opacity: 0;
+      animation: motion-fade-in 3s ease-in-out infinite;
+    }
     .motion-loader-stack {
       display: flex;
       align-items: center;
@@ -1300,6 +1374,59 @@
       100% {
         left: 84%;
         opacity: 0;
+      }
+    }
+
+    @keyframes motion-fade {
+      0% {
+        opacity: 0;
+        filter: blur(8px);
+      }
+      50%, 100% {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes motion-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes motion-glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(242,97,34,0.3));
+      }
+      50% {
+        filter: drop-shadow(0 0 24px rgba(242,97,34,0.8));
+      }
+    }
+
+    @keyframes motion-bounce {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+      }
+      50% {
+        transform: scale(1.15) translateY(-8px);
+      }
+    }
+
+    @keyframes motion-grid-scan {
+      0% {
+        transform: translateY(-40px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes motion-fade-in {
+      0%, 30% {
+        opacity: 0;
+      }
+      60%, 100% {
+        opacity: 1;
       }
     }
 
@@ -2445,7 +2572,7 @@ When generating HTML/CSS, output production-ready code that strictly adheres to 
         <div class="section-header">
           <div class="section-tag">06. Motion Design</div>
           <h2 class="section-title">Motion as Brand Behavior</h2>
-          <p class="section-desc">我把 <strong>unboundx-web</strong> 里最出彩的一批轨道、磁场、扫光与脉冲动效，收敛进这份品牌规范页，形成更适合展示站、官网首屏、加载态与产品演示的统一动效语言：少而准，但一眼就能看出 UNBOUNDX 的维度张力。</p>
+          <p class="section-desc">动效系统按使用场景分为四个层次：<strong>品牌入场</strong>用于开屏与片头、<strong>加载等待</strong>用于处理态反馈、<strong>交互响应</strong>用于按钮与悬停、<strong>氛围层</strong>用于背景与空间营造。每个动效都经过克制设计，确保在不同触点保持一致的维度突破气质。</p>
         </div>
 
         <div class="motion-stage">
@@ -2463,123 +2590,259 @@ When generating HTML/CSS, output production-ready code that strictly adheres to 
             </div>
           </div>
 
-          <div class="motion-stage-copy">
-            <div class="motion-stage-kicker">From Concept Site to Brand System</div>
-            <h3 class="motion-stage-title">把概念官网里的动态张力，沉淀成品牌级的行为系统</h3>
-            <p class="motion-stage-desc">这些动作不再只是“炫技特效”，而是围绕 <strong>进入维度、引力牵引、系统反馈、界面扫光</strong> 四个主题组织起来，方便后续继续扩展到官网、产品界面和宣传片片头。</p>
-            <div class="motion-chip-row">
-              <span class="motion-chip">Arc Reveal</span>
-              <span class="motion-chip">Orbit Trails</span>
-              <span class="motion-chip">Magnetic Response</span>
-              <span class="motion-chip">System Sweep</span>
+          <div class=”motion-stage-copy”>
+            <div class=”motion-stage-kicker”>Motion System Architecture</div>
+            <h3 class=”motion-stage-title”>四层动效体系，覆盖从品牌到产品的完整场景</h3>
+            <p class=”motion-stage-desc”>从 <strong>品牌入场、加载等待、交互响应、氛围营造</strong> 四个维度构建动效语言，确保在官网、产品界面、宣传片和演示场景中都能找到对应的动效方案。</p>
+            <div class=”motion-chip-row”>
+              <span class=”motion-chip”>Brand Entrance</span>
+              <span class=”motion-chip”>Micro Loaders</span>
+              <span class=”motion-chip”>Interactive Response</span>
+              <span class=”motion-chip”>Ambient Layer</span>
             </div>
           </div>
         </div>
 
-        <div class="motion-principles">
-          <article class="motion-principle">
-            <div class="motion-principle-kicker">01 · Entrance</div>
-            <h3 class="motion-principle-title">进入维度要有唤醒感</h3>
-            <p class="motion-principle-desc">弧线依次绘制、中心逐步点亮、外环晚半拍出现，让品牌像是被引力场激活，而不是生硬地突然出现。</p>
+        <div class=”motion-principles”>
+          <article class=”motion-principle”>
+            <div class=”motion-principle-kicker”>Layer 01 · Brand Entrance</div>
+            <h3 class=”motion-principle-title”>品牌入场：开屏、片头、首次加载</h3>
+            <p class=”motion-principle-desc”>弧线绘制、粒子爆发、扫光揭示等高仪式感动效，用于品牌首次出现的关键时刻，营造维度激活的唤醒感。</p>
           </article>
-          <article class="motion-principle">
-            <div class="motion-principle-kicker">02 · Response</div>
-            <h3 class="motion-principle-title">反馈应该像系统在呼吸</h3>
-            <p class="motion-principle-desc">脉冲、旋转和粒子都被压到克制范围内，避免夸张弹跳，更适合品牌官网与 SaaS 产品的高级感语境。</p>
+          <article class=”motion-principle”>
+            <div class=”motion-principle-kicker”>Layer 02 · Micro Loaders</div>
+            <h3 class=”motion-principle-title”>加载等待：处理中、生成中、同步中</h3>
+            <p class=”motion-principle-desc”>旋转加载器、脉冲呼吸、进度指示等克制的等待反馈，让用户感知系统正在工作，而不是卡住了。</p>
           </article>
-          <article class="motion-principle">
-            <div class="motion-principle-kicker">03 · Direction</div>
-            <h3 class="motion-principle-title">扫描与轨道负责引导注意力</h3>
-            <p class="motion-principle-desc">扫光、轨道拖尾和磁场线条承担“引导视线”的职责，让用户自然地聚焦到品牌标识与关键展示内容。</p>
+          <article class=”motion-principle”>
+            <div class=”motion-principle-kicker”>Layer 03 · Interactive Response</div>
+            <h3 class=”motion-principle-title”>交互响应：悬停、点击、状态切换</h3>
+            <p class=”motion-principle-desc”>发光脉冲、磁场吸引、弹性反馈等微交互动效，为按钮、卡片、导航提供即时的视觉反馈。</p>
+          </article>
+          <article class=”motion-principle”>
+            <div class=”motion-principle-kicker”>Layer 04 · Ambient Layer</div>
+            <h3 class=”motion-principle-title”>氛围营造：背景、空间、持续运转</h3>
+            <p class=”motion-principle-desc”>轨道拖尾、磁场线条、扫描网格等环境动效，为页面注入空间深度和品牌气质，但不抢夺主要内容的注意力。</p>
           </article>
         </div>
 
-        <div class="motion-demo-grid">
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <svg class="motion-mark motion-mark-draw" viewBox="0 0 128 128" aria-hidden="true">
-                <path class="motion-arc-orange" d="M35.4 35.4q68.4 34.2 68.4 68.4"/>
-                <path class="motion-arc-white" d="M35.4 103.8q68.4-34.2 68.4-68.4"/>
+        <!-- Layer 01: Brand Entrance -->
+        <div class=”motion-section-divider”>
+          <div class=”motion-section-label”>Layer 01 · Brand Entrance</div>
+          <div class=”motion-section-desc”>品牌入场动效 / 开屏与片头场景</div>
+        </div>
+
+        <div class=”motion-demo-grid”>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-draw” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
               </svg>
             </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">Arc Reveal</div>
-              <h3 class="motion-demo-title">弧线绘制 / Logo 开场动画</h3>
-              <p class="motion-demo-desc">直接从 <strong>unboundx-web</strong> 的 logo 动效里提炼出的入场方式，适合用于页面加载、开屏与片头品牌揭示。</p>
-              <span class="motion-demo-note">品牌进入 · 先橙后白</span>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Arc Reveal</div>
+              <h3 class=”motion-demo-title”>弧线绘制</h3>
+              <p class=”motion-demo-desc”>Logo 入场的标准方式，橙色弧线先行绘制，白色弧线紧随其后，营造维度逐层激活的仪式感。适合页面加载、开屏与片头品牌揭示。</p>
+              <span class=”motion-demo-note”>开屏动画 · 2-3秒</span>
             </div>
           </article>
 
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <canvas id="motion-orbit-canvas" class="motion-demo-canvas" aria-hidden="true"></canvas>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <canvas id=”motion-particle-canvas” class=”motion-demo-canvas” aria-hidden=”true”></canvas>
             </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">Orbit Trails</div>
-              <h3 class="motion-demo-title">轨道拖尾 / 环绕氛围动效</h3>
-              <p class="motion-demo-desc">保留原站里最有辨识度的轨道粒子语言，用来表现“维度运行中”的持续状态，适合首屏背景与发布页氛围层。</p>
-              <span class="motion-demo-note">Ambient Motion · 永续运转</span>
-            </div>
-          </article>
-
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <canvas id="motion-field-canvas" class="motion-demo-canvas" aria-hidden="true"></canvas>
-            </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">Magnetic Field</div>
-              <h3 class="motion-demo-title">磁场响应 / 能量向心表达</h3>
-              <p class="motion-demo-desc">来源于原概念页的磁力场演绎。这里更收敛、更适合品牌站，强调“所有能量都被牵引向 X 维度核心”。</p>
-              <span class="motion-demo-note">Directional Feedback · 牵引聚焦</span>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Particle Burst</div>
+              <h3 class=”motion-demo-title”>粒子爆发</h3>
+              <p class=”motion-demo-desc”>Logo 从中心向外爆发粒子，随后粒子回收重组为完整标识。适合产品发布、重大更新、宣传片开场等高能量时刻。</p>
+              <span class=”motion-demo-note”>高能入场 · 3-4秒</span>
             </div>
           </article>
 
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <svg class="motion-mark motion-mark-breathe" viewBox="0 0 128 128" aria-hidden="true">
-                <path class="motion-arc-orange" d="M35.4 35.4q68.4 34.2 68.4 68.4"/>
-                <path class="motion-arc-white" d="M35.4 103.8q68.4-34.2 68.4-68.4"/>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-fade” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
               </svg>
             </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">Pulse Breathing</div>
-              <h3 class="motion-demo-title">呼吸脉冲 / 轻量等待反馈</h3>
-              <p class="motion-demo-desc">比常见“跳一下”的反馈更克制，适合按钮待命态、悬浮 Logo、播放按钮与章节切换时的微互动表达。</p>
-              <span class="motion-demo-note">Micro Interaction · 温和呼吸</span>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Fade Sequence</div>
+              <h3 class=”motion-demo-title”>渐显序列</h3>
+              <p class=”motion-demo-desc”>Logo 从透明到实体的渐进显现，配合轻微的模糊到清晰过渡。适合低调入场、文档页面、产品界面的品牌标识显示。</p>
+              <span class=”motion-demo-note”>低调入场 · 1-2秒</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Layer 02: Micro Loaders -->
+        <div class=”motion-section-divider”>
+          <div class=”motion-section-label”>Layer 02 · Micro Loaders</div>
+          <div class=”motion-section-desc”>加载等待动效 / 处理态与进度反馈</div>
+        </div>
+
+        <div class=”motion-demo-grid”>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-spinner” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
+              </svg>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Loading Spinner</div>
+              <h3 class=”motion-demo-title”>旋转加载器</h3>
+              <p class=”motion-demo-desc”>Logo 持续旋转，配合虚线描边营造”系统运转中”的视觉反馈。适合 API 请求、数据加载、文件上传等等待场景。</p>
+              <span class=”motion-demo-note”>标准加载 · 循环</span>
             </div>
           </article>
 
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <div class="motion-loader-stack" aria-hidden="true">
-                <div class="motion-loader-ring"></div>
-                <div class="motion-loader-dots">
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-breathe” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
+              </svg>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Pulse Breathing</div>
+              <h3 class=”motion-demo-title”>呼吸脉冲</h3>
+              <p class=”motion-demo-desc”>Logo 以 2 秒周期进行缩放与透明度变化，模拟呼吸节奏。适合轻量等待、后台处理、实时同步等低干扰场景。</p>
+              <span class=”motion-demo-note”>轻量等待 · 循环</span>
+            </div>
+          </article>
+
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <div class=”motion-loader-stack” aria-hidden=”true”>
+                <div class=”motion-loader-ring”></div>
+                <div class=”motion-loader-dots”>
                   <span></span>
                   <span></span>
                   <span></span>
                 </div>
               </div>
             </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">Micro Loader</div>
-              <h3 class="motion-demo-title">微加载器 / 等待态组件语言</h3>
-              <p class="motion-demo-desc">把原站里的 mini loaders 重组为一套更克制的等待反馈，可直接延展为加载条、处理中、生成中等状态组件。</p>
-              <span class="motion-demo-note">System Status · 等待有节奏</span>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Micro Loader</div>
+              <h3 class=”motion-demo-title”>微加载器组件</h3>
+              <p class=”motion-demo-desc”>环形进度条配合三点跳动，可延展为按钮内加载、表单提交、卡片刷新等组件级等待反馈。</p>
+              <span class=”motion-demo-note”>组件级 · 可定制</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Layer 03: Interactive Response -->
+        <div class=”motion-section-divider”>
+          <div class=”motion-section-label”>Layer 03 · Interactive Response</div>
+          <div class=”motion-section-desc”>交互响应动效 / 悬停、点击与状态切换</div>
+        </div>
+
+        <div class=”motion-demo-grid”>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-glow” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <defs>
+                  <filter id=”motion-glow-filter”>
+                    <feGaussianBlur stdDeviation=”4” result=”coloredBlur”/>
+                    <feMerge>
+                      <feMergeNode in=”coloredBlur”/>
+                      <feMergeNode in=”SourceGraphic”/>
+                    </feMerge>
+                  </filter>
+                </defs>
+                <g filter=”url(#motion-glow-filter)”>
+                  <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                  <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
+                </g>
+              </svg>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Glow Pulse</div>
+              <h3 class=”motion-demo-title”>发光脉冲</h3>
+              <p class=”motion-demo-desc”>Logo 发光强度周期性变化，从 5px 扩散至 20px。适合按钮悬停、CTA 强调、播放按钮等需要吸引注意力的交互元素。</p>
+              <span class=”motion-demo-note”>悬停态 · 吸引注意</span>
             </div>
           </article>
 
-          <article class="motion-demo-card">
-            <div class="motion-demo-stage">
-              <div class="motion-surface-preview">
-                <img src="./promo/home-section.png" alt="UNBOUNDX 官网产品界面动效预览">
-                <div class="motion-surface-hud">System Sweep</div>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <canvas id=”motion-field-canvas” class=”motion-demo-canvas” aria-hidden=”true”></canvas>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Magnetic Field</div>
+              <h3 class=”motion-demo-title”>磁场响应</h3>
+              <p class=”motion-demo-desc”>磁力场线条从四周向中心 X 标识汇聚，视觉化地表达”能量向心牵引”。适合鼠标跟随、拖拽反馈、焦点指示等引导性交互。</p>
+              <span class=”motion-demo-note”>鼠标跟随 · 引导聚焦</span>
+            </div>
+          </article>
+
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-bounce” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
+              </svg>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Elastic Bounce</div>
+              <h3 class=”motion-demo-title”>弹性反馈</h3>
+              <p class=”motion-demo-desc”>Logo 在点击时产生弹性缩放，配合 cubic-bezier 缓动曲线营造物理感。适合按钮点击、卡片选中、开关切换等即时反馈。</p>
+              <span class=”motion-demo-note”>点击反馈 · 0.3秒</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Layer 04: Ambient Layer -->
+        <div class=”motion-section-divider”>
+          <div class=”motion-section-label”>Layer 04 · Ambient Layer</div>
+          <div class=”motion-section-desc”>氛围层动效 / 背景与空间营造</div>
+        </div>
+
+        <div class=”motion-demo-grid”>
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <canvas id=”motion-orbit-canvas” class=”motion-demo-canvas” aria-hidden=”true”></canvas>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Orbit Trails</div>
+              <h3 class=”motion-demo-title”>轨道拖尾</h3>
+              <p class=”motion-demo-desc”>环绕 Logo 的轨道粒子系统，以不同速度持续运转，表现”维度运行中”的永续状态。适合首屏背景、发布页氛围层、品牌展示区。</p>
+              <span class=”motion-demo-note”>背景氛围 · 永续循环</span>
+            </div>
+          </article>
+
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <div class=”motion-grid-stage” aria-hidden=”true”>
+                <div class=”motion-grid-lines”></div>
+                <svg class=”motion-grid-logo” viewBox=”0 0 128 128”>
+                  <path d=”M35.4 35.4q68.4 34.2 68.4 68.4” fill=”none” stroke=”var(--brand-accent)” stroke-width=”14.8” stroke-linecap=”round”/>
+                  <path d=”M35.4 103.8q68.4-34.2 68.4-68.4” fill=”none” stroke=”var(--text-primary)” stroke-width=”14.8” stroke-linecap=”round”/>
+                </svg>
               </div>
             </div>
-            <div class="motion-demo-meta">
-              <div class="motion-demo-kicker">System Sweep</div>
-              <h3 class="motion-demo-title">扫光提示 / 界面内容激活方式</h3>
-              <p class="motion-demo-desc">把官网概念页与 Remotion 片段里的扫描线语言搬进品牌站，用作“内容已激活 / 数据正在对焦”的提示性动效。</p>
-              <span class="motion-demo-note">Attention Guide · 扫描聚焦</span>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Scan Grid</div>
+              <h3 class=”motion-demo-title”>扫描网格</h3>
+              <p class=”motion-demo-desc”>网格线条从上至下扫过，配合 Logo 渐显，营造”系统正在扫描 / 数据正在对焦”的科技感。适合产品演示、数据可视化、技术展示页。</p>
+              <span class=”motion-demo-note”>科技氛围 · 扫描聚焦</span>
+            </div>
+          </article>
+
+          <article class=”motion-demo-card”>
+            <div class=”motion-demo-stage”>
+              <svg class=”motion-mark motion-mark-rotate” viewBox=”0 0 128 128” aria-hidden=”true”>
+                <path class=”motion-arc-orange” d=”M35.4 35.4q68.4 34.2 68.4 68.4”/>
+                <path class=”motion-arc-white” d=”M35.4 103.8q68.4-34.2 68.4-68.4”/>
+              </svg>
+            </div>
+            <div class=”motion-demo-meta”>
+              <div class=”motion-demo-kicker”>Infinite Rotation</div>
+              <h3 class=”motion-demo-title”>无限旋转</h3>
+              <p class=”motion-demo-desc”>Logo 以 3 秒周期持续旋转，速度恒定。适合作为页面角落的品牌标识、导航栏 Logo、或背景装饰元素，保持品牌存在感。</p>
+              <span class=”motion-demo-note”>持续运转 · 循环</span>
             </div>
           </article>
         </div>
