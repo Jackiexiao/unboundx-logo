@@ -1,4 +1,5 @@
 .DS_Store
+output/
 .env
 .env.*
 !.env.example

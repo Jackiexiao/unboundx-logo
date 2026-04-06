@@ -112,7 +112,7 @@
 
 ## 最终交付
 
-- 在线站点：`https://logo.unboundx.tech`
+- 在线站点：`https://logo.unboundxai.com`
 - 代码仓库：`https://github.com/jackiexiao/unboundx-logo`
 - 最终规范文件：`index.html`
 - 深色规范页别名：`unboundx-brand-guidelines-dark.html`

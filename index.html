@@ -32,6 +32,9 @@
       
       --max-width: 1200px;
       --sidebar-width: 260px;
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+      --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -783,6 +786,523 @@
       max-width: 18rem;
     }
 
+    /* === Motion Design === */
+    .motion-stage {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 380px);
+      min-height: 460px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 36%, rgba(242,97,34,0.08) 100%);
+      box-shadow: 0 36px 120px rgba(0,0,0,0.34);
+    }
+    .motion-stage-visual {
+      position: relative;
+      min-height: 460px;
+      overflow: hidden;
+    }
+    .motion-stage-canvas,
+    .motion-demo-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .motion-stage-canvas {
+      position: absolute;
+      inset: 0;
+    }
+    .motion-stage-rings {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .motion-stage-rings span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .motion-stage-rings span:nth-child(1) {
+      width: 240px;
+      height: 240px;
+      animation: stage-orbit 18s linear infinite;
+    }
+    .motion-stage-rings span:nth-child(2) {
+      width: 420px;
+      height: 420px;
+      border-style: dashed;
+      opacity: 0.52;
+      animation: stage-orbit-reverse 28s linear infinite;
+    }
+    .motion-stage-core {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(34vw, 220px);
+      height: min(34vw, 220px);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 32px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.12), rgba(16,16,18,0.9) 68%);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        0 40px 120px rgba(0,0,0,0.46),
+        0 0 0 1px rgba(255,255,255,0.02) inset;
+      backdrop-filter: blur(18px);
+    }
+    .motion-stage-core::after {
+      content: "";
+      position: absolute;
+      inset: 18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242,97,34,0.18), transparent 72%);
+      filter: blur(26px);
+    }
+    .motion-stage-logo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 124px;
+      aspect-ratio: 1;
+      filter: drop-shadow(0 0 20px rgba(242,97,34,0.18));
+    }
+    .motion-stage-copy {
+      position: relative;
+      padding: 42px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      border-left: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(5,5,5,0.06), rgba(5,5,5,0.28));
+    }
+    .motion-stage-kicker,
+    .motion-principle-kicker,
+    .motion-demo-kicker,
+    .promo-spec-kicker {
+      color: var(--brand-accent);
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-family: var(--font-en);
+      font-weight: 700;
+    }
+    .motion-stage-title {
+      font-size: 1.9rem;
+      line-height: 1.12;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .motion-stage-desc,
+    .motion-principle-desc,
+    .motion-demo-desc,
+    .promo-spec-copy,
+    .promo-player-desc,
+    .promo-still-desc {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .motion-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .motion-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+      color: var(--text-primary);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: var(--font-en);
+    }
+    .motion-principles,
+    .motion-demo-grid,
+    .promo-still-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .motion-principles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .motion-principle {
+      border: 1px solid var(--surface-2);
+      border-radius: 20px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    }
+    .motion-principle-title,
+    .motion-demo-title,
+    .promo-player-title,
+    .promo-spec-title,
+    .promo-still-title {
+      font-size: 1.12rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    .motion-demo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .motion-demo-card,
+    .promo-player-card,
+    .promo-spec-card,
+    .promo-still-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--surface-2);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+    .motion-demo-card {
+      transition:
+        transform 0.34s var(--ease-out-expo),
+        border-color 0.34s var(--ease-out-expo),
+        box-shadow 0.34s var(--ease-out-expo);
+    }
+    .promo-still-card {
+      transition:
+        transform 0.34s var(--ease-out-expo),
+        border-color 0.34s var(--ease-out-expo),
+        box-shadow 0.34s var(--ease-out-expo);
+    }
+    .motion-demo-card:hover,
+    .promo-still-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(242,97,34,0.28);
+      box-shadow: 0 24px 60px rgba(242,97,34,0.08);
+    }
+    .motion-demo-stage {
+      position: relative;
+      min-height: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(242,97,34,0.08), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 75%);
+    }
+    .motion-demo-meta {
+      padding: 20px 22px 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .motion-demo-note {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 14px;
+      color: var(--text-tertiary);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+    .motion-mark {
+      width: 138px;
+      height: 138px;
+    }
+    .motion-mark path {
+      fill: none;
+      stroke-linecap: round;
+      stroke-width: 14.8;
+      transform-origin: center;
+    }
+    .motion-arc-orange {
+      stroke: var(--brand-accent);
+    }
+    .motion-arc-white {
+      stroke: var(--text-primary);
+    }
+    .motion-mark-draw .motion-arc-orange,
+    .motion-mark-draw .motion-arc-white {
+      stroke-dasharray: 154;
+      stroke-dashoffset: 154;
+      animation: motion-draw 2.4s var(--ease-out-expo) infinite;
+    }
+    .motion-mark-draw .motion-arc-white {
+      animation-delay: 0.24s;
+    }
+    .motion-mark-breathe {
+      animation: motion-breathe 3.4s var(--ease-out-quart) infinite;
+      filter: drop-shadow(0 0 22px rgba(242,97,34,0.16));
+    }
+    .motion-loader-stack {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .motion-loader-ring {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid rgba(242,97,34,0.16);
+      border-top-color: var(--brand-accent);
+      animation: motion-loader-spin 1.65s linear infinite;
+    }
+    .motion-loader-dots {
+      display: flex;
+      gap: 10px;
+    }
+    .motion-loader-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--brand-accent);
+      animation: motion-loader-dot 1.08s var(--ease-out-quart) infinite;
+    }
+    .motion-loader-dots span:nth-child(2) {
+      animation-delay: 0.14s;
+      opacity: 0.76;
+    }
+    .motion-loader-dots span:nth-child(3) {
+      animation-delay: 0.28s;
+      opacity: 0.52;
+    }
+    .motion-surface-preview {
+      position: absolute;
+      inset: 0;
+      padding: 22px;
+    }
+    .motion-surface-preview::after {
+      content: "";
+      position: absolute;
+      top: 14px;
+      bottom: 14px;
+      left: 14%;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(242,97,34,0), rgba(242,97,34,0.88), rgba(242,97,34,0));
+      box-shadow: 0 0 24px rgba(242,97,34,0.35);
+      animation: motion-sweep 2.8s linear infinite;
+    }
+    .motion-surface-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      opacity: 0.92;
+    }
+    .motion-surface-hud {
+      position: absolute;
+      top: 38px;
+      left: 38px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5,5,5,0.62);
+      color: var(--text-primary);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--font-en);
+    }
+    .promo-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 360px);
+      gap: 30px;
+      align-items: start;
+    }
+    .promo-player-shell {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #09090C;
+      overflow: hidden;
+    }
+    .promo-player-shell video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #050505;
+    }
+    .promo-player-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(5,5,5,0.62);
+      color: var(--text-primary);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--font-en);
+    }
+    .promo-player-copy {
+      padding: 24px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .promo-link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .promo-sidebar {
+      display: grid;
+      gap: 18px;
+    }
+    .promo-spec-card {
+      padding: 24px;
+    }
+    .promo-metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .promo-metric {
+      min-height: 88px;
+      padding: 16px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .promo-metric strong {
+      display: block;
+      color: var(--text-primary);
+      font-family: var(--font-en);
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+    .promo-metric span {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .promo-spec-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-size: 0.92rem;
+    }
+    .promo-spec-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+    .promo-spec-list li::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand-accent);
+    }
+    .promo-still-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .promo-still-media {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #09090C;
+    }
+    .promo-still-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s var(--ease-out-expo);
+    }
+    .promo-still-card:hover .promo-still-media img {
+      transform: scale(1.04);
+    }
+    .promo-still-copy {
+      padding: 18px 20px 22px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @keyframes stage-orbit {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes stage-orbit-reverse {
+      to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+      }
+    }
+
+    @keyframes motion-draw {
+      0%, 100% {
+        stroke-dashoffset: 154;
+        opacity: 0.26;
+      }
+      35%, 65% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    @keyframes motion-breathe {
+      0%, 100% {
+        transform: scale(0.96);
+        opacity: 0.88;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 1;
+      }
+    }
+
+    @keyframes motion-loader-spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes motion-loader-dot {
+      0%, 80%, 100% {
+        transform: scale(0.7);
+        opacity: 0.34;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes motion-sweep {
+      0% {
+        left: 14%;
+        opacity: 0;
+      }
+      12%, 88% {
+        opacity: 1;
+      }
+      100% {
+        left: 84%;
+        opacity: 0;
+      }
+    }
+
     /* === Downloads Section === */
     .download-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px;
@@ -1005,11 +1525,29 @@
       scroll-margin-top: 96px;
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
     @media (max-width: 1200px) {
       .story-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
       .download-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .motion-demo-grid,
+      .promo-still-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -1105,13 +1643,24 @@
       .color-grid,
       .typo-section,
       .ui-grid,
-      .dialog-grid {
+      .dialog-grid,
+      .promo-layout {
         grid-template-columns: 1fr;
       }
 
       .poster-grid,
-      .ui-principle-grid {
+      .ui-principle-grid,
+      .motion-principles {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .motion-stage {
+        grid-template-columns: 1fr;
+      }
+
+      .motion-stage-copy {
+        border-left: none;
+        border-top: 1px solid rgba(255,255,255,0.06);
       }
 
       .card-stage {
@@ -1171,9 +1720,13 @@
       .download-grid,
       .dialog-grid,
       .ui-principle-grid,
+      .motion-principles,
+      .motion-demo-grid,
+      .promo-still-grid,
       .mock-card-grid,
       .mini-stat-grid,
-      .color-values {
+      .color-values,
+      .promo-metric-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1187,7 +1740,8 @@
 
       .card-stage,
       .cover-shell,
-      .stage-shell {
+      .stage-shell,
+      .motion-stage-copy {
         padding: 24px;
       }
 
@@ -1228,6 +1782,28 @@
       .cover-title,
       .stage-title {
         font-size: 1.6rem;
+      }
+
+      .motion-stage,
+      .motion-stage-visual {
+        min-height: 380px;
+      }
+
+      .motion-stage-title {
+        font-size: 1.6rem;
+      }
+
+      .motion-stage-core {
+        width: 180px;
+        height: 180px;
+      }
+
+      .promo-link-row {
+        flex-direction: column;
+      }
+
+      .promo-link-row .hero-link {
+        width: 100%;
       }
     }
 
@@ -1292,6 +1868,13 @@
         flex-direction: column;
         gap: 10px;
       }
+
+      .motion-stage-kicker,
+      .motion-principle-kicker,
+      .motion-demo-kicker,
+      .promo-spec-kicker {
+        font-size: 0.72rem;
+      }
     }
   </style>
 </head>
@@ -1329,7 +1912,9 @@
       <li class="nav-item"><a href="#typography">03. Typography</a></li>
       <li class="nav-item"><a href="#ui-guidelines">04. UI Guidelines</a></li>
       <li class="nav-item"><a href="#applications">05. Applications</a></li>
-      <li class="nav-item"><a href="#downloads">06. Assets</a></li>
+      <li class="nav-item"><a href="#motion-design">06. Motion Design</a></li>
+      <li class="nav-item"><a href="#promo-film">07. Promo Film</a></li>
+      <li class="nav-item"><a href="#downloads">08. Assets</a></li>
     </ul>
 
     <div class="sidebar-footer">
@@ -1856,10 +2441,258 @@ When generating HTML/CSS, output production-ready code that strictly adheres to 
         </div>
       </section>
 
+      <section id="motion-design">
+        <div class="section-header">
+          <div class="section-tag">06. Motion Design</div>
+          <h2 class="section-title">Motion as Brand Behavior</h2>
+          <p class="section-desc">我把 <strong>unboundx-web</strong> 里最出彩的一批轨道、磁场、扫光与脉冲动效，收敛进这份品牌规范页，形成更适合展示站、官网首屏、加载态与产品演示的统一动效语言：少而准，但一眼就能看出 UNBOUNDX 的维度张力。</p>
+        </div>
+
+        <div class="motion-stage">
+          <div class="motion-stage-visual">
+            <canvas id="motion-showcase-canvas" class="motion-stage-canvas" aria-hidden="true"></canvas>
+            <div class="motion-stage-rings" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <div class="motion-stage-core" aria-hidden="true">
+              <svg class="motion-stage-logo" viewBox="0 0 128 128">
+                <path d="M35.4 35.4q68.4 34.2 68.4 68.4" fill="none" stroke="var(--brand-accent)" stroke-width="14.8" stroke-linecap="round"/>
+                <path d="M35.4 103.8q68.4-34.2 68.4-68.4" fill="none" stroke="var(--text-primary)" stroke-width="14.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="motion-stage-copy">
+            <div class="motion-stage-kicker">From Concept Site to Brand System</div>
+            <h3 class="motion-stage-title">把概念官网里的动态张力，沉淀成品牌级的行为系统</h3>
+            <p class="motion-stage-desc">这些动作不再只是“炫技特效”，而是围绕 <strong>进入维度、引力牵引、系统反馈、界面扫光</strong> 四个主题组织起来，方便后续继续扩展到官网、产品界面和宣传片片头。</p>
+            <div class="motion-chip-row">
+              <span class="motion-chip">Arc Reveal</span>
+              <span class="motion-chip">Orbit Trails</span>
+              <span class="motion-chip">Magnetic Response</span>
+              <span class="motion-chip">System Sweep</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="motion-principles">
+          <article class="motion-principle">
+            <div class="motion-principle-kicker">01 · Entrance</div>
+            <h3 class="motion-principle-title">进入维度要有唤醒感</h3>
+            <p class="motion-principle-desc">弧线依次绘制、中心逐步点亮、外环晚半拍出现，让品牌像是被引力场激活，而不是生硬地突然出现。</p>
+          </article>
+          <article class="motion-principle">
+            <div class="motion-principle-kicker">02 · Response</div>
+            <h3 class="motion-principle-title">反馈应该像系统在呼吸</h3>
+            <p class="motion-principle-desc">脉冲、旋转和粒子都被压到克制范围内，避免夸张弹跳，更适合品牌官网与 SaaS 产品的高级感语境。</p>
+          </article>
+          <article class="motion-principle">
+            <div class="motion-principle-kicker">03 · Direction</div>
+            <h3 class="motion-principle-title">扫描与轨道负责引导注意力</h3>
+            <p class="motion-principle-desc">扫光、轨道拖尾和磁场线条承担“引导视线”的职责，让用户自然地聚焦到品牌标识与关键展示内容。</p>
+          </article>
+        </div>
+
+        <div class="motion-demo-grid">
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <svg class="motion-mark motion-mark-draw" viewBox="0 0 128 128" aria-hidden="true">
+                <path class="motion-arc-orange" d="M35.4 35.4q68.4 34.2 68.4 68.4"/>
+                <path class="motion-arc-white" d="M35.4 103.8q68.4-34.2 68.4-68.4"/>
+              </svg>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">Arc Reveal</div>
+              <h3 class="motion-demo-title">弧线绘制 / Logo 开场动画</h3>
+              <p class="motion-demo-desc">直接从 <strong>unboundx-web</strong> 的 logo 动效里提炼出的入场方式，适合用于页面加载、开屏与片头品牌揭示。</p>
+              <span class="motion-demo-note">品牌进入 · 先橙后白</span>
+            </div>
+          </article>
+
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <canvas id="motion-orbit-canvas" class="motion-demo-canvas" aria-hidden="true"></canvas>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">Orbit Trails</div>
+              <h3 class="motion-demo-title">轨道拖尾 / 环绕氛围动效</h3>
+              <p class="motion-demo-desc">保留原站里最有辨识度的轨道粒子语言，用来表现“维度运行中”的持续状态，适合首屏背景与发布页氛围层。</p>
+              <span class="motion-demo-note">Ambient Motion · 永续运转</span>
+            </div>
+          </article>
+
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <canvas id="motion-field-canvas" class="motion-demo-canvas" aria-hidden="true"></canvas>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">Magnetic Field</div>
+              <h3 class="motion-demo-title">磁场响应 / 能量向心表达</h3>
+              <p class="motion-demo-desc">来源于原概念页的磁力场演绎。这里更收敛、更适合品牌站，强调“所有能量都被牵引向 X 维度核心”。</p>
+              <span class="motion-demo-note">Directional Feedback · 牵引聚焦</span>
+            </div>
+          </article>
+
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <svg class="motion-mark motion-mark-breathe" viewBox="0 0 128 128" aria-hidden="true">
+                <path class="motion-arc-orange" d="M35.4 35.4q68.4 34.2 68.4 68.4"/>
+                <path class="motion-arc-white" d="M35.4 103.8q68.4-34.2 68.4-68.4"/>
+              </svg>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">Pulse Breathing</div>
+              <h3 class="motion-demo-title">呼吸脉冲 / 轻量等待反馈</h3>
+              <p class="motion-demo-desc">比常见“跳一下”的反馈更克制，适合按钮待命态、悬浮 Logo、播放按钮与章节切换时的微互动表达。</p>
+              <span class="motion-demo-note">Micro Interaction · 温和呼吸</span>
+            </div>
+          </article>
+
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <div class="motion-loader-stack" aria-hidden="true">
+                <div class="motion-loader-ring"></div>
+                <div class="motion-loader-dots">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">Micro Loader</div>
+              <h3 class="motion-demo-title">微加载器 / 等待态组件语言</h3>
+              <p class="motion-demo-desc">把原站里的 mini loaders 重组为一套更克制的等待反馈，可直接延展为加载条、处理中、生成中等状态组件。</p>
+              <span class="motion-demo-note">System Status · 等待有节奏</span>
+            </div>
+          </article>
+
+          <article class="motion-demo-card">
+            <div class="motion-demo-stage">
+              <div class="motion-surface-preview">
+                <img src="public/promo/home-section.png" alt="UNBOUNDX 官网产品界面动效预览">
+                <div class="motion-surface-hud">System Sweep</div>
+              </div>
+            </div>
+            <div class="motion-demo-meta">
+              <div class="motion-demo-kicker">System Sweep</div>
+              <h3 class="motion-demo-title">扫光提示 / 界面内容激活方式</h3>
+              <p class="motion-demo-desc">把官网概念页与 Remotion 片段里的扫描线语言搬进品牌站，用作“内容已激活 / 数据正在对焦”的提示性动效。</p>
+              <span class="motion-demo-note">Attention Guide · 扫描聚焦</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="promo-film">
+        <div class="section-header">
+          <div class="section-tag">07. Promo Film</div>
+          <h2 class="section-title">Remotion Launch Film</h2>
+          <p class="section-desc">除了平面品牌规范，这一版展示页也把 <strong>unboundx-web/promo-video</strong> 里的 Remotion 宣传片正式嵌进来，让 UNBOUNDX 的动态叙事、镜头节奏和品牌气氛在同一页里完整呈现。</p>
+        </div>
+
+        <div class="promo-layout">
+          <article class="promo-player-card">
+            <div class="promo-player-shell">
+              <div class="promo-player-badge">Remotion Render · MP4</div>
+              <video controls playsinline preload="metadata" poster="public/promo/brand-hero.png">
+                <source src="public/promo/unboundx-launch-promo.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="promo-player-copy">
+              <h3 class="promo-player-title">UNBOUNDX Launch Promo / 宣传片设计展示</h3>
+              <p class="promo-player-desc">这支片子把品牌弧线、产品截图、主色氛围光和发布节奏整合成一条完整的动态叙事链，适合官网展示、路演、社交传播和发布会暖场。</p>
+              <div class="promo-link-row">
+                <a href="https://github.com/Jackiexiao/unboundx-web/tree/main/promo-video" class="hero-link hero-link-primary" target="_blank" rel="noreferrer">View Remotion Source</a>
+                <a href="public/promo/unboundx-launch-promo.mp4" class="hero-link" target="_blank" rel="noreferrer">Open MP4</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="promo-sidebar">
+            <article class="promo-spec-card">
+              <div class="promo-spec-kicker">Composition Specs</div>
+              <h3 class="promo-spec-title">延续原始 `UnboundxLaunchPromo` 输出规格</h3>
+              <p class="promo-spec-copy">展示页中的视频与原 Remotion 工程保持一致的帧率、时长与画幅，确保品牌展示与正式渲染素材统一。</p>
+              <div class="promo-metric-grid">
+                <div class="promo-metric">
+                  <strong>1920×1080</strong>
+                  <span>Canvas</span>
+                </div>
+                <div class="promo-metric">
+                  <strong>30 FPS</strong>
+                  <span>Playback</span>
+                </div>
+                <div class="promo-metric">
+                  <strong>360 Frames</strong>
+                  <span>Duration</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="promo-spec-card">
+              <div class="promo-spec-kicker">Scene Flow</div>
+              <h3 class="promo-spec-title">镜头结构围绕“品牌 → 产品 → 发布感”组织</h3>
+              <ul class="promo-spec-list">
+                <li>品牌弧线先出现，建立识别锚点与暗场氛围。</li>
+                <li>产品界面与品牌物料穿插出现，形成真实落地感。</li>
+                <li>结尾用强品牌收束，适合官网页内播放和活动开场。</li>
+              </ul>
+            </article>
+
+            <article class="promo-spec-card">
+              <div class="promo-spec-kicker">Usage</div>
+              <h3 class="promo-spec-title">可以继续外延到多个展示触点</h3>
+              <ul class="promo-spec-list">
+                <li>官网首页的视频区、投资人路演页、社交媒体预告。</li>
+                <li>线下发布会暖场、展会主屏幕和产品讲解片头。</li>
+                <li>后续可扩展为竖版短视频、静音循环版和字幕版。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="promo-still-grid">
+          <article class="promo-still-card">
+            <div class="promo-still-media">
+              <img src="public/promo/brand-hero.png" alt="UNBOUNDX 宣传片品牌揭示镜头">
+            </div>
+            <div class="promo-still-copy">
+              <div class="promo-spec-kicker">Scene 01</div>
+              <h3 class="promo-still-title">Brand Reveal / 品牌揭示</h3>
+              <p class="promo-still-desc">用深色空间和引力弧线建立第一印象，把“自由维度”的品牌气氛先打出来。</p>
+            </div>
+          </article>
+
+          <article class="promo-still-card">
+            <div class="promo-still-media">
+              <img src="public/promo/home-hero.png" alt="UNBOUNDX 宣传片官网首屏镜头">
+            </div>
+            <div class="promo-still-copy">
+              <div class="promo-spec-kicker">Scene 02</div>
+              <h3 class="promo-still-title">Product Hero / 产品首屏</h3>
+              <p class="promo-still-desc">把品牌视觉和真实页面结合起来，强调这不是抽象概念，而是已经可被感知的产品表达。</p>
+            </div>
+          </article>
+
+          <article class="promo-still-card">
+            <div class="promo-still-media">
+              <img src="public/promo/home-section.png" alt="UNBOUNDX 宣传片产品细节镜头">
+            </div>
+            <div class="promo-still-copy">
+              <div class="promo-spec-kicker">Scene 03</div>
+              <h3 class="promo-still-title">System Surface / 系统界面展开</h3>
+              <p class="promo-still-desc">用界面、色彩和节奏形成“系统已启动”的画面感，适合延展到更多产品宣传素材。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <!-- === DOWNLOADS === -->
       <section id="downloads" style="border-bottom: none;">
         <div class="section-header">
-          <div class="section-tag">06. Assets</div>
+          <div class="section-tag">08. Assets</div>
           <h2 class="section-title">Brand Asset Inventory</h2>
           <p class="section-desc">完整品牌视觉资产体系，包含矢量标志、标准色彩规范与核心应用模板，确保品牌视觉资产的高效、一致交付。</p>
         </div>
@@ -2045,6 +2878,275 @@ When generating HTML/CSS, output production-ready code that strictly adheres to 
           }
         });
       }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const orangeArcPath = typeof Path2D !== 'undefined'
+        ? new Path2D('M35.4 35.4q68.4 34.2 68.4 68.4')
+        : null;
+      const whiteArcPath = typeof Path2D !== 'undefined'
+        ? new Path2D('M35.4 103.8q68.4-34.2 68.4-68.4')
+        : null;
+
+      const prepareCanvas = (canvas) => {
+        const ctx = canvas?.getContext('2d');
+        if (!canvas || !ctx) return null;
+
+        const resize = () => {
+          const rect = canvas.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.max(1, Math.round(rect.width * dpr));
+          canvas.height = Math.max(1, Math.round(rect.height * dpr));
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          return rect;
+        };
+
+        return { ctx, resize };
+      };
+
+      const drawBrandMark = (ctx, x, y, size, opacity = 1) => {
+        if (!orangeArcPath || !whiteArcPath) return;
+
+        ctx.save();
+        ctx.translate(x - size / 2, y - size / 2);
+        ctx.scale(size / 128, size / 128);
+        ctx.lineCap = 'round';
+        ctx.lineWidth = 14.8;
+        ctx.globalAlpha = opacity;
+        ctx.strokeStyle = '#F26122';
+        ctx.stroke(orangeArcPath);
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.stroke(whiteArcPath);
+        ctx.restore();
+        ctx.globalAlpha = 1;
+      };
+
+      const setupMotionShowcase = () => {
+        const prepared = prepareCanvas(document.getElementById('motion-showcase-canvas'));
+        if (!prepared) return;
+
+        const { ctx, resize } = prepared;
+        let rect = resize();
+        const particles = Array.from({ length: 18 }, (_, index) => ({
+          angle: (index / 18) * Math.PI * 2,
+          speed: 0.0008 + Math.random() * 0.0014,
+          orbit: 82 + (index % 4) * 34 + Math.random() * 12,
+          size: index % 3 === 0 ? 3.8 : 2.6,
+          color: index % 2 === 0 ? '#F26122' : '#FFFFFF',
+          drift: 0.65 + Math.random() * 0.38,
+        }));
+
+        const draw = (time = 0) => {
+          const width = rect.width;
+          const height = rect.height;
+          const centerX = width / 2;
+          const centerY = height / 2;
+
+          ctx.clearRect(0, 0, width, height);
+          ctx.fillStyle = 'rgba(5, 5, 5, 0.14)';
+          ctx.fillRect(0, 0, width, height);
+
+          [98, 142, 190].forEach((radius, index) => {
+            ctx.beginPath();
+            ctx.strokeStyle = index === 1 ? 'rgba(242,97,34,0.14)' : 'rgba(255,255,255,0.08)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash(index === 2 ? [5, 9] : []);
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          });
+
+          particles.forEach((particle, index) => {
+            const angle = particle.angle + time * particle.speed;
+            const radius = particle.orbit + Math.sin(time * 0.001 + index) * 4 * particle.drift;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle * particle.drift) * (radius * 0.72);
+
+            ctx.beginPath();
+            ctx.strokeStyle = particle.color;
+            ctx.globalAlpha = particle.color === '#F26122' ? 0.18 : 0.12;
+            ctx.lineWidth = 1.4;
+            ctx.arc(
+              centerX,
+              centerY,
+              radius,
+              angle - 0.34,
+              angle
+            );
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+
+            ctx.beginPath();
+            ctx.fillStyle = particle.color;
+            ctx.arc(x, y, particle.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          drawBrandMark(ctx, centerX, centerY, 88, 0.22);
+        };
+
+        const handleResize = () => {
+          rect = resize();
+          draw(1600);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        if (prefersReducedMotion.matches) {
+          draw(1800);
+          return;
+        }
+
+        const animate = (time) => {
+          draw(time);
+          requestAnimationFrame(animate);
+        };
+
+        requestAnimationFrame(animate);
+      };
+
+      const setupOrbitCanvas = () => {
+        const prepared = prepareCanvas(document.getElementById('motion-orbit-canvas'));
+        if (!prepared) return;
+
+        const { ctx, resize } = prepared;
+        let rect = resize();
+
+        const draw = (time = 0) => {
+          const width = rect.width;
+          const height = rect.height;
+          const centerX = width / 2;
+          const centerY = height / 2;
+
+          ctx.clearRect(0, 0, width, height);
+
+          [42, 60, 78].forEach((radius, index) => {
+            ctx.beginPath();
+            ctx.strokeStyle = index === 1 ? 'rgba(242,97,34,0.14)' : 'rgba(255,255,255,0.08)';
+            ctx.lineWidth = 1;
+            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            ctx.stroke();
+          });
+
+          for (let index = 0; index < 3; index += 1) {
+            const angle = time * 0.0015 + (index * Math.PI * 2) / 3;
+            const radius = 42 + index * 18;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle) * radius;
+            const color = index % 2 === 0 ? '#F26122' : '#FFFFFF';
+
+            ctx.beginPath();
+            ctx.strokeStyle = color;
+            ctx.globalAlpha = 0.22;
+            ctx.lineWidth = 2;
+            ctx.arc(centerX, centerY, radius, angle - 0.62, angle);
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            ctx.arc(x, y, 4.2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          drawBrandMark(ctx, centerX, centerY, 76);
+        };
+
+        const handleResize = () => {
+          rect = resize();
+          draw(900);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        if (prefersReducedMotion.matches) {
+          draw(1200);
+          return;
+        }
+
+        const animate = (time) => {
+          draw(time);
+          requestAnimationFrame(animate);
+        };
+
+        requestAnimationFrame(animate);
+      };
+
+      const setupFieldCanvas = () => {
+        const prepared = prepareCanvas(document.getElementById('motion-field-canvas'));
+        if (!prepared) return;
+
+        const { ctx, resize } = prepared;
+        let rect = resize();
+        const rays = Array.from({ length: 14 }, (_, index) => ({
+          angle: (index / 14) * Math.PI * 2,
+          speed: 0.85 + Math.random() * 0.45,
+          maxRadius: 74 + Math.random() * 16,
+          phase: Math.random() * Math.PI * 2,
+          color: index % 2 === 0 ? '#F26122' : '#FFFFFF',
+        }));
+
+        const draw = (time = 0) => {
+          const width = rect.width;
+          const height = rect.height;
+          const centerX = width / 2;
+          const centerY = height / 2;
+
+          ctx.clearRect(0, 0, width, height);
+
+          rays.forEach((ray) => {
+            const pulse = (Math.sin(time * 0.0022 * ray.speed + ray.phase) + 1) / 2;
+            const radius = 22 + pulse * (ray.maxRadius - 22);
+            const x = centerX + Math.cos(ray.angle) * radius;
+            const y = centerY + Math.sin(ray.angle) * radius;
+            const opacity = 1 - (radius - 22) / (ray.maxRadius - 22);
+
+            ctx.beginPath();
+            ctx.strokeStyle = ray.color;
+            ctx.globalAlpha = opacity * 0.26;
+            ctx.lineWidth = 1;
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.fillStyle = ray.color;
+            ctx.globalAlpha = opacity * 0.86;
+            ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+          });
+
+          ctx.beginPath();
+          ctx.fillStyle = '#F26122';
+          ctx.arc(centerX, centerY, 12, 0, Math.PI * 2);
+          ctx.fill();
+
+          drawBrandMark(ctx, centerX, centerY, 74, 0.2);
+        };
+
+        const handleResize = () => {
+          rect = resize();
+          draw(1200);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        if (prefersReducedMotion.matches) {
+          draw(1600);
+          return;
+        }
+
+        const animate = (time) => {
+          draw(time);
+          requestAnimationFrame(animate);
+        };
+
+        requestAnimationFrame(animate);
+      };
+
+      setupMotionShowcase();
+      setupOrbitCanvas();
+      setupFieldCanvas();
     });
   </script>
 </body>
